@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1280" viewBox="0 0 2400 1280" role="img" aria-label="Hero placeholder">
+  <defs>
+    <linearGradient id="h" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:#050508"/>
+      <stop offset="50%" style="stop-color:#101018"/>
+      <stop offset="100%" style="stop-color:#050508"/>
+    </linearGradient>
+    <radialGradient id="g" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" style="stop-color:rgba(0,113,227,0.25)"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </radialGradient>
+  </defs>
+  <rect width="2400" height="1280" fill="url(#h)"/>
+  <rect width="2400" height="1280" fill="url(#g)"/>
+  <text x="50%" y="50%" fill="rgba(245,245,247,0.3)" font-family="system-ui,sans-serif" font-size="42" font-weight="500" text-anchor="middle">Case hero · export from Figma</text>
+</svg>
