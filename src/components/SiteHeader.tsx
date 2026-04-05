@@ -62,7 +62,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-12 max-w-[1440px] items-center justify-between px-6 sm:h-14 sm:px-12">
         {/* Name with scramble effect */}
         <Link
-          href="/"
+          href="https://utk-folio.vercel.app/"
           className="font-black uppercase tracking-[-0.02em] text-[var(--text)] transition-opacity hover:opacity-60"
           style={{ fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif', fontSize: '15px' }}
         >
