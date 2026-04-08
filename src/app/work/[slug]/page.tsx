@@ -34,7 +34,7 @@ export default async function CaseStudyPage({ params }: Props) {
   if (!project) notFound();
 
   return (
-    <article className="bg-[var(--bg)]">
+    <article className="bg-[var(--bg)]" data-cursor-label="deep dive.">
       {/* Reading progress */}
       <ScrollProgressBar />
 
@@ -209,6 +209,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="mt-20 border-t border-[var(--line)] pt-12">
           <Link
             href="/#work"
+            data-cursor-label="see more work"
             className="inline-flex min-h-12 items-center rounded-full border border-[var(--line-strong)] px-6 text-[15px] font-medium text-[var(--text)] transition hover:bg-[var(--surface-elevated)]"
           >
             ← All work

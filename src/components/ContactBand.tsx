@@ -8,6 +8,7 @@ export function ContactBand() {
       id="contact"
       aria-labelledby="contact-heading"
       className="border-t border-[var(--line)] bg-[var(--bg-elevated)]"
+      data-cursor-label="let's talk."
     >
       <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-12 sm:py-28">
         <Reveal>
@@ -32,6 +33,7 @@ export function ContactBand() {
             <MagneticButton strength={0.22}>
               <a
                 href={`mailto:${site.contact.email}`}
+                data-cursor-label="drop a line"
                 className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[var(--cta)] px-8 text-[14px] font-semibold uppercase tracking-[0.06em] text-[var(--cta-label)] transition hover:bg-[var(--cta-hover)] sm:w-auto"
               >
                 Email
@@ -42,6 +44,7 @@ export function ContactBand() {
                 href={site.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cursor-label="let's connect"
                 className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)] sm:w-auto"
               >
                 LinkedIn
@@ -52,6 +55,7 @@ export function ContactBand() {
                 href={site.contact.dribbble}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cursor-label="see the pixels"
                 className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)] sm:w-auto"
               >
                 Dribbble
@@ -62,6 +66,7 @@ export function ContactBand() {
                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Coffee+Chat+with+Utkarsh+Raj&add=utkarshraj7540@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cursor-label="grab a coffee? ☕"
                 className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)] sm:w-auto"
               >
                 Send coffee ☕

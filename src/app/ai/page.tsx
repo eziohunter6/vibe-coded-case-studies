@@ -41,7 +41,7 @@ const aiProjects = [
 
 export default function AIPage() {
   return (
-    <div className="bg-[var(--bg)]">
+    <div className="bg-[var(--bg)]" data-cursor-label="__sequence__">
       {/* Header */}
       <section className="border-b border-[var(--line)]">
         <div className="mx-auto max-w-[1440px] px-6 pb-12 pt-20 sm:px-12 sm:pb-24 sm:pt-36">
@@ -85,6 +85,7 @@ export default function AIPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Open ${project.name}`}
+                  data-cursor-label="try it live →"
                   className="group relative block w-full overflow-hidden rounded-[1.35rem]"
                 >
                   {/* Light thumbnail, hidden when .dark class is active */}
@@ -120,8 +121,8 @@ export default function AIPage() {
               A note on how I use AI
             </p>
             <p className="mt-4 max-w-[56rem] text-pretty text-[17px] leading-[1.75] text-[var(--muted)]">
-              Prompting is a design skill. I treat AI systems the way I treat any collaborator , 
-              with a clear brief, fast iteration loops, and critical judgment on the output.
+              Prompting is a design skill. I treat AI systems the way I treat any collaborator:
+              clear brief, fast iteration loops, critical judgment on the output.
               The best AI-augmented work doesn&apos;t look like it was generated; it looks like
               someone made sharp decisions quickly. That&apos;s what I&apos;m building toward.
             </p>

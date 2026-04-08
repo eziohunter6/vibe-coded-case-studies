@@ -25,10 +25,10 @@ type Theme = { bg: string; card: string; lite: string; rule: string; w: string; 
 const ThemeCtx = createContext<Theme>(DARK);
 
 // ─── Helper components ────────────────────────────────────────────────────────
-function Sec({ children, id }: { children: React.ReactNode; id?: string }) {
+function Sec({ children, id, cursorLabel }: { children: React.ReactNode; id?: string; cursorLabel?: string }) {
   const T = useContext(ThemeCtx);
   return (
-    <section id={id} style={{ borderBottom: `1px solid ${T.rule}`, padding: "96px 0 56px" }}>
+    <section id={id} data-cursor-label={cursorLabel} style={{ borderBottom: `1px solid ${T.rule}`, padding: "96px 0 56px" }}>
       {children}
     </section>
   );
@@ -219,7 +219,7 @@ export default function CarComparisonPage() {
           </Sec>
 
           {/* ── 02 PROBLEM ───────────────────────────────────────────────────── */}
-          <Sec id="problem">
+          <Sec id="problem" cursorLabel="the A to B pattern">
             <Reveal>
               <Sn n="02." />
               <Sh>Problem</Sh>
@@ -292,7 +292,7 @@ export default function CarComparisonPage() {
           </Sec>
 
           {/* ── 03 THE DATA ──────────────────────────────────────────────────── */}
-          <Sec id="data">
+          <Sec id="data" cursorLabel="capable users, let down">
             <Reveal>
               <Sn n="03." />
               <Sh>The data</Sh>
@@ -343,7 +343,7 @@ export default function CarComparisonPage() {
           </Sec>
 
           {/* ── 04 DESIGN QUESTION ───────────────────────────────────────────── */}
-          <Sec id="design-question">
+          <Sec id="design-question" cursorLabel="support, don't interrupt">
             <Reveal>
               <Sn n="04." />
               <Sh>Design question</Sh>
@@ -398,14 +398,15 @@ export default function CarComparisonPage() {
           </Sec>
 
           {/* ── 06 EXPLORATION ───────────────────────────────────────────────── */}
-          <Sec id="exploration">
+          <Sec id="exploration" cursorLabel="three structures, one winner">
             <Reveal>
               <Sn n="06." />
               <Sh>Two paths.<br />One right answer.</Sh>
               <Div />
               <B>
-                I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution , 
-                it was the one that solved the problem without creating new ones.
+                I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution,
+                it was the one that solved the problem without creating new ones. Both were prototyped and
+                reviewed against the same brief: reduce cognitive load at the moment of decision.
               </B>
             </Reveal>
 
@@ -418,7 +419,7 @@ export default function CarComparisonPage() {
                     style={{ width: "100%", borderRadius: 12, display: "block" }}
                   />
                   <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                    Option 1, Independent bar graphs with no optical relative winning signal. Adds cognitive load while scanning. Adding decision fatigue leading to slow conversion.
+                    Option 1 reads as data, not decision. Two independent bars give accurate numbers but no relative signal — the user still has to do the mental subtraction. Under time pressure or on a mid-range device, that&apos;s exactly where comparison falls apart.
                   </p>
                 </div>
                 <div>
@@ -428,7 +429,7 @@ export default function CarComparisonPage() {
                     style={{ width: "100%", borderRadius: 12, display: "block" }}
                   />
                   <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                    Option 2 <span style={{ color: T.w, fontWeight: 500 }}>· Live version.</span> Linear graph showing the relative winning percentage optically with the least cognitive load. Subconsciously seeding the difference percentage visually.
+                    Option 2 <span style={{ color: T.w, fontWeight: 500 }}>· shipped.</span> A single axis makes one car the implicit reference point. The delta reads instantly — no arithmetic, no toggling, no memory. The user&apos;s job shifts from &ldquo;calculate which is better&rdquo; to &ldquo;confirm what I already sense.&rdquo; That shift is the design.
                   </p>
                 </div>
               </div>
@@ -440,14 +441,16 @@ export default function CarComparisonPage() {
           </Sec>
 
           {/* ── 07 FINAL DESIGNS ─────────────────────────────────────────────── */}
-          <Sec id="final-designs">
+          <Sec id="final-designs" cursorLabel="tested before it shipped">
             <Reveal>
               <Sn n="07." />
               <Sh>Final Designs</Sh>
               <Div />
               <B>
-                The comparison feature surfaces at the exact moment a user shows comparison intent, after visiting
-                multiple PDPs. It doesn&apos;t interrupt browsing. It offers to help when the signal is clear.
+                The comparison feature surfaces at the exact moment a user shows comparison intent — after visiting
+                multiple PDPs. It doesn&apos;t interrupt browsing. It doesn&apos;t ask the user to change
+                behaviour. It offers a better tool at the moment they need it, and disappears otherwise.
+                Three screens. One job: close the decision.
               </B>
             </Reveal>
 
@@ -464,7 +467,10 @@ export default function CarComparisonPage() {
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  The car comparison feature, surface-level overview showing the three primary screens: listing selection, side-by-side comparison view, and spec breakdown with difference indicators.
+                  Three screens with a clear hierarchy of jobs: select, compare, decide. Notice that none of
+                  these screens introduce unfamiliar UI patterns — the card language is the same as listings,
+                  the navigation chrome doesn&apos;t change. The only new idea is the difference indicator.
+                  Familiar enough to trust, specific enough to act on.
                 </p>
               </div>
 
@@ -480,7 +486,10 @@ export default function CarComparisonPage() {
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  The comparison tray appears contextually at the bottom of the PDP after a user has viewed multiple cars. One tap to open the full comparison view, no navigation change required. The explicit entry point is unlocked only after the A→B→A pattern is detected.
+                  The tray doesn&apos;t announce itself. It surfaces when the behaviour says the user is ready —
+                  only after the A→B→A pattern fires. There&apos;s no CTA to ignore, no modal to dismiss.
+                  Timing is the design here. The same interaction, surfaced ten seconds earlier, would have
+                  felt like an interruption. Here it feels like the product read your mind.
                 </p>
               </div>
 
@@ -496,14 +505,18 @@ export default function CarComparisonPage() {
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  Specs grouped by category, comfort, performance, safety. Differences highlighted so the user doesn&apos;t have to read every row. An AI-derived summary card at the top gives a qualitative read at a glance.
+                  The hardest decision here wasn&apos;t the layout — it was what not to show. Grouping by
+                  category (comfort, performance, safety) mirrors how buyers think, not how the database
+                  stores data. The difference indicator removes the arithmetic entirely. The AI summary at
+                  the top collapses the full table into one sentence for the user who&apos;s already decided
+                  and just needs confirmation. Hierarchy doing the work that scrolling used to do.
                 </p>
               </div>
             </Reveal>
           </Sec>
 
           {/* ── 08 OUTCOME ───────────────────────────────────────────────────── */}
-          <Sec id="outcome">
+          <Sec id="outcome" cursorLabel="funnel went deeper">
             <Reveal>
               <Sn n="08." />
               <Sh>Outcome</Sh>
@@ -562,7 +575,7 @@ export default function CarComparisonPage() {
           </Sec>
 
           {/* ── 09 REFLECTION ────────────────────────────────────────────────── */}
-          <Sec id="reflection">
+          <Sec id="reflection" cursorLabel="demand was already there">
             <Reveal>
               <Sn n="09." />
               <Sh>What this<br />taught me</Sh>

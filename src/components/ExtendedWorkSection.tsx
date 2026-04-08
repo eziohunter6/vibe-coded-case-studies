@@ -15,6 +15,7 @@ export function ExtendedWorkSection({
       id="work"
       aria-labelledby="work-heading"
       className="mx-auto max-w-[1440px] px-6 pb-8 pt-4 sm:px-12 sm:pt-8 sm:pb-12"
+      data-cursor-label="real work."
     >
       <Reveal>
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">Selected work</p>
@@ -38,6 +39,7 @@ export function ExtendedWorkSection({
                 <article className="group">
                   <Link
                     href={`/work/${p.slug}`}
+                    data-cursor-label="read the full story"
                     className="flex flex-col overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_40px_100px_-40px_rgba(0,87,255,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] sm:rounded-[1.75rem]"
                   >
                     {/* Image */}

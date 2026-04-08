@@ -4,7 +4,7 @@ import { site } from "@/content/portfolio";
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-[var(--line)] bg-[var(--bg)]">
+    <footer className="border-t border-[var(--line)] bg-[var(--bg)]" data-cursor-label="you made it.">
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-12">
         {/* Top row, name + social links */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">

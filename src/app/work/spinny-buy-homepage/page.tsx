@@ -25,10 +25,10 @@ type Theme = { bg: string; card: string; lite: string; rule: string; w: string; 
 const ThemeCtx = createContext<Theme>(DARK);
 
 // ─── Section wrapper ─────────────────────────────────────────────────────────
-function Sec({ children, id }: { children: React.ReactNode; id?: string }) {
+function Sec({ children, id, cursorLabel }: { children: React.ReactNode; id?: string; cursorLabel?: string }) {
   const T = useContext(ThemeCtx);
   return (
-    <section id={id} style={{ borderBottom: `1px solid ${T.rule}`, padding: "96px 0 56px" }}>
+    <section id={id} data-cursor-label={cursorLabel} style={{ borderBottom: `1px solid ${T.rule}`, padding: "96px 0 56px" }}>
       {children}
     </section>
   );
@@ -228,7 +228,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 02 PROBLEM ─────────────────────────────────────────────────── */}
-        <Sec id="problem">
+        <Sec id="problem" cursorLabel="two users, one page">
           <Reveal>
             <Sn n="02." />
             <Sh>Problem</Sh>
@@ -301,7 +301,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 03 JOURNEY ────────────────────────────────────────────────── */}
-        <Sec id="journey">
+        <Sec id="journey" cursorLabel="where intent went cold">
           <Reveal>
             <Sn n="03." />
             <Sh>Where the journey<br />broke down</Sh>
@@ -419,7 +419,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 04 COMPETITIVE ────────────────────────────────────────────── */}
-        <Sec id="competitive">
+        <Sec id="competitive" cursorLabel="nobody solved this">
           <Reveal>
             <Sn n="04." />
             <Sh>Nobody had<br />solved this.</Sh>
@@ -543,7 +543,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 05 DESIGN QUESTION ────────────────────────────────────────── */}
-        <Sec id="reframe">
+        <Sec id="reframe" cursorLabel="homepage as co-pilot">
           <Reveal>
             <Sn n="05." />
             <Sh>How might we guide<br />committed buyers?</Sh>
@@ -598,7 +598,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 07 IDEATION ───────────────────────────────────────────────── */}
-        <Sec id="ideation">
+        <Sec id="ideation" cursorLabel="two paths, one answer">
           <Reveal>
             <Sn n="07." />
             <Sh>Two paths.<br />One right answer</Sh>
@@ -640,7 +640,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 08 FINAL DESIGNS ──────────────────────────────────────────── */}
-        <Sec id="final">
+        <Sec id="final" cursorLabel="state knows you">
           <Reveal>
             <Sn n="08." />
             <Sh>Final Designs</Sh>
@@ -704,7 +704,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 09 OUTCOME ────────────────────────────────────────────────── */}
-        <Sec id="outcome">
+        <Sec id="outcome" cursorLabel="numbers don't lie">
           <Reveal>
             <Sn n="09." />
             <Sh>Outcome</Sh>
@@ -763,7 +763,7 @@ export default function BuyHomepagePage() {
         </Sec>
 
         {/* ── 10 REFLECTION ─────────────────────────────────────────────── */}
-        <Sec id="reflection">
+        <Sec id="reflection" cursorLabel="what the data taught">
           <Reveal>
             <Sn n="10." />
             <Sh>What this<br />taught me</Sh>

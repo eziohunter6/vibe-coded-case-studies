@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+});
 import { SkipLink } from "@/components/SkipLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -39,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={ibmPlexMono.variable}>
       <head>
         {/* Apply theme before first paint to prevent flash */}
         <ThemeScript />

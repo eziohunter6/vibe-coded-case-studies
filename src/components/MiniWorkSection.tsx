@@ -29,6 +29,7 @@ export function MiniWorkSection({ projects }: { projects: MiniProject[] }) {
         id="mini-work"
         aria-labelledby="mini-work-heading"
         className="mx-auto max-w-[1440px] px-6 pb-20 sm:px-12"
+        data-cursor-label="and there's more."
       >
         <Reveal>
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">Additional work</p>
@@ -49,6 +50,7 @@ export function MiniWorkSection({ projects }: { projects: MiniProject[] }) {
               <li>
                 <button
                   type="button"
+                  data-cursor-label="what happened here?"
                   className="group flex w-full flex-col overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] text-left shadow-[0_0_0_0_transparent] transition duration-300 hover:-translate-y-0.5 hover:border-[var(--line-strong)] hover:shadow-[0_24px_60px_-32px_rgba(0,0,0,0.85)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
                   onClick={() => openProject(p)}
                 >

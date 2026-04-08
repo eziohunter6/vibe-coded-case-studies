@@ -14,6 +14,7 @@ export function InfoSection() {
       id="info"
       aria-labelledby="info-heading"
       className="border-t border-[var(--line)]"
+      data-cursor-label="that's me."
     >
       <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-12 sm:py-28">
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:gap-24">

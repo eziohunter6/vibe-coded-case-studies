@@ -24,11 +24,11 @@ function HamburgerIcon({ open }: { open: boolean }) {
 }
 
 const NAV_SECTIONS = [
-  { href: "/#work", label: "Work", sectionId: "work" },
-  { href: "/ai", label: "AI Practices", sectionId: null },
-  { href: "/#info", label: "Info", sectionId: "info" },
-  { href: "/archive", label: "Archive", sectionId: null },
-  { href: "/#contact", label: "Contact", sectionId: "contact" },
+  { href: "/#work", label: "Work", sectionId: "work", cursorLabel: "see the work" },
+  { href: "/ai", label: "AI Practices", sectionId: null, cursorLabel: "experiments" },
+  { href: "/#info", label: "Info", sectionId: "info", cursorLabel: "the person" },
+  { href: "/archive", label: "Archive", sectionId: null, cursorLabel: "the eye" },
+  { href: "/#contact", label: "Contact", sectionId: "contact", cursorLabel: "say hello" },
 ] as const;
 
 export function SiteHeader() {
@@ -77,7 +77,7 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] backdrop-blur-2xl backdrop-saturate-150">
+    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] backdrop-blur-2xl backdrop-saturate-150" data-cursor-label="find your way.">
       <div className="mx-auto flex h-12 max-w-[1440px] items-center justify-between px-6 sm:h-14 sm:px-12">
         <Link
           href="/"
@@ -92,10 +92,11 @@ export function SiteHeader() {
           {/* Nav links, desktop only */}
           <nav aria-label="Primary" className="hidden sm:block">
             <ul className="flex items-center gap-0.5">
-              {NAV_SECTIONS.map(({ href, label, sectionId }) => (
+              {NAV_SECTIONS.map(({ href, label, sectionId, cursorLabel }) => (
                 <li key={href}>
                   <Link
                     href={href}
+                    data-cursor-label={cursorLabel}
                     className={`relative rounded-full px-3.5 py-2 text-[12px] font-medium uppercase tracking-[0.08em] transition-colors sm:px-4 ${
                       isActive(href, sectionId)
                         ? "text-[var(--text)]"
@@ -147,11 +148,12 @@ export function SiteHeader() {
         <div className="sm:hidden border-t border-[var(--line)] bg-[color-mix(in_srgb,var(--bg)_96%,transparent)] backdrop-blur-2xl">
           <nav aria-label="Mobile navigation">
             <ul className="flex flex-col px-6 py-2">
-              {NAV_SECTIONS.map(({ href, label, sectionId }) => (
+              {NAV_SECTIONS.map(({ href, label, sectionId, cursorLabel }) => (
                 <li key={href}>
                   <Link
                     href={href}
                     onClick={() => setMobileOpen(false)}
+                    data-cursor-label={cursorLabel}
                     className={`flex items-center justify-between border-b border-[var(--line)] py-4 text-[15px] font-medium last:border-0 transition-colors ${
                       isActive(href, sectionId)
                         ? "text-[var(--text)]"

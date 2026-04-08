@@ -104,7 +104,7 @@ export const projects: Project[] = [
     slug: "spinny-buy-homepage",
     title: "Redesigning Spinny's homepage for committed buyers",
     tagline:
-      "Returning buyers with booked test drives landed on the same homepage as first-time visitors. The system already knew their state, the homepage just wasn't showing it. I redesigned it to surface each user's exact position in the journey.",
+      "Returning buyers with booked test drives landed on the same homepage as first-time visitors. The system knew their state. The homepage didn't. I fixed that.",
     role: "Lead Designer",
     year: "2025",
     client: "Spinny",
@@ -131,9 +131,9 @@ export const projects: Project[] = [
         id: "problem",
         title: "Two users. One homepage.",
         paragraphs: [
-          "Drop-offs peaked in the 48-hour gap between scheduling a test drive and the showroom visit, a window where committed intent could go cold.",
-          "The Browser and The Buyer were being served identical experiences. Mapped across five attributes, State, Goal, Homepage fit, Intent, and Gap, the difference was stark. The Browser: browsing inventory, no commitment, homepage built for them. The Buyer: test drive booked, highest intent, homepage showing nothing relevant. The gap column was the same every row.",
-          "Profile had the data. Drop-offs peaked in the 48-hour gap between scheduling and showroom visit. The homepage never surfaced any of it.",
+          "Drop-offs peaked in the 48-hour gap between scheduling a test drive and the showroom visit — a window where committed intent could go cold with no signal from the product.",
+          "The Browser and The Buyer were being served identical experiences. Mapped across five attributes — State, Goal, Homepage fit, Intent, and Gap — the difference was stark. The Browser: browsing inventory, no commitment, homepage built for them. The Buyer: test drive booked, highest intent, homepage showing nothing relevant. The gap column was the same every row.",
+          "Profile had the booking state. The homepage never looked at it.",
         ],
         image: "/images/buy-homepage/problem.png",
         imageAlt: "Two user cohorts, The Browser vs The Buyer",
@@ -193,10 +193,10 @@ export const projects: Project[] = [
       },
     ],
     reflection: [
-      "The hardest part wasn't the design, it was working within real team boundaries. The transaction dashboard lived in a separate team's codebase. Leadership wanted evolution, not disruption. Getting the homepage to surface state it already had required negotiating access, not just designing a new component.",
-      "The Browser/Buyer split turned out to be a useful mental model beyond this project. Most homepage problems are actually cohort-blindness problems, a single surface trying to serve users at wildly different stages of intent. Once you name the cohorts, the solution space narrows fast.",
-      "Outcome (A/B validated · 2.5M MAU): −5.14% T2V (Time-to-Visit). +3.2% U2D (User-to-Delivery). Uplift deepened further in the funnel, a signal this wasn't surface engagement, but genuine improvement in decision quality. The downstream metric moved most, not the top-of-funnel one.",
-      "Transactional users don't need more features. They need the product to remember them.",
+      "The hardest part wasn't the design — it was working within real team boundaries. The transaction dashboard lived in a separate team's codebase. Leadership wanted evolution, not disruption. Getting the homepage to surface state it already had required negotiating access, not just designing a new component.",
+      "If I were doing this again, I'd run the Browser/Buyer cohort analysis earlier in discovery rather than validating it mid-project. That split defined the entire solution space. Naming it sooner would have shortened the ideation phase by at least a week.",
+      "The Browser/Buyer split turned out to be a useful mental model beyond this project. Most homepage problems are cohort-blindness problems — a single surface trying to serve users at wildly different stages of intent. Once you name the cohorts, the solution space narrows fast.",
+      "Outcome (A/B validated · 2.5M MAU): −5.14% T2V (Time-to-Visit). +3.2% U2D (User-to-Delivery). Uplift deepened further in the funnel — a signal this wasn't surface engagement, but genuine improvement in decision quality. The downstream metric moved most, not the top-of-funnel one.",
     ],
   },
   {
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     slug: "car-comparison",
     title: "Comparison feature adding decision speed",
     tagline:
-      "16% of users on the product detail page were already comparing cars, bouncing between listings, returning to the same ones repeatedly. The behaviour was in the data. I built the comparison layer that matched how they naturally decided.",
+      "16% of PDP users were already comparing cars — bouncing between listings, returning to the same ones. The behaviour was there. The product offered nothing to match it. I designed the decision layer that closed that gap.",
     role: "Lead Designer",
     year: "2025",
     client: "Spinny",
@@ -242,7 +242,8 @@ export const projects: Project[] = [
         id: "data",
         title: "The system provided information. It did not support decision-making.",
         paragraphs: [
-          "High-intent users were retaining specifications in working memory, switching between PDPs repeatedly, and comparing non-prioritised attributes without any scaffold to reason across them.",
+          "High-intent users were retaining specifications in working memory, switching between PDPs repeatedly, and comparing non-prioritised attributes without any scaffold to reason across them. No structured hierarchy existed to guide trade-offs between price, EMI, mileage, or ownership history.",
+          "We mapped the key variables users were mentally tracking: Price, EMI, Mileage, Ownership history, Colour, and Fuel type. Users were weighing six-plus variables without the product giving them any way to hold those variables side by side. The cognitive load was entirely self-imposed.",
           "The data didn't show confused users. It showed capable users being let down by a product that hadn't kept up with how they naturally think.",
         ],
         image: "/images/car-comparison/data.png",
@@ -293,8 +294,9 @@ export const projects: Project[] = [
       },
     ],
     reflection: [
-      "High-intent comparison behaviour was already in the data. The opportunity wasn't to create demand, it was to build decision architecture for users who already wanted to decide. That distinction shapes what you build completely.",
+      "High-intent comparison behaviour was already in the data. The opportunity wasn't to create demand — it was to build decision architecture for users who already wanted to decide. That distinction shapes what you build completely.",
       "The A→B→A pattern was the most useful thing the data gave us. It reframed the problem from 'users can't decide' to 'the product isn't helping users who already want to decide.' That reframe changed everything about scope, structure, and what we chose not to build.",
+      "If I were doing this again, I'd push for behavioural trigger testing earlier — specifically, I'd want to validate the no-explicit-CTA constraint with a small holdout group before committing to it as the rollout strategy. We were confident in the reasoning; a two-week micro-test would have made it a data point.",
       "Structuring evaluation around weighted decision variables, not flat spec display, reduced cognitive friction for high-intent users and improved downstream qualification across all three key business metrics (U2Tds +1.6%, U2T +3.8%, U2D +5.3%). The deeper the funnel, the larger the improvement.",
     ],
   },
@@ -312,9 +314,9 @@ export const projects: Project[] = [
     summary:
       "Paid subscribers were under-using premium features because the interface never surfaced them in context. The gap between subscription value and perceived value was a discoverability problem, not a product one.",
     highlights: [
-      { label: "Renewals", value: "+28% Prime renewals post-launch, 8% above projection" },
-      { label: "Subscriptions", value: "New subscription rate increased post-launch; stronger value perception at onboarding identified as primary driver" },
-      { label: "Feature engagement", value: "Premium feature usage increased after contextual surfacing, users accessing paid features they previously had no path to" },
+      { label: "Renewals", value: "+28% Prime renewals post-launch, 8 points above projection" },
+      { label: "Subscriptions", value: "New subscription rate increased; clearer onboarding value reduced the gap between what users paid for and what they understood they were getting" },
+      { label: "Feature engagement", value: "Premium feature usage increased after contextual surfacing — validating that discoverability, not product quality, was the retention gap" },
     ],
     body: [],
     problem:
@@ -360,9 +362,9 @@ export const projects: Project[] = [
       "Increase completion rates without increasing cognitive load in a high-stakes flow.",
     ],
     impact: [
-      "Reduced payment-stage drop-offs; ~1,600-user abandonment cohort was the targeted baseline.",
-      "Clearer pricing and coupon confirmation eliminated the primary trust gap at checkout.",
-      "Checkout completion rate increased post-launch, contributing to higher transaction conversion.",
+      "Targeted the ~1,600-user abandonment cohort at trip summary — the highest-intent drop in the funnel.",
+      "Redesigned price breakdown and coupon confirmation to surface exact savings at the moment of hesitation, eliminating the last question before payment.",
+      "Checkout completion rate increased post-launch; reduced last-mile drop-offs contributed directly to higher transaction volume.",
     ],
     href: "https://www.figma.com/proto/AaHU2t1WEMeJGvbdhi2kk7/Payments-page-Revamp?node-id=1826-1845&t=BU9KR1vWg6DsIfmq-1&scaling=scale-down-width&content-scaling=fixed&page-id=1517%3A56651&starting-point-node-id=1826%3A1845",
   },

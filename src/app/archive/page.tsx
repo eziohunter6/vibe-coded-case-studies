@@ -198,7 +198,7 @@ const photos: Photo[] = [
 
 export default function ArchivePage() {
   return (
-    <div className="bg-[var(--bg)]">
+    <div className="bg-[var(--bg)]" data-cursor-label="I see things.">
       {/* ── Header ── */}
       <section className="border-b border-[var(--line)]">
         <div className="mx-auto max-w-[1440px] px-6 pb-12 pt-28 sm:px-12 sm:pb-16 sm:pt-36">

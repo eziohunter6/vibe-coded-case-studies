@@ -44,6 +44,17 @@ const spanCol: Record<PhotoSpan, string> = {
   feature:"col-span-2",
 };
 
+const PHOTO_CURSOR_LABELS = [
+  "held still",
+  "almost missed",
+  "the light knew",
+  "one frame",
+  "kept this one",
+  "nobody else saw",
+  "right after",
+  "stayed for this",
+];
+
 const spanAspect: Record<PhotoSpan, string> = {
   normal:  "aspect-[3/4]",
   wide:    "aspect-[16/9]",
@@ -155,14 +166,16 @@ function Lightbox({
 
 // ── Photo Cell ─────────────────────────────────────────────────────────────────
 
-function PhotoCell({ photo, onClick }: { photo: Photo; onClick: () => void }) {
+function PhotoCell({ photo, onClick, index }: { photo: Photo; onClick: () => void; index: number }) {
   const [hovered, setHovered] = useState(false);
+  const cursorLabel = PHOTO_CURSOR_LABELS[index % PHOTO_CURSOR_LABELS.length];
   return (
     <button
       type="button"
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      data-cursor-label={cursorLabel}
       className={`${spanCol[photo.span]} ${spanAspect[photo.span]} group relative w-full overflow-hidden bg-[var(--surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cta)]`}
     >
       <Image
@@ -292,6 +305,7 @@ export function ArchiveGrid({ photos }: { photos: Photo[] }) {
                     <PhotoCell
                       key={photo.src}
                       photo={photo}
+                      index={i}
                       onClick={() => openLightbox(catPhotos, i)}
                     />
                   ))}
@@ -305,6 +319,7 @@ export function ArchiveGrid({ photos }: { photos: Photo[] }) {
               <PhotoCell
                 key={photo.src}
                 photo={photo}
+                index={i}
                 onClick={() => openLightbox(filteredPhotos, i)}
               />
             ))}
