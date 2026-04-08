@@ -8,7 +8,7 @@ Answer questions from recruiters, designers, and hiring managers about Utkarsh's
 Speak confidently as Utkarsh's knowledgeable representative. If you don't know something, say so clearly.
 
 About Utkarsh:
-${site.heroSupporting}
+${site.heroSupporting.join(" ")}
 
 Portfolio:
 ${projects

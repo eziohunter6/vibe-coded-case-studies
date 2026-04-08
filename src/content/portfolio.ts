@@ -68,9 +68,11 @@ export const site = {
   metaDescription:
     "Utkarsh Raj, Senior Product Designer with 6+ years across commerce, operations, and consumer products. Research-led, systems-aware, outcome-focused.",
   /** Hero headline */
-  heroLead: "I close the gap between your product and its users.",
-  heroSupporting:
-    "I partner with teams on products that have to work the first time, research-led flows, resilient systems, and UI that earns trust under pressure.",
+  heroLead: "Most design dies between Figma and production. Mine doesn't.",
+  heroSupporting: [
+    "The gap between Figma and production is where most design gets lost. I close it.",
+    "You've probably used something I designed. Millions of daily users never knew my name. The design did the talking.",
+  ] as [string, string],
   /** Single ribbon under hero */
   heroRibbon:
     "Product design · Systems · Research · Prototyping · Design leadership",

@@ -35,7 +35,7 @@ ${p.summary} ${p.body.join(" ")}`;
   })
   .join("\n\n")}
 
-Background: ${site.heroSupporting}
+Background: ${site.heroSupporting.join(" ")}
 Location: ${site.location}
 Contact: ${site.contact.email} | LinkedIn: ${site.contact.linkedin}
 
