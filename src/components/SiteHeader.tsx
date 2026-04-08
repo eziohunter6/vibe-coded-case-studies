@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { site } from "@/content/portfolio";
-import { ScrambleText } from "@/components/ScrambleText";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV_SECTIONS = [
   { href: "/#work", label: "Work", sectionId: "work" },
-  { href: "/ai", label: "AI", sectionId: null },
+  { href: "/ai", label: "AI Practices", sectionId: null },
+  { href: "/#info", label: "Info", sectionId: "info" },
   { href: "/archive", label: "Archive", sectionId: null },
   { href: "/#contact", label: "Contact", sectionId: "contact" },
 ] as const;
@@ -62,15 +61,17 @@ export function SiteHeader() {
       <div className="mx-auto flex h-12 max-w-[1440px] items-center justify-between px-6 sm:h-14 sm:px-12">
         {/* Name with scramble effect */}
         <Link
-          href="https://utk-folio.vercel.app/"
-          className="font-black uppercase tracking-[-0.02em] text-[var(--text)] transition-opacity hover:opacity-60"
-          style={{ fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif', fontSize: '15px' }}
+          href="/"
+          className="text-3xl font-bold tracking-tight transition-opacity hover:opacity-60"
+          style={{ fontFamily: '"Inter", system-ui, sans-serif', color: 'var(--text)', textDecoration: 'none' }}
+          suppressHydrationWarning
         >
-          <ScrambleText text={site.name} />
+          utk<sup>®</sup>
         </Link>
 
         <div className="flex items-center gap-1">
-          <nav aria-label="Primary">
+          {/* Nav links — hidden on mobile, visible from sm */}
+          <nav aria-label="Primary" className="hidden sm:block">
             <ul className="flex items-center gap-0.5">
               {NAV_SECTIONS.map(({ href, label, sectionId }) => (
                 <li key={href}>
@@ -95,7 +96,7 @@ export function SiteHeader() {
           {/* Theme toggle */}
           <ThemeToggle className="ml-1" />
 
-          {/* ⌘K trigger */}
+          {/* ⌘K trigger — hidden on mobile */}
           <button
             type="button"
             onClick={() => {
@@ -103,7 +104,7 @@ export function SiteHeader() {
                 new KeyboardEvent("keydown", { key: "k", metaKey: true }),
               );
             }}
-            className="ml-1 flex items-center gap-1 rounded-lg border border-[var(--line)] px-2 py-1.5 text-[11px] font-medium text-[var(--faint)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--muted)]"
+            className="ml-1 hidden items-center gap-1 rounded-lg border border-[var(--line)] px-2 py-1.5 text-[11px] font-medium text-[var(--faint)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--muted)] sm:flex"
             aria-label="Open command palette"
           >
             <kbd className="font-sans">⌘</kbd>

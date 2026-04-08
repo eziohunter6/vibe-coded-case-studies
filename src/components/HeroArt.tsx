@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ParallaxLayer } from "@/components/ParallaxLayer";
-import { HeroParticleGrid } from "@/components/HeroParticleGrid";
 
 export function HeroArt() {
   // Normalized mouse position: 0 → 1
@@ -61,7 +60,6 @@ export function HeroArt() {
         }}
       />
 
-      <HeroParticleGrid />
       <div className="grain" aria-hidden />
     </div>
   );

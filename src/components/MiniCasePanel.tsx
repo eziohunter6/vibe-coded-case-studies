@@ -107,19 +107,81 @@ export function MiniCasePanel({
                 </div>
               ))}
             </dl>
-            <div className="mt-9 space-y-4">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--faint)]">
-                Overview
-              </p>
-              {project.body.map((para) => (
-                <p
-                  key={para.slice(0, 24)}
-                  className="text-pretty text-[15px] leading-relaxed text-[var(--muted)]"
-                >
-                  {para}
+            {project.problem ? (
+              <div className="mt-9 space-y-7">
+                {/* Problem */}
+                <div>
+                  <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--faint)]">
+                    Problem
+                  </p>
+                  <p className="mt-3 text-pretty text-[15px] leading-relaxed text-[var(--muted)]">
+                    {project.problem}
+                  </p>
+                </div>
+
+                {/* Challenge */}
+                {project.challenge && project.challenge.length > 0 && (
+                  <div>
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--faint)]">
+                      Challenge
+                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {project.challenge.map((item) => (
+                        <li key={item.slice(0, 24)} className="flex gap-2.5 text-[15px] leading-relaxed text-[var(--muted)]">
+                          <span className="mt-[0.4em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--cta)]" aria-hidden />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Impact */}
+                {project.impact && project.impact.length > 0 && (
+                  <div>
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--faint)]">
+                      Impact
+                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {project.impact.map((item) => (
+                        <li key={item.slice(0, 24)} className="flex gap-2.5 text-[15px] leading-relaxed text-[var(--muted)]">
+                          <span className="mt-[0.4em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--cta)]" aria-hidden />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="mt-9 space-y-4">
+                <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--faint)]">
+                  Overview
                 </p>
-              ))}
-            </div>
+                {project.body.map((para) => (
+                  <p
+                    key={para.slice(0, 24)}
+                    className="text-pretty text-[15px] leading-relaxed text-[var(--muted)]"
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+            )}
+
+            {project.href && (
+              <div className="mt-10">
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--cta)] px-6 py-3.5 text-[14px] font-semibold text-white transition hover:bg-[var(--cta-hover)]"
+                >
+                  View full case study
+                  <span aria-hidden>↗</span>
+                </a>
+              </div>
+            )}
           </div>
         </Dialog.Content>
       </Dialog.Portal>

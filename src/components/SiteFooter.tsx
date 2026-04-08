@@ -74,10 +74,10 @@ export function SiteFooter() {
         {/* Bottom row */}
         <div className="mt-10 flex flex-col gap-2 border-t border-[var(--line)] pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[12px] text-[var(--faint)]">
-            © {year} {site.name}. Motion respects reduced‑motion settings.
+            © {year} {site.name}
           </p>
-          <p className="text-[11px] uppercase tracking-[0.1em] text-[var(--faint)]">
-            Helvetica Neue · Built with Next.js
+          <p className="text-[11px] text-[var(--faint)]">
+            Coded by AI. Designed by me. Architects don&apos;t pour concrete.
           </p>
         </div>
       </div>

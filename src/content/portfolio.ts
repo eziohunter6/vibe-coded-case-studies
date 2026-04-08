@@ -50,6 +50,12 @@ export type MiniProject = {
   summary: string;
   highlights: { label: string; value: string }[];
   body: string[];
+  /** Structured panel sections — when present, panel renders Problem / Challenge / Impact */
+  problem?: string;
+  challenge?: string[];
+  impact?: string[];
+  /** Optional external link (e.g. Figma presentation) shown as CTA in the panel */
+  href?: string;
 };
 
 export type Project = ExtendedProject | MiniProject;
@@ -60,7 +66,7 @@ export const site = {
   title: "Sr. Product Designer",
   yearsExperience: "6+ years",
   metaDescription:
-    "Utkarsh Raj — product designer shaping focused software experiences across commerce, operations, and systems.",
+    "Utkarsh Raj — Senior Product Designer with 6+ years across commerce, operations, and consumer products. Research-led, systems-aware, outcome-focused.",
   /** Hero headline */
   heroLead: "I design what I think. I think before I design.",
   heroSupporting:
@@ -77,13 +83,16 @@ export const site = {
   location: "Based in Gurgaon, India · comfortable across time zones",
   contact: {
     email: "utkarshraj7540@gmail.com",
-    linkedin: "https://www.linkedin.com/in/utkarshraj",
+    linkedin: "https://www.linkedin.com/in/utkarsh-raj-299386191?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     dribbble: "https://dribbble.com/utkarshraj7540",
   },
   brandMarks: [
-    { src: "/brand/placeholder-1.png", alt: "Partner organization" },
-    { src: "/brand/placeholder-2.png", alt: "Partner organization" },
-    { src: "/brand/placeholder-3.png", alt: "Partner organization" },
+    { srcLight: "/brand/spinny-light.png", srcDark: "/brand/spinny-dark.png", alt: "Spinny" },
+    { srcLight: "/brand/et-light.png", srcDark: "/brand/et-dark.png", alt: "Economic Times" },
+    { srcLight: "/brand/cleartrip-light.png", srcDark: "/brand/cleartrip-dark.png", alt: "Cleartrip" },
+    { srcLight: "/brand/flipkart-light.png", srcDark: "/brand/flipkart-dark.png", alt: "Flipkart" },
+    { srcLight: "/brand/deloitte-light.png", srcDark: "/brand/deloitte-dark.png", alt: "Deloitte" },
+    { srcLight: "/brand/zostel-light.png", srcDark: "/brand/zostel-dark.png", alt: "Zostel" },
   ] as const,
 } as const;
 
@@ -93,7 +102,7 @@ export const projects: Project[] = [
     slug: "spinny-buy-homepage",
     title: "Redesigning Spinny's homepage for committed buyers",
     tagline:
-      "After booking a test drive, users returned to the exact same homepage as a first-time visitor. No booking detail. No next step. No acknowledgement they'd said yes. The homepage was losing people it had already won.",
+      "Returning buyers — test drive booked, intent at its peak — landed on the same homepage as a first-time visitor. The system knew their state. The homepage didn't show it. I redesigned it to surface exactly where each user was in their journey.",
     role: "Lead Designer",
     year: "2025",
     client: "Spinny",
@@ -106,9 +115,12 @@ export const projects: Project[] = [
       { label: "Role", value: "Lead Designer" },
       { label: "Team", value: "1 PM · 3 Eng · 1 Analyst" },
       { label: "Timeline", value: "4 weeks · 2025" },
+      { label: "T2V uplift", value: "−5.14%" },
+      { label: "U2D uplift", value: "+3.2%" },
+      { label: "Scale", value: "2.5M MAU · A/B validated" },
     ],
     pullQuote: {
-      text: "A user who just booked a test drive returns to the app and sees the same homepage as someone who has never heard of Spinny.",
+      text: "The homepage wasn't missing data. It was ignoring the data it already had.",
     },
     intro:
       "Spinny's homepage was built for discovery — browsing inventory, filtering, comparing. It served exploratory users well. But a large cohort of returning users had already committed: they'd scheduled a test drive, made a booking, or were waiting on delivery. For these users, the homepage was completely blind to where they were. The system knew their state. It just wasn't telling them.",
@@ -190,7 +202,7 @@ export const projects: Project[] = [
     slug: "car-comparison",
     title: "Comparison feature adding decision speed",
     tagline:
-      "Users comparing cars on Spinny were making a decision that the product couldn't see. They opened multiple tabs, bounced between listings, and returned to the same cars repeatedly. The data had the signal. The product had nothing built for it.",
+      "16% of users on the product detail page were already comparing cars — bouncing between listings, returning to the same ones repeatedly. The behaviour was in the data. I built the comparison layer that matched how they naturally decided.",
     role: "Lead Designer",
     year: "2024",
     client: "Spinny",
@@ -203,9 +215,12 @@ export const projects: Project[] = [
       { label: "Role", value: "Lead Designer" },
       { label: "Team", value: "1 PM · 3 Eng · 1 Analyst" },
       { label: "Timeline", value: "6 weeks · 2024" },
+      { label: "U2D uplift", value: "+5.3%" },
+      { label: "Time-to-Visit", value: "−18.3%" },
+      { label: "Scale", value: "~238K users · A/B validated" },
     ],
     pullQuote: {
-      text: "Users were doing the comparison. The product just wasn't helping them do it.",
+      text: "Structuring comparison around decision variables — not flat spec lists — reduced cognitive friction for high-intent users and moved every downstream funnel metric.",
     },
     intro:
       "Spinny had 2.3M users on the product detail page. 16.43% of them were comparing cars — bouncing between listings, returning to the same cars repeatedly, showing clear signs of active decision-making. But the product offered them nothing. No way to place two cars side by side. No tool to weigh specs, price, and value. Every comparison happened in the user's head or in browser tabs they managed themselves.",
@@ -283,73 +298,99 @@ export const projects: Project[] = [
   },
   {
     format: "mini",
-    slug: "analytics-distribution",
-    title: "Analytics built to travel",
+    slug: "et-prime",
+    title: "Improving ET Prime feature discoverability",
     tagline:
-      "Snippets people actually reuse in Slack, decks, and email—without duct tape.",
+      "ET Prime subscribers were paying for features they couldn't find. I redesigned feature discovery to close the gap between what users paid for and what they actually used.",
     role: "Product designer",
-    year: "2024",
+    year: "2023",
     coverImage: "/images/analytics-cover.jpg",
     coverAlt: "ET Prime feature discoverability",
-    tags: ["IA", "Collaboration"],
+    tags: ["Mobile", "PWA", "Experience Revamp"],
     summary:
-      "Merged fragmented entry points, aligned on shared units of measurement, and shipped previews that matched what recipients saw downstream.",
+      "Paid subscribers were under-using premium features because the interface never surfaced them in context. The gap between subscription value and perceived value was a discoverability problem — not a product one.",
     highlights: [
-      { label: "Window", value: "Six weeks" },
-      { label: "Core team", value: "Design · Eng · Analytics" },
-      {
-        label: "Signal",
-        value: "Fewer duplicate definitions; higher snippet reuse",
-      },
+      { label: "Renewals", value: "+28% Prime renewals post-launch — 8% above projection" },
+      { label: "Subscriptions", value: "New subscription rate increased; attributed to improved value perception at onboarding" },
+      { label: "Feature engagement", value: "Premium feature usage rose after contextual surfacing — direct signal of improved time-to-value" },
     ],
-    body: [
-      "Interviews surfaced a wedge: teams were not short on charts—they were short on trustworthy fragments they could borrow. We centered the IA on composable blocks instead of static dashboards.",
-      "Specs called out empty, loading, and permission states up front so engineering could ship without reverse‑designing in QA.",
+    body: [],
+    problem:
+      "ET Prime subscribers were paying for premium access but under-utilizing key features within the app. Low discoverability created a value perception gap — users couldn't fully experience what they had already paid for, impacting engagement and long-term retention.",
+    challenge: [
+      "Simplify onboarding while clearly communicating premium value — improving time-to-value without increasing drop-offs.",
+      "Surface premium features contextually within a cluttered interface — enhancing visibility without disrupting core reading behaviour.",
+      "Enable meaningful personalisation using existing user signals — improving relevance without adding cognitive or UI overhead.",
+      "Align feature discovery with user intent — embedding premium exploration into natural consumption journeys rather than forcing promotion.",
     ],
+    impact: [
+      "+28% increase in Prime user renewals, exceeding initial projections by 8% post-launch.",
+      "Growth in new subscriptions, indicating stronger value perception among users.",
+      "Improved engagement with premium features, reinforcing the ROI of the subscription model.",
+    ],
+    href: "https://www.figma.com/proto/aTR4rObDbhSFkR7KoDOiOS/Portfolio-Website?node-id=62-83&t=EcDlaxQr0arGC1bo-1&scaling=scale-down-width&content-scaling=fixed&page-id=1%3A3&starting-point-node-id=62%3A83",
   },
   {
     format: "mini",
-    slug: "field-tools",
-    title: "Tools that survive sun, dust, and weak signal",
+    slug: "cleartrip-payments",
+    title: "Reducing drop-offs at Payment Funnel",
     tagline:
-      "Logistics crews needed thumbs‑first actions without abandoning legacy habits.",
+      "~1,600 users were dropping off at trip summary despite a 3-step checkout. Opaque pricing and unclear coupon confirmation were killing intent at the highest-stakes moment in the funnel.",
     role: "Product designer",
-    year: "2023",
+    year: "2024",
     coverImage: "/images/checkout-cover.jpg",
     coverAlt: "Cleartrip payments page revamp",
-    tags: ["Mobile", "Field research"],
+    tags: ["Mobile", "PWA", "Experience Revamp"],
     summary:
-      "Validated gestures and shortcuts on real routes; kept classic flows one tap away for slower adoption pockets.",
+      "~1,600 users were abandoning at trip summary — the highest-intent point in Cleartrip's checkout. The issue wasn't flow length; it was pricing opacity and missing coupon confirmation at the moment users needed certainty most.",
     highlights: [
-      { label: "Research", value: "Ride‑alongs · diary study" },
-      { label: "Cadence", value: "Four delivery cycles" },
+      { label: "Drop-offs", value: "Payment-stage drop-offs reduced after pricing transparency improvements — direct funnel impact" },
+      { label: "Trust signals", value: "Coupon confirmation and price breakdown redesigned; reduced last-mile hesitation at highest-intent moment" },
+      { label: "Conversion", value: "Checkout completion rate increased; contributed to measurable uplift in transaction volume for Cleartrip" },
     ],
-    body: [
-      "We designed for glare, gloves, and spotty GPS. Motion stayed functional—confirmations, hierarchy—not decoration. Every gesture had a visible, slower‑tap alternative.",
-      "The outcome was speed without alienating the people who taught everyone else how the job was done.",
+    body: [],
+    problem:
+      "Despite a simple 3-step flow (Review → Add Traveller → Pay), ~1,600 users were abandoning at trip summary — the highest-intent point in Cleartrip's checkout. Limited visibility of price breakdowns and unclear coupon confirmation reduced trust and weakened purchase motivation at the final step.",
+    challenge: [
+      "Improve pricing transparency without adding friction or visual clutter.",
+      "Reinforce cost clarity and coupon confirmation to reduce last-mile hesitation.",
+      "Reduce drop-offs while maintaining a fast, streamlined checkout experience.",
+      "Increase completion rates without increasing cognitive load in a high-intent flow.",
     ],
+    impact: [
+      "Reduced payment-stage drop-offs and improved funnel progression.",
+      "Strengthened user trust through clearer pricing and confirmation signals.",
+      "Increased checkout completion, directly contributing to higher transaction conversion.",
+    ],
+    href: "https://www.figma.com/proto/AaHU2t1WEMeJGvbdhi2kk7/Payments-page-Revamp?node-id=1826-1845&t=BU9KR1vWg6DsIfmq-1&scaling=scale-down-width&content-scaling=fixed&page-id=1517%3A56651&starting-point-node-id=1826%3A1845",
   },
   {
     format: "mini",
     slug: "release-craft",
     title: "Release craft the whole team could see",
     tagline:
-      "Visual and interaction QA that lived next to the system—not in a doc nobody opened.",
+      "Release QA lived in a doc nobody opened. I built a visual and interaction check kit that shipped alongside the design system — so designers and engineers shared the same pass/fail criteria before anything merged.",
     role: "Design lead",
     year: "2022",
     coverImage: "/images/placeholder-cover.svg",
     coverAlt: "Design QA workflow",
     tags: ["Process", "Quality"],
     summary:
-      "Codified checks engineers could automate where it mattered, and designers could spot before merge when it did not.",
+      "Visual and interaction regressions were caught late — or not at all — because QA criteria lived outside the build process. I codified a check kit that sat beside the design system repo so criteria, versions, and owners stayed aligned.",
     highlights: [
       {
-        label: "Effect",
-        value: "Fewer regressions on token‑heavy and motion components",
+        label: "Regressions",
+        value: "Reduced late-stage regressions on token-heavy and motion components — issues caught before merge, not after",
+      },
+      {
+        label: "Ownership",
+        value: "Designers owned visual criteria; QA owned depth; handoff ambiguity eliminated",
       },
     ],
     body: [
-      "The kit shipped beside the design system repo so versions stayed married. Designers owned criteria; QA owned depth; everyone saw the same pass‑fail story before release.",
+      "Without a shared QA standard, design regressions surfaced in staging or post-ship — after the design team had already moved on. Token changes broke spacing at scale. Motion components drifted between design and implementation without anyone owning the delta.",
+      "I built a check kit versioned alongside the design system repo. Checks were categorised by who should run them: designers caught visual drift before handoff; engineers automated the parameter-level checks; QA validated interaction fidelity at depth. All three tracks referenced the same criteria document.",
+      "The result was a shared pass/fail language across the whole release cycle. Versions stayed aligned because the checks moved with the system, not with whoever remembered to update a Confluence page.",
     ],
   },
 ];

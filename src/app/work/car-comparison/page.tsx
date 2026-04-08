@@ -590,42 +590,49 @@ export default function CarComparisonPage() {
             </Reveal>
           </Sec>
 
-          {/* ── MORE WORK ─────────────────────────────────────────────────────── */}
+          {/* ── READ NEXT ─────────────────────────────────────────────────────── */}
           <section style={{ padding: "80px 0 120px" }}>
             <Reveal>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 16 }}>
-                More work
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 32 }}>
+                Read next
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: T.rule }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
                 {[
-                  { co: "Spinny · Homepage Redesign", title: "Buy Homepage — two users. One homepage.", href: "/work/spinny-buy-homepage" },
+                  {
+                    href: "/work/spinny-buy-homepage",
+                    cover: "/images/buy-homepage/thumbnail.jpg",
+                    year: "2025 · Spinny",
+                    title: "Redesigning Spinny's homepage for committed buyers",
+                    tagline: "Returning buyers landed on the same homepage as first-time visitors. The system knew their state. The homepage didn't show it.",
+                  },
+                  {
+                    href: "https://www.figma.com/proto/aTR4rObDbhSFkR7KoDOiOS/Portfolio-Website?node-id=62-83&t=EcDlaxQr0arGC1bo-1&scaling=scale-down-width&content-scaling=fixed&page-id=1%3A3&starting-point-node-id=62%3A83",
+                    cover: "/images/analytics-cover.jpg",
+                    year: "2023 · ET Prime",
+                    title: "Improving ET Prime feature discoverability",
+                    tagline: "Paid subscribers were under-using features they'd already paid for. A discoverability problem, not a product one.",
+                  },
                 ].map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    style={{ background: T.card, padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", textDecoration: "none", transition: "background 0.2s" }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = T.lite; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = T.card; }}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    style={{ display: "block", borderRadius: 20, overflow: "hidden", background: T.card, textDecoration: "none", border: `1px solid ${T.rule}`, transition: "transform 0.25s, box-shadow 0.25s" }}
+                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-3px)"; el.style.boxShadow = "0 24px 60px -20px rgba(0,0,0,0.4)"; }}
+                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.transform = ""; el.style.boxShadow = ""; }}
                   >
-                    <div>
-                      <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: T.mut, marginBottom: 8 }}>
-                        {item.co}
-                      </div>
-                      <div style={{ fontSize: 15, fontWeight: 500, color: T.w }}>
-                        {item.title}
-                      </div>
+                    <div style={{ position: "relative", aspectRatio: "16/10", overflow: "hidden" }}>
+                      <Image src={item.cover} alt={item.title} fill style={{ objectFit: "cover" }} sizes="(max-width:640px) 100vw, 50vw" />
+                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%)" }} />
                     </div>
-                    <div style={{ fontSize: 22, color: T.mut }}>↗</div>
+                    <div style={{ padding: "20px 24px 24px" }}>
+                      <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: T.mut, marginBottom: 8 }}>{item.year}</p>
+                      <p style={{ fontSize: 17, fontWeight: 600, color: T.w, marginBottom: 8, lineHeight: 1.3, letterSpacing: -0.3 }}>{item.title}</p>
+                      <p style={{ fontSize: 14, color: T.mut, lineHeight: 1.6 }}>{item.tagline}</p>
+                    </div>
                   </Link>
                 ))}
-              </div>
-              <div style={{ marginTop: 40 }}>
-                <Link
-                  href="/#work"
-                  style={{ display: "inline-flex", alignItems: "center", minHeight: 48, borderRadius: 100, border: `1px solid ${T.rule}`, padding: "0 24px", fontSize: 15, fontWeight: 500, color: T.w, textDecoration: "none" }}
-                >
-                  ← All work
-                </Link>
               </div>
             </Reveal>
           </section>

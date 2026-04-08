@@ -59,7 +59,7 @@ export function ContactBand() {
             </MagneticButton>
             <MagneticButton strength={0.22}>
               <a
-                href="https://calendar.google.com/calendar/u/0/r"
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Coffee+Chat+with+Utkarsh+Raj&add=utkarshraj7540@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)]"
