@@ -27,12 +27,12 @@ export function HomeHero() {
           className="mt-5 max-w-[20ch] text-balance font-bold leading-[1.05] tracking-[-0.04em] text-[var(--text)] sm:max-w-[24ch]"
           style={{
             fontFamily: '"Instrument Serif", Georgia, serif',
-            fontSize: 'clamp(2.4rem, 5.5vw, 5rem)',
+            fontSize: 'clamp(1.92rem, 4.4vw, 4rem)',
           }}
         />
 
         <Reveal delay={0.3}>
-          <p className="mt-6 max-w-[38rem] text-pretty text-base leading-[1.8] text-[var(--text)] opacity-80 sm:text-lg">
+          <p className="mt-6 max-w-[32rem] text-pretty text-[15px] leading-[1.75] text-[var(--text)] opacity-80">
             {site.heroSupporting[0]}<br />{site.heroSupporting[1]}
           </p>
           {/* Company logo strip */}
