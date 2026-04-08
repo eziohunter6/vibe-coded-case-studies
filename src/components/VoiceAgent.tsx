@@ -38,7 +38,7 @@ const CHIPS = [
 ];
 
 const INTRO =
-  "I'm Utkarsh's AI — vibe-coded on Claude Code. Ask me anything a recruiter would want to know.";
+  "I'm Utkarsh's AI, vibe-coded on Claude Code. Ask me anything a recruiter would want to know.";
 
 // ── 3D Blob config per state ──────────────────────────────────────────────────
 const BLOB = {
@@ -237,7 +237,7 @@ export function VoiceAgent() {
         const data = await res.json();
         const text: string = data.text ?? "I couldn't generate a response.";
         const section: string | null = data.section ?? null;
-        console.log("[VoiceAgent] API response — text:", text, "| section:", section);
+        console.log("[VoiceAgent] API response, text:", text, "| section:", section);
 
         setMessages((prev) => [...prev, { role: "bot", text }]);
         // Scroll page to relevant section after bot message renders
@@ -307,7 +307,7 @@ export function VoiceAgent() {
           interim = e.results[i][0].transcript;
         }
       }
-      // Show whatever we have live — final takes priority
+      // Show whatever we have live, final takes priority
       setInterimText(finalTranscript || interim);
     };
 
@@ -388,7 +388,7 @@ export function VoiceAgent() {
 
   return (
     <>
-      {/* ── Floating trigger — hidden when panel is open (panel has its own close) */}
+      {/* ── Floating trigger, hidden when panel is open (panel has its own close) */}
       {!open && (
         <button
           type="button"
@@ -448,7 +448,7 @@ export function VoiceAgent() {
 
             {/* Chat area */}
             <div className="flex-1 overflow-y-auto px-5 py-4 space-y-5 min-h-0">
-              {/* Starter chips — only before first message */}
+              {/* Starter chips, only before first message */}
               {messages.length === 0 && state === "idle" && (
                 <div>
                   <p className="mb-3 text-[11px] uppercase tracking-[0.08em] text-[var(--faint)]">
@@ -540,7 +540,7 @@ export function VoiceAgent() {
                     ease: "easeInOut",
                   }}
                 />
-                {/* Specular highlight — gives the 3D sphere illusion */}
+                {/* Specular highlight, gives the 3D sphere illusion */}
                 <div
                   style={{
                     position: "absolute",
@@ -580,11 +580,11 @@ export function VoiceAgent() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter") submit(inputText);
                 }}
-                placeholder={state === "listening" ? "Listening — speak now…" : "Ask anything…"}
+                placeholder={state === "listening" ? "Listening, speak now…" : "Ask anything…"}
                 disabled={state === "thinking"}
                 className="min-w-0 flex-1 rounded-full border border-[var(--line-strong)] bg-[var(--surface)] px-4 py-2.5 text-[13px] text-[var(--text)] placeholder:text-[var(--faint)] outline-none transition focus:border-[var(--cta)] focus:ring-1 focus:ring-[var(--cta)] disabled:opacity-50"
               />
-              {/* Mic button — interrupt if speaking/thinking, toggle if listening */}
+              {/* Mic button, interrupt if speaking/thinking, toggle if listening */}
               <motion.button
                 type="button"
                 onClick={state === "listening" ? stopAll : startListening}

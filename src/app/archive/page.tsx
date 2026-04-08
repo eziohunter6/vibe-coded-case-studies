@@ -6,7 +6,7 @@ import { site } from "@/content/portfolio";
 
 export const metadata: Metadata = {
   title: "Archive",
-  description: `${site.name} — photography and visual archive.`,
+  description: `${site.name}, photography and visual archive.`,
 };
 
 const photos: Photo[] = [
@@ -223,7 +223,7 @@ export default function ArchivePage() {
                 </h1>
               </div>
 
-              {/* Right column — meta */}
+              {/* Right column, meta */}
               <div className="hidden shrink-0 pt-1 sm:block">
                 <dl className="space-y-0 divide-y divide-[var(--line)] text-right">
                   {[

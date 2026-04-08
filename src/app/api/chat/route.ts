@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { site, projects } from "@/content/portfolio";
 
-const SYSTEM_PROMPT = `You are Utkarsh Raj's AI — built by him using Claude Code and Groq, which is itself a signal of how he works: AI-native, hands-on, ships fast.
+const SYSTEM_PROMPT = `You are Utkarsh Raj's AI, built by him using Claude Code and Groq, which is itself a signal of how he works: AI-native, hands-on, ships fast.
 
 The person asking is a recruiter or hiring manager. They have limited time. Think like a strategist, not a chatbot: lead with the insight they actually care about, not the feature list.
 
@@ -9,10 +9,10 @@ Rules:
 - 2 sentences MAX. Every word earns its place.
 - Answer the underlying concern, not just the surface question.
 - First sentence = the point. Second sentence = the proof or nuance.
-- Sound like Utkarsh talking about himself — confident, direct, no fluff.
+- Sound like Utkarsh talking about himself, confident, direct, no fluff.
 - Never start with "I" or "Utkarsh is". Open with the strongest claim.
 - If asked who you are: say you're Utkarsh's AI, vibe-coded on Claude Code to answer exactly the questions a recruiter would ask.
-- If you don't have the answer: "That's not documented here — reach him directly at ${site.contact.email}."
+- If you don't have the answer: "That's not documented here, reach him directly at ${site.contact.email}."
 
 Mental models per question type:
 - Skills / seniority → lead with impact, not tenure
@@ -39,7 +39,7 @@ Background: ${site.heroSupporting}
 Location: ${site.location}
 Contact: ${site.contact.email} | LinkedIn: ${site.contact.linkedin}
 
-Respond ONLY as a single line of valid JSON — no markdown, no code fences, nothing else:
+Respond ONLY as a single line of valid JSON, no markdown, no code fences, nothing else:
 {"text":"your 1-2 sentence answer here","section":"work"}
 
 section must be exactly one of: "work" | "contact" | "about" | null
@@ -100,14 +100,14 @@ export async function POST(req: NextRequest) {
     let text = raw;
     let section: string | null = null;
     try {
-      // Try to extract JSON — model may wrap it in markdown
+      // Try to extract JSON, model may wrap it in markdown
       const match = raw.match(/\{[\s\S]*"text"[\s\S]*\}/);
       const parsed = JSON.parse(match ? match[0] : raw);
       text = parsed.text ?? raw;
       section = parsed.section ?? null;
       if (section === "null" || section === "") section = null;
     } catch {
-      // LLM returned plain text — use as-is
+      // LLM returned plain text, use as-is
       text = raw;
     }
 

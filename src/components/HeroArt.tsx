@@ -35,7 +35,7 @@ export function HeroArt() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(0,113,227,0.2),transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_85%_70%,rgba(99,102,241,0.12),transparent_50%)]" />
 
-      {/* Blob 1 — scroll + mouse parallax */}
+      {/* Blob 1, scroll + mouse parallax */}
       <motion.div style={{ x: blob1X, y: blob1Y }} className="absolute inset-0">
         <ParallaxLayer
           className="absolute -left-[20%] top-[5%] h-[min(100vw,720px)] w-[min(100vw,720px)] rounded-full bg-[radial-gradient(circle_at_center,rgba(41,151,255,0.22),transparent_68%)] blur-3xl"
@@ -43,7 +43,7 @@ export function HeroArt() {
         />
       </motion.div>
 
-      {/* Blob 2 — scroll + mouse parallax */}
+      {/* Blob 2, scroll + mouse parallax */}
       <motion.div style={{ x: blob2X, y: blob2Y }} className="absolute inset-0">
         <ParallaxLayer
           className="absolute -right-[25%] bottom-[-20%] h-[min(90vw,640px)] w-[min(90vw,640px)] rounded-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.14),transparent_65%)] blur-3xl"

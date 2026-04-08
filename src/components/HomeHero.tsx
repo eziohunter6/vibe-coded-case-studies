@@ -8,7 +8,7 @@ import { AnimatedHeadline } from "@/components/AnimatedHeadline";
 export function HomeHero() {
   return (
     <section
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden border-b border-[var(--line)] pb-24 pt-24 sm:pb-40 sm:pt-40"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden border-b border-[var(--line)] pb-20 pt-24 sm:pb-32 sm:pt-40"
       aria-labelledby="hero-heading"
     >
       <HeroArt />
@@ -24,7 +24,7 @@ export function HomeHero() {
           id="hero-heading"
           text={site.heroLead}
           initialDelay={0.1}
-          className="mt-5 max-w-[18ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)] sm:max-w-[22ch]"
+          className="mt-5 max-w-[20ch] text-balance font-bold leading-[1.05] tracking-[-0.04em] text-[var(--text)] sm:max-w-[24ch]"
           style={{
             fontFamily: '"Instrument Serif", Georgia, serif',
             fontSize: 'clamp(2.4rem, 5.5vw, 5rem)',
@@ -32,15 +32,8 @@ export function HomeHero() {
         />
 
         <Reveal delay={0.3}>
-          <div className="mt-10 h-px w-12 bg-[var(--cta)]" aria-hidden />
-        </Reveal>
-
-        <Reveal delay={0.35}>
-          <p className="mt-6 max-w-[38rem] text-pretty text-lg leading-[1.65] text-[var(--text)] opacity-80 sm:text-xl">
+          <p className="mt-6 max-w-[38rem] text-pretty text-base leading-[1.65] text-[var(--text)] opacity-80 sm:text-lg">
             {site.heroSupporting}
-          </p>
-          <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
-            {site.heroRibbon}
           </p>
           {/* Company logo strip */}
           <div className="mt-10">
@@ -53,16 +46,18 @@ export function HomeHero() {
                   <Image
                     src={brand.srcLight}
                     alt={brand.alt}
-                    width={96}
-                    height={32}
-                    className="h-6 w-auto object-contain opacity-50 sm:h-7 sm:opacity-60 [.dark_&]:hidden"
+                    width={360}
+                    height={80}
+                    sizes="128px"
+                    className="h-6 w-auto object-contain opacity-55 sm:h-7 sm:opacity-65 [.dark_&]:hidden"
                   />
                   <Image
                     src={brand.srcDark}
                     alt={brand.alt}
-                    width={96}
-                    height={32}
-                    className="hidden h-6 w-auto object-contain opacity-50 sm:h-7 sm:opacity-60 [.dark_&]:block"
+                    width={360}
+                    height={80}
+                    sizes="128px"
+                    className="hidden h-6 w-auto object-contain opacity-55 sm:h-7 sm:opacity-65 [.dark_&]:block"
                   />
                 </span>
               ))}

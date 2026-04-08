@@ -142,7 +142,7 @@ function FunnelChart() {
                 <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: `${compPct}%`, background: T.acc, borderRadius: 3 }} />
               </div>
 
-              {/* Bottom row: axis label left, multiplier right — same horizontal line */}
+              {/* Bottom row: axis label left, multiplier right, same horizontal line */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ height: 1, flex: 1, background: T.rule }} />
                 <span style={{
@@ -229,7 +229,7 @@ export default function CarComparisonPage() {
               </h3>
               <B>
                 Behavioural analysis across 238,000 users revealed a pattern: users would visit car A, switch to car B,
-                return to car A, go back to car B. We called it A→B→A. It wasn&apos;t indecision —
+                return to car A, go back to car B. We called it A→B→A. It wasn&apos;t indecision , 
                 it was a user actively trying to decide without the right tool.
               </B>
 
@@ -241,7 +241,7 @@ export default function CarComparisonPage() {
               </div>
 
               <B>
-                Drop-offs spiked at this exact point. The problem wasn&apos;t that users couldn&apos;t choose —
+                Drop-offs spiked at this exact point. The problem wasn&apos;t that users couldn&apos;t choose , 
                 it was that the product was forcing them to hold two cars in memory simultaneously,
                 across multiple sessions, without any support.
               </B>
@@ -268,8 +268,8 @@ export default function CarComparisonPage() {
                   {[
                     { label: "BEHAVIOUR",     browser: "Scrolling listings. Saving favourites. Not ready to decide.",       comp: "Visiting the same 2–3 cars repeatedly. Bouncing between PDPs." },
                     { label: "GOAL",          browser: "Find cars worth considering",                                       comp: "Pick between cars already in their shortlist" },
-                    { label: "PRODUCT OFFERS", browser: "Listings, filters, search — serves this user well",               comp: "The same listings again. No comparison tool." },
-                    { label: "DROP-OFF RISK", browser: "Low — still discovering",                                           comp: "High — cognitive overload leads to abandonment" },
+                    { label: "PRODUCT OFFERS", browser: "Listings, filters, search, serves this user well",               comp: "The same listings again. No comparison tool." },
+                    { label: "DROP-OFF RISK", browser: "Low, still discovering",                                           comp: "High, cognitive overload leads to abandonment" },
                   ].map((row, i) => (
                     <tr key={row.label} style={{ borderTop: i === 0 ? "none" : `1px solid ${T.rule}` }}>
                       <td style={{ fontSize: 10, fontWeight: 700, color: tbl.labelColor, letterSpacing: "0.08em", textTransform: "uppercase", background: tbl.labelBg, padding: "18px 20px", border: `1px solid ${T.rule}`, verticalAlign: "middle" }}>
@@ -286,7 +286,7 @@ export default function CarComparisonPage() {
                 </tbody>
               </table>
               <p style={{ marginTop: 6, marginBottom: 18, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                Two user types, one product — the comparer was entirely underserved.
+                Two user types, one product, the comparer was entirely underserved.
               </p>
             </Reveal>
           </Sec>
@@ -299,14 +299,14 @@ export default function CarComparisonPage() {
               <Div />
               <B>
                 I analysed conversion across the 2.3M PDP user base to understand how comparison behaviour
-                correlated with downstream purchase. The signal was unambiguous — and the gap between
+                correlated with downstream purchase. The signal was unambiguous, and the gap between
                 comparing and non-comparing users widened at every stage of the funnel.
               </B>
 
               {/* 3 stat cards */}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: T.rule, margin: "36px 0" }}>
                 {[
-                  { n: "1 in 6", l: "PDP users ever compare", c: "318,287 comparing users out of 2.3M. Most users browse without ever comparing — the behaviour is undiscovered." },
+                  { n: "1 in 6", l: "PDP users ever compare", c: "318,287 comparing users out of 2.3M. Most users browse without ever comparing, the behaviour is undiscovered." },
                   { n: "11×",    l: "Higher delivery conversion", c: "Comparing users deliver at 1.74% vs 0.15% for non-comparing. Same funnel, same period, entirely different outcomes." },
                   { n: "59%",   l: "Engaged segment reach delivery", c: "Users who revisited 3+ cars deeply showed the highest purchase follow-through of any behavioural segment." },
                 ].map(({ n, l, c }) => (
@@ -324,7 +324,7 @@ export default function CarComparisonPage() {
               {/* Funnel bar chart */}
               <div style={{ background: isDark ? "#141414" : "#e8e8e6", borderRadius: 12, padding: "36px 32px 28px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 4 }}>
-                  Conversion at each funnel stage — comparing vs non-comparing
+                  Conversion at each funnel stage, comparing vs non-comparing
                 </div>
                 <FunnelChart />
               </div>
@@ -335,7 +335,7 @@ export default function CarComparisonPage() {
               <div style={{ marginTop: 32 }}>
                 <B>
                   The gap widens at every stage. By delivery, comparing users convert at 11.6× the rate of
-                  non-comparing users. Comparison isn&apos;t just a feature request — it&apos;s the strongest
+                  non-comparing users. Comparison isn&apos;t just a feature request, it&apos;s the strongest
                   behavioural predictor of purchase in the dataset.
                 </B>
               </div>
@@ -349,22 +349,22 @@ export default function CarComparisonPage() {
               <Sh>Design question</Sh>
               <Div />
 
-              {/* HMW callout — matches Buy Homepage design question block */}
+              {/* HMW callout, matches Buy Homepage design question block */}
               <div style={{ margin: "36px 0", padding: "32px 40px", background: T.card, borderLeft: `3px solid ${T.acc}` }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 14 }}>
                   The design question
                 </div>
                 <div style={{ fontSize: "clamp(18px,2.5vw,24px)", fontWeight: 600, lineHeight: 1.45, color: T.w, marginBottom: 16 }}>
-                  How might we surface the next step for a comparing user — without interrupting the browsing they&apos;re already doing?
+                  How might we surface the next step for a comparing user, without interrupting the browsing they&apos;re already doing?
                 </div>
                 <div style={{ fontSize: 14, color: T.dim, lineHeight: 1.7, borderTop: `1px solid ${T.rule}`, paddingTop: 14 }}>
-                  The shift: from showing inventory to supporting the decision already in progress. The trigger had to be behavioural — no explicit Compare CTA, no artificial adoption bias.
+                  The shift: from showing inventory to supporting the decision already in progress. The trigger had to be behavioural, no explicit Compare CTA, no artificial adoption bias.
                 </div>
               </div>
 
               <B>
                 The HMW moved us from describing a problem to framing a product opportunity.
-                The user wasn&apos;t broken — they were doing real decision-making work.
+                The user wasn&apos;t broken, they were doing real decision-making work.
                 We needed to give them a better tool for it. The key constraint: no explicit &lsquo;Compare&rsquo; CTA.
                 Adding a visible button would introduce artificial adoption bias. The trigger had to be behavioural.
               </B>
@@ -383,10 +383,10 @@ export default function CarComparisonPage() {
             <Reveal delay={0.05}>
               <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                 {[
-                  { title: "Performance budget", body: "A significant portion of users were on mid-to-low Android devices. The comparison view had to load fast and avoid layout shifts — CLS was a hard constraint, not a nice-to-have." },
-                  { title: "Team ownership", body: "The PDP was owned by a separate team. The comparison entry point had to work without touching PDP code — the tray had to be fully self-contained and contextually injected." },
-                  { title: "Data normalisation gaps", body: "Not all car attributes were in consistent format across the inventory. The comparison view had to degrade gracefully — missing specs couldn't break the layout or the decision flow." },
-                  { title: "Six-week delivery window", body: "Decisions had to be grounded in existing behavioural data. No time for new research cycles — every design choice had to be defensible from the data already in the system." },
+                  { title: "Performance budget", body: "A significant portion of users were on mid-to-low Android devices. The comparison view had to load fast and avoid layout shifts, CLS was a hard constraint, not a nice-to-have." },
+                  { title: "Team ownership", body: "The PDP was owned by a separate team. The comparison entry point had to work without touching PDP code, the tray had to be fully self-contained and contextually injected." },
+                  { title: "Data normalisation gaps", body: "Not all car attributes were in consistent format across the inventory. The comparison view had to degrade gracefully, missing specs couldn't break the layout or the decision flow." },
+                  { title: "Six-week delivery window", body: "Decisions had to be grounded in existing behavioural data. No time for new research cycles, every design choice had to be defensible from the data already in the system." },
                 ].map((c) => (
                   <div key={c.title} style={{ padding: "18px 20px", background: T.card, borderLeft: `2px solid ${T.rule}` }}>
                     <div style={{ fontSize: 14, fontWeight: 600, color: T.w, marginBottom: 5 }}>{c.title}</div>
@@ -404,7 +404,7 @@ export default function CarComparisonPage() {
               <Sh>Two paths.<br />One right answer.</Sh>
               <Div />
               <B>
-                I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution —
+                I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution , 
                 it was the one that solved the problem without creating new ones.
               </B>
             </Reveal>
@@ -414,17 +414,17 @@ export default function CarComparisonPage() {
                 <div>
                   <img
                     src={isDark ? "/images/car-comparison/two-paths-option1-dark.png" : "/images/car-comparison/two-paths-option1-light.png"}
-                    alt="Option 1 — Inline comparison strip"
+                    alt="Option 1, Inline comparison strip"
                     style={{ width: "100%", borderRadius: 12, display: "block" }}
                   />
                   <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                    Option 1 — Independent bar graphs with no optical relative winning signal. Adds cognitive load while scanning. Adding decision fatigue leading to slow conversion.
+                    Option 1, Independent bar graphs with no optical relative winning signal. Adds cognitive load while scanning. Adding decision fatigue leading to slow conversion.
                   </p>
                 </div>
                 <div>
                   <img
                     src={isDark ? "/images/car-comparison/two-paths-option2-dark.png" : "/images/car-comparison/two-paths-option2-light.png"}
-                    alt="Option 2 — Dedicated comparison surface (live version)"
+                    alt="Option 2, Dedicated comparison surface (live version)"
                     style={{ width: "100%", borderRadius: 12, display: "block" }}
                   />
                   <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
@@ -434,7 +434,7 @@ export default function CarComparisonPage() {
               </div>
 
               <B>
-                The inline strip checked every functional box but failed on scalability and performance. The dedicated comparison surface — launched from a contextual tray that appears only after the user shows comparison intent — preserved browsing continuity and delivered a focused decision experience. Option 2 was selected for all use cases.
+                The inline strip checked every functional box but failed on scalability and performance. The dedicated comparison surface, launched from a contextual tray that appears only after the user shows comparison intent, preserved browsing continuity and delivered a focused decision experience. Option 2 was selected for all use cases.
               </B>
             </Reveal>
           </Sec>
@@ -446,13 +446,13 @@ export default function CarComparisonPage() {
               <Sh>Final Designs</Sh>
               <Div />
               <B>
-                The comparison feature surfaces at the exact moment a user shows comparison intent — after visiting
+                The comparison feature surfaces at the exact moment a user shows comparison intent, after visiting
                 multiple PDPs. It doesn&apos;t interrupt browsing. It offers to help when the signal is clear.
               </B>
             </Reveal>
 
             <Reveal delay={0.05}>
-              {/* 1 — Bento Grid */}
+              {/* 1, Bento Grid */}
               <div style={{ marginBottom: 48 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 12, display: "flex", alignItems: "center", gap: 12 }}>
                   Feature overview
@@ -460,15 +460,15 @@ export default function CarComparisonPage() {
                 </div>
                 <img
                   src={isDark ? "/images/car-comparison/final-bento-dark.png" : "/images/car-comparison/final-bento-light.png"}
-                  alt="Car comparison — bento grid overview"
+                  alt="Car comparison, bento grid overview"
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  The car comparison feature — surface-level overview showing the three primary screens: listing selection, side-by-side comparison view, and spec breakdown with difference indicators.
+                  The car comparison feature, surface-level overview showing the three primary screens: listing selection, side-by-side comparison view, and spec breakdown with difference indicators.
                 </p>
               </div>
 
-              {/* 2 — Entry Points */}
+              {/* 2, Entry Points */}
               <div style={{ marginBottom: 48 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 12, display: "flex", alignItems: "center", gap: 12 }}>
                   Entry points
@@ -480,11 +480,11 @@ export default function CarComparisonPage() {
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  The comparison tray appears contextually at the bottom of the PDP after a user has viewed multiple cars. One tap to open the full comparison view — no navigation change required. The explicit entry point is unlocked only after the A→B→A pattern is detected.
+                  The comparison tray appears contextually at the bottom of the PDP after a user has viewed multiple cars. One tap to open the full comparison view, no navigation change required. The explicit entry point is unlocked only after the A→B→A pattern is detected.
                 </p>
               </div>
 
-              {/* 3 — Car Comparison feature detail */}
+              {/* 3, Car Comparison feature detail */}
               <div>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 12, display: "flex", alignItems: "center", gap: 12 }}>
                   Spec comparison card
@@ -496,7 +496,7 @@ export default function CarComparisonPage() {
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  Specs grouped by category — comfort, performance, safety. Differences highlighted so the user doesn&apos;t have to read every row. An AI-derived summary card at the top gives a qualitative read at a glance.
+                  Specs grouped by category, comfort, performance, safety. Differences highlighted so the user doesn&apos;t have to read every row. An AI-derived summary card at the top gives a qualitative read at a glance.
                 </p>
               </div>
             </Reveal>
@@ -515,10 +515,10 @@ export default function CarComparisonPage() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              {/* 3 primary metric cards — same pattern as Buy Homepage */}
+              {/* 3 primary metric cards, same pattern as Buy Homepage */}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: T.rule, margin: "32px 0" }}>
                 {[
-                  { value: "+5.3%", label: "User-to-Delivery (U2D)", context: "The most downstream measure. Comparing users reaching delivery increased significantly post-launch — confirmed via randomised A/B test." },
+                  { value: "+5.3%", label: "User-to-Delivery (U2D)", context: "The most downstream measure. Comparing users reaching delivery increased significantly post-launch, confirmed via randomised A/B test." },
                   { value: "+3.8%", label: "User-to-Test Drive (U2T)", context: "Earlier in the funnel but harder to move. The comparison view surfacing direct booking drove this metric up independently." },
                   { value: "↓ A→B→A", label: "Oscillation reduced", context: "Users stopped bouncing between PDPs. The comparison view gave them a structured place to do that work, measurably reducing session oscillation." },
                 ].map((m) => (
@@ -537,11 +537,11 @@ export default function CarComparisonPage() {
                 ))}
               </div>
 
-              {/* Speed metrics — 2-column, same grid treatment */}
+              {/* Speed metrics, 2-column, same grid treatment */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: T.rule }}>
                 {[
                   { value: "−12.4%", label: "Time-to-Token", context: "Users moved from comparison to token payment faster after the feature launched." },
-                  { value: "−18.3%", label: "Time-to-Visit", context: "Time from first PDP view to test drive visit dropped — fewer sessions needed to reach commitment." },
+                  { value: "−18.3%", label: "Time-to-Visit", context: "Time from first PDP view to test drive visit dropped, fewer sessions needed to reach commitment." },
                 ].map((m) => (
                   <div key={m.label} style={{ background: T.card, padding: "24px 24px" }}>
                     <div style={{ fontSize: 36, fontWeight: 700, color: T.w, lineHeight: 1, marginBottom: 10, letterSpacing: -0.5 }}>
@@ -573,12 +573,12 @@ export default function CarComparisonPage() {
                 The product just wasn&apos;t acknowledging it.
               </Bl>
               <B>
-                That reframe changed everything. We weren&apos;t building a new feature from scratch —
+                That reframe changed everything. We weren&apos;t building a new feature from scratch , 
                 we were building the tool users were already trying to use. That&apos;s a fundamentally different brief.
                 One where you already know the behaviour works. You just need to make it less effortful.
               </B>
               <B>
-                Working with a clear behavioural signal — the A→B→A pattern — disciplined the design process.
+                Working with a clear behavioural signal, the A→B→A pattern, disciplined the design process.
                 Every decision came back to one question: does this make comparison faster and less cognitively demanding?
                 If not, it didn&apos;t ship.
               </B>

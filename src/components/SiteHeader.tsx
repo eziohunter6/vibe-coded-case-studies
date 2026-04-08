@@ -89,7 +89,7 @@ export function SiteHeader() {
         </Link>
 
         <div className="flex items-center gap-1">
-          {/* Nav links — desktop only */}
+          {/* Nav links, desktop only */}
           <nav aria-label="Primary" className="hidden sm:block">
             <ul className="flex items-center gap-0.5">
               {NAV_SECTIONS.map(({ href, label, sectionId }) => (
@@ -114,7 +114,7 @@ export function SiteHeader() {
 
           <ThemeToggle className="ml-1" />
 
-          {/* ⌘K — desktop only */}
+          {/* ⌘K, desktop only */}
           <button
             type="button"
             onClick={() => {
@@ -129,7 +129,7 @@ export function SiteHeader() {
             <kbd className="font-sans">K</kbd>
           </button>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger, mobile only */}
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}

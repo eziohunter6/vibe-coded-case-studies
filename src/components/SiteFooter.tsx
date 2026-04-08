@@ -6,7 +6,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-[var(--line)] bg-[var(--bg)]">
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-12">
-        {/* Top row — name + social links */}
+        {/* Top row, name + social links */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p

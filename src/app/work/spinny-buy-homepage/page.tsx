@@ -237,7 +237,7 @@ export default function BuyHomepagePage() {
               Two users. One homepage.<br />A product blind to the difference.
             </h3>
             <B>
-              Spinny&apos;s homepage was designed for discovery — browsing, filtering, comparing.
+              Spinny&apos;s homepage was designed for discovery, browsing, filtering, comparing.
               It served exploratory users well. But a large cohort of returning users had already committed.
               They&apos;d scheduled a test drive, made a booking, or were waiting on delivery.
               For them, the homepage showed nothing relevant.
@@ -250,7 +250,7 @@ export default function BuyHomepagePage() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            {/* Browser vs Buyer table — Figma design */}
+            {/* Browser vs Buyer table, Figma design */}
             <table style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
               <thead>
                 <tr>
@@ -270,7 +270,7 @@ export default function BuyHomepagePage() {
                 {[
                   { label: "STATE",        browser: "Browsing inventory. No commitment yet.",    buyer: "Test drive booked. Returning for next step." },
                   { label: "GOAL",         browser: "Find the right car",                        buyer: "What do I do now?" },
-                  { label: "HOMEPAGE FIT", browser: "Works perfectly — built for this user",     buyer: "Shows nothing relevant. Booking invisible." },
+                  { label: "HOMEPAGE FIT", browser: "Works perfectly, built for this user",     buyer: "Shows nothing relevant. Booking invisible." },
                   { label: "INTENT",       browser: "Exploratory · low commitment",              buyer: "Highest intent · completely ignored" },
                 ].map((row, i) => (
                   <tr key={row.label} style={{ borderTop: i === 0 ? "none" : `1px solid ${T.rule}` }}>
@@ -289,7 +289,7 @@ export default function BuyHomepagePage() {
             </table>
 
             <p style={{ marginTop: 6, marginBottom: 18, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-              Two cohorts, one homepage — committed buyers were invisible to the product.
+              Two cohorts, one homepage, committed buyers were invisible to the product.
             </p>
 
             <B>
@@ -308,21 +308,21 @@ export default function BuyHomepagePage() {
             <Div />
             <B>
               I mapped the transactional lifecycle to locate exactly where committed users were being dropped.
-              The friction wasn&apos;t in booking — it was in the void immediately after.
+              The friction wasn&apos;t in booking, it was in the void immediately after.
             </B>
           </Reveal>
 
           <Reveal delay={0.05}>
-            {/* Lifecycle diagram — Figma design */}
+            {/* Lifecycle diagram, Figma design */}
             <div style={{ margin: "40px 0 24px", background: isDark ? "#141414" : "#e8e8e6", borderRadius: 12, padding: "40px 32px 36px" }}>
               {/* Stage track */}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8, position: "relative" }}>
-                {/* Connecting line — top: 34px spacer + 28px (half of 56px icon) = 62 */}
+                {/* Connecting line, top: 34px spacer + 28px (half of 56px icon) = 62 */}
                 <div style={{ position: "absolute", top: 62, left: "12.5%", right: "12.5%", height: 1, background: isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.12)", zIndex: 0 }} />
 
-                {/* Stage 1 — Test Drive Scheduled */}
+                {/* Stage 1, Test Drive Scheduled */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1, padding: "0 8px" }}>
-                  {/* Header zone — empty spacer */}
+                  {/* Header zone, empty spacer */}
                   <div style={{ height: 34 }} />
                   <svg width="56" height="56" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: 14 }}>
                     <rect width="72" height="72" rx="36" fill="#434343"/>
@@ -337,9 +337,9 @@ export default function BuyHomepagePage() {
                   <div style={{ fontSize: 11, color: T.mut, lineHeight: 1.6 }}>User Commits · Intent at peak · Slot Confirmed</div>
                 </div>
 
-                {/* Stage 2 — The Void (Problem Space) */}
+                {/* Stage 2, The Void (Problem Space) */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1, padding: "0 8px" }}>
-                  {/* 34px spacer — keeps icon at same Y as all stages, adds gap below pill */}
+                  {/* 34px spacer, keeps icon at same Y as all stages, adds gap below pill */}
                   <div style={{ height: 34 }} />
                   {/* Icon at exact same Y as other stages */}
                   <svg width="56" height="56" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: 14 }}>
@@ -354,17 +354,17 @@ export default function BuyHomepagePage() {
                   </svg>
                   <div style={{ fontSize: 12, fontWeight: 600, color: "#e05870", marginBottom: 6 }}>Problem Space</div>
                   <div style={{ fontSize: 11, color: isDark ? "#c07080" : "#b03050", lineHeight: 1.6 }}>Returns to app · The homepage shows nothing relevant · No Next step</div>
-                  {/* Red box — absolute overlay behind content, starts above icon so badge sits on its top edge */}
+                  {/* Red box, absolute overlay behind content, starts above icon so badge sits on its top edge */}
                   <div style={{ position: "absolute", top: 12, left: -6, right: -6, bottom: -4, border: "1.5px solid rgba(200,60,80,0.55)", borderRadius: 14, background: "rgba(180,30,50,0.08)", zIndex: -1, pointerEvents: "none" }} />
-                  {/* "The Void" white pill badge — centered on the box's top border */}
+                  {/* "The Void" white pill badge, centered on the box's top border */}
                   <div style={{ position: "absolute", top: 1, left: "50%", transform: "translateX(-50%)", background: isDark ? "#f5f5f5" : "#1a1a1a", color: isDark ? "#111111" : "#ffffff", fontSize: 11, fontWeight: 600, padding: "3px 12px", borderRadius: 100, whiteSpace: "nowrap", zIndex: 2, letterSpacing: "0.01em" }}>
                     The Void
                   </div>
                 </div>
 
-                {/* Stage 3 — Showroom Visit */}
+                {/* Stage 3, Showroom Visit */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1, padding: "0 8px" }}>
-                  {/* Header zone — empty spacer */}
+                  {/* Header zone, empty spacer */}
                   <div style={{ height: 34 }} />
                   <svg width="56" height="56" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: 14 }}>
                     <path d="M0 36C0 16.1177 16.1177 0 36 0V0C55.8823 0 72 16.1177 72 36V36C72 55.8823 55.8823 72 36 72V72C16.1177 72 0 55.8823 0 36V36Z" fill="#434343"/>
@@ -379,9 +379,9 @@ export default function BuyHomepagePage() {
                   <div style={{ fontSize: 11, color: T.mut, lineHeight: 1.6 }}>Arrives · Inspects · Moves towards booking</div>
                 </div>
 
-                {/* Stage 4 — Booking & Delivery */}
+                {/* Stage 4, Booking & Delivery */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1, padding: "0 8px" }}>
-                  {/* Header zone — empty spacer */}
+                  {/* Header zone, empty spacer */}
                   <div style={{ height: 34 }} />
                   <svg width="56" height="56" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: 14 }}>
                     <rect width="72" height="72" rx="36" fill="#434343"/>
@@ -407,12 +407,12 @@ export default function BuyHomepagePage() {
             </div>
 
             <p style={{ marginTop: 16, marginBottom: 18, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-              User lifecycle mapped across four stages — the 48-hour void between Test Drive Scheduled and Showroom Visit had zero product support.
+              User lifecycle mapped across four stages, the 48-hour void between Test Drive Scheduled and Showroom Visit had zero product support.
             </p>
 
             <B style={{ marginTop: 24 }}>
               Every stage after scheduling depended on the user remembering what to do next without the product telling them.
-              That&apos;s not a feature gap — that&apos;s a trust gap.
+              That&apos;s not a feature gap, that&apos;s a trust gap.
             </B>
           </Reveal>
 
@@ -431,7 +431,7 @@ export default function BuyHomepagePage() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            {/* Competitive audit table — Figma design */}
+            {/* Competitive audit table, Figma design */}
             <table style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
               <thead>
                 <tr>
@@ -498,13 +498,13 @@ export default function BuyHomepagePage() {
                 <tr style={{ background: "rgba(91,123,255,0.05)" }}>
                   <td style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", verticalAlign: "top" }}>
                     <svg width="81" height="32" viewBox="0 0 102 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {/* Diamond dots and inner S — white on red, fine in both modes */}
+                      {/* Diamond dots and inner S, white on red, fine in both modes */}
                       <path d="M27.9483 19.0205C27.7538 19.0204 27.5637 19.078 27.402 19.186C27.2403 19.294 27.1142 19.4475 27.0398 19.6271C26.9653 19.8067 26.9458 20.0044 26.9837 20.1951C27.0216 20.3858 27.1152 20.561 27.2526 20.6985C27.3901 20.8361 27.5653 20.9297 27.756 20.9677C27.9467 21.0057 28.1444 20.9862 28.324 20.9118C28.5037 20.8374 28.6572 20.7114 28.7652 20.5498C28.8733 20.3881 28.9309 20.198 28.9309 20.0036C28.931 19.8745 28.9056 19.7467 28.8563 19.6274C28.8069 19.5081 28.7345 19.3997 28.6433 19.3085C28.552 19.2172 28.4437 19.1448 28.3244 19.0953C28.2052 19.0459 28.0773 19.0205 27.9483 19.0205Z" fill="white"/>
                       <path d="M4.00296 19.0205C3.80851 19.0204 3.61841 19.078 3.4567 19.186C3.29499 19.294 3.16893 19.4475 3.09447 19.6271C3.02001 19.8067 3.00049 20.0044 3.03838 20.1951C3.07626 20.3858 3.16986 20.561 3.30733 20.6985C3.4448 20.8361 3.61996 20.9297 3.81066 20.9677C4.00137 21.0057 4.19904 20.9862 4.3787 20.9118C4.55835 20.8374 4.7119 20.7114 4.81994 20.5498C4.92797 20.3881 4.98564 20.198 4.98564 20.0036C4.98583 19.8744 4.96055 19.7466 4.91124 19.6272C4.86193 19.5079 4.78956 19.3995 4.69828 19.3081C4.60699 19.2168 4.49859 19.1444 4.37927 19.095C4.25996 19.0457 4.13208 19.0204 4.00296 19.0205Z" fill="white"/>
                       <path d="M17.5007 18.4871C16.0069 18.1185 15.0533 17.7994 14.6399 17.5298C14.4495 17.4187 14.2919 17.2591 14.1833 17.0673C14.0746 16.8755 14.0187 16.6583 14.0214 16.4378C14.0144 16.2271 14.0565 16.0177 14.1444 15.8261C14.2323 15.6344 14.3634 15.4658 14.5276 15.3335C14.9265 15.0379 15.4163 14.8911 15.9121 14.9187C17.3678 14.9187 18.7788 15.4369 20.145 16.4733L22.1335 16.0472L21.9257 13.9091C21.1147 13.2299 20.1831 12.7093 19.1795 12.3747C18.1658 12.0214 17.1005 11.8389 16.027 11.8345C14.4198 11.8345 13.0805 12.2396 12.009 13.0499C10.9375 13.8603 10.4003 15.0124 10.3973 16.5065C10.3973 17.9988 10.8219 19.0946 11.671 19.794C12.5201 20.4934 13.8596 21.0605 15.6894 21.4952C16.8459 21.781 17.6195 22.0623 18.0103 22.3391C18.1948 22.4623 18.345 22.6302 18.4471 22.8272C18.5492 23.0241 18.5998 23.2437 18.5941 23.4654C18.6015 23.6838 18.5551 23.9006 18.4591 24.0969C18.3631 24.2931 18.2204 24.4628 18.0435 24.591C17.5956 24.8918 17.0618 25.038 16.5232 25.0074C15.0831 25.0074 13.5162 24.2664 11.8225 22.7846L11.8336 24.9249L9.74219 25.3625C11.7332 27.1968 13.9716 28.114 16.4575 28.114C18.1826 28.114 19.5754 27.6748 20.636 26.7966C21.1476 26.3859 21.5571 25.8623 21.8325 25.2668C22.1078 24.6713 22.2415 24.0202 22.223 23.3643C22.223 21.9524 21.81 20.8789 20.984 20.144C20.1581 19.409 18.9969 18.8567 17.5007 18.4871Z" fill="white"/>
-                      {/* Diamond outline — red, visible in both modes */}
+                      {/* Diamond outline, red, visible in both modes */}
                       <path d="M30.9833 17.5331L18.4688 5.0179C17.813 4.36594 16.9259 4 16.0011 4C15.0764 4 14.1892 4.36594 13.5334 5.0179L1.0179 17.5331C0.365943 18.1889 0 19.076 0 20.0008C0 20.9255 0.365943 21.8127 1.0179 22.4685L13.5323 34.9814C14.1879 35.6337 15.0752 35.9999 16 35.9999C16.9249 35.9999 17.8121 35.6337 18.4677 34.9814L30.981 22.4685C31.6332 21.8129 31.9995 20.9259 31.9999 20.0012C32.0003 19.0765 31.6348 18.1892 30.9833 17.5331ZM11.8233 22.7826C13.5165 24.264 15.0834 25.0049 16.524 25.0054C17.0625 25.0359 17.5962 24.8897 18.0439 24.589C18.2208 24.4608 18.3635 24.2911 18.4596 24.0949C18.5557 23.8986 18.6021 23.6818 18.5949 23.4635C18.6005 23.2417 18.5499 23.0221 18.4477 22.8251C18.3456 22.6282 18.1952 22.4603 18.0107 22.3371C17.6195 22.0608 16.8458 21.7795 15.6898 21.4933C13.8578 21.058 12.5184 20.4909 11.6718 19.792C10.8252 19.0931 10.4005 17.9973 10.3977 16.5045C10.3977 15.0122 10.935 13.86 12.0094 13.048C13.0839 12.2359 14.4233 11.8307 16.0278 11.8325C17.1018 11.8365 18.1677 12.0191 19.1818 12.3727C20.1856 12.7066 21.1177 13.2262 21.9295 13.9045L22.1339 16.0449L20.1454 16.4709C18.7822 15.4345 17.3716 14.9163 15.9137 14.9163C15.4179 14.8885 14.928 15.0353 14.5292 15.3312C14.365 15.4635 14.2339 15.6321 14.1461 15.8237C14.0583 16.0154 14.0163 16.2248 14.0233 16.4355C14.0205 16.656 14.0763 16.8733 14.185 17.0652C14.2937 17.2571 14.4513 17.4168 14.6418 17.5278C15.0545 17.7977 16.008 18.1168 17.5026 18.4851C18.9971 18.8535 20.1568 19.4049 20.9815 20.1394C21.8072 20.8756 22.2202 21.949 22.2205 23.3597C22.239 24.0156 22.1053 24.6668 21.8299 25.2623C21.5544 25.8578 21.1448 26.3814 20.6331 26.792C19.5738 27.6712 18.181 28.1104 16.4546 28.1094C13.9692 28.1094 11.7307 27.1922 9.73927 25.3579L11.8371 24.9203L11.8233 22.7826Z" fill="#ED264F"/>
-                      {/* Wordmark — white in dark mode, near-black in light */}
+                      {/* Wordmark, white in dark mode, near-black in light */}
                       <path d="M41.1978 9.9937C38.0163 9.9937 35.6697 12.0504 35.6697 14.8466C35.6697 16.9265 36.4594 17.9202 39.1445 19.3067C40.566 20.0231 40.9045 20.3929 40.9045 21.063C40.9045 22.0105 40.0922 22.6345 38.8963 22.6345C37.8584 22.6345 37.0687 22.3109 35.7148 21.3634L34 24.3214C36.0082 25.5924 37.2717 26.0084 39.0768 26.0084C42.4388 26.0084 44.8306 23.8361 44.8306 20.7395C44.8306 18.7059 43.9731 17.6197 41.4911 16.4181C39.9568 15.6786 39.5732 15.3088 39.5732 14.5693C39.5732 13.7374 40.2276 13.229 41.2655 13.229C42.0778 13.229 42.8901 13.5756 43.9055 14.3613L45.5752 11.4034C44.1085 10.4328 42.7321 9.9937 41.1978 9.9937Z" fill={T.w}/>
                       <path d="M46.774 15.3782L44.9012 31H48.6017L49.4591 23.9517C50.4519 25.3845 51.5575 26.0084 53.0918 26.0084C55.98 26.0084 57.8979 23.6513 57.8979 20.0693C57.8979 16.9958 56.2959 15.0777 53.7462 15.0777C52.4375 15.0777 51.5124 15.4937 50.2037 16.6954L50.497 15.3782H46.774ZM51.738 23.0273C50.5196 23.0273 49.7298 22.1723 49.7298 20.855C49.7298 19.2836 50.7452 18.0819 52.1216 18.0819C53.34 18.0819 54.1072 18.9139 54.1072 20.2311C54.1072 21.8487 53.1144 23.0273 51.738 23.0273Z" fill={T.w}/>
                       <path d="M59.8869 15.3782L58.6459 25.708H62.3689L63.6099 15.3782H59.8869ZM60.0674 11.0798C60.0674 12.2353 60.97 13.1597 62.0982 13.1597C63.2263 13.1597 64.1289 12.2353 64.1289 11.0798C64.1289 9.92437 63.2263 9 62.0982 9C60.97 9 60.0674 9.92437 60.0674 11.0798Z" fill={T.w}/>
@@ -531,12 +531,12 @@ export default function BuyHomepagePage() {
             </table>
 
             <p style={{ marginTop: 6, marginBottom: 18, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-              Competitive audit across four Indian used-car platforms — none surface post-booking state on the homepage.
+              Competitive audit across four Indian used-car platforms, none surface post-booking state on the homepage.
             </p>
 
             <B>
               No platform in the Indian used-car market surfaces booking state on the homepage for returning committed users.
-              The gap isn&apos;t unique to Spinny — but that makes it an opportunity, not an excuse.
+              The gap isn&apos;t unique to Spinny, but that makes it an opportunity, not an excuse.
             </B>
           </Reveal>
 
@@ -583,8 +583,8 @@ export default function BuyHomepagePage() {
             <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               {[
                 { title: "ReactJS performance limits", body: "Complex patterns like snappable carousels were off the table. Clarity had to come from content hierarchy, not animation." },
-                { title: "Platform team ownership", body: "The transaction dashboard under Profile was owned by a separate team. We could extend the homepage — not reorganise the architecture." },
-                { title: "Leadership risk appetite", body: "Concern about conversion dips from major changes. The redesign had to be purely additive — no disruption to exploratory users." },
+                { title: "Platform team ownership", body: "The transaction dashboard under Profile was owned by a separate team. We could extend the homepage, not reorganise the architecture." },
+                { title: "Leadership risk appetite", body: "Concern about conversion dips from major changes. The redesign had to be purely additive, no disruption to exploratory users." },
                 { title: "4-week delivery window", body: "No extended discovery phase. Decisions grounded in existing behavioural data and rapid validation sprints." },
               ].map((c) => (
                 <div key={c.title} style={{ padding: "18px 20px", background: T.card, borderLeft: `2px solid ${T.rule}` }}>
@@ -604,7 +604,7 @@ export default function BuyHomepagePage() {
             <Sh>Two paths.<br />One right answer</Sh>
             <Div />
             <B>
-              I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution — it was the one that solved the problem without creating new ones.
+              I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution, it was the one that solved the problem without creating new ones.
             </B>
           </Reveal>
 
@@ -613,26 +613,26 @@ export default function BuyHomepagePage() {
               <div>
                 <img
                   src={isDark ? "/images/buy-homepage/ideation-option1.png" : "/images/buy-homepage/ideation-option1-light.png"}
-                  alt="Option 1 — Inline Banner approach"
+                  alt="Option 1, Inline Banner approach"
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  Option A — Inline banner: a contextual strip above inventory. Lower disruption, limited information density.
+                  Option A, Inline banner: a contextual strip above inventory. Lower disruption, limited information density.
                 </p>
               </div>
               <div>
                 <img
                   src={isDark ? "/images/buy-homepage/ideation-option2.png" : "/images/buy-homepage/ideation-option2-light.png"}
-                  alt="Option 2 — State-Aware Homepage (selected)"
+                  alt="Option 2, State-Aware Homepage (selected)"
                   style={{ width: "100%", borderRadius: 12, display: "block" }}
                 />
                 <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                  Option B — State-aware homepage mode: the page reconfigures based on transaction stage. <span style={{ color: T.w, fontWeight: 500 }}>Chosen direction.</span>
+                  Option B, State-aware homepage mode: the page reconfigures based on transaction stage. <span style={{ color: T.w, fontWeight: 500 }}>Chosen direction.</span>
                 </p>
               </div>
             </div>
             <B>
-              We also explored a dedicated transaction dashboard and a snappable swipe interaction — both deprioritised due to ownership conflicts and performance constraints.
+              We also explored a dedicated transaction dashboard and a snappable swipe interaction, both deprioritised due to ownership conflicts and performance constraints.
               The right answer was clarity, not novelty.
             </B>
           </Reveal>
@@ -647,12 +647,12 @@ export default function BuyHomepagePage() {
             <Div />
             <Bl>
               The homepage dynamically adapts based on the user&apos;s transaction stage. Exploratory users see the existing browsing experience unchanged.
-              Committed users see their stage and the one action they need to take — surfaced automatically.
+              Committed users see their stage and the one action they need to take, surfaced automatically.
             </Bl>
           </Reveal>
 
           <Reveal delay={0.05}>
-            {/* 1 — Bento grid */}
+            {/* 1, Bento grid */}
             <div style={{ marginBottom: 48 }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 12, display: "flex", alignItems: "center", gap: 12 }}>
                 Design system
@@ -660,15 +660,15 @@ export default function BuyHomepagePage() {
               </div>
               <img
                 src={isDark ? "/images/buy-homepage/final-bento.png" : "/images/buy-homepage/final-bento-light.png"}
-                alt="Bento grid — state-aware homepage components"
+                alt="Bento grid, state-aware homepage components"
                 style={{ width: "100%", borderRadius: 12, display: "block" }}
               />
               <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                Component library for the state-aware homepage — covers all transaction stages from test drive scheduling through delivery.
+                Component library for the state-aware homepage, covers all transaction stages from test drive scheduling through delivery.
               </p>
             </div>
 
-            {/* 2 — Before & After side by side */}
+            {/* 2, Before & After side by side */}
             <div style={{ marginBottom: 48 }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: T.mut, marginBottom: 12, display: "flex", alignItems: "center", gap: 12 }}>
                 Before &amp; After
@@ -678,27 +678,27 @@ export default function BuyHomepagePage() {
                 <div>
                   <img
                     src={isDark ? "/images/buy-homepage/final-before.png" : "/images/buy-homepage/final-before-light.png"}
-                    alt="Before — generic homepage, no booking acknowledgement"
+                    alt="Before, generic homepage, no booking acknowledgement"
                     style={{ width: "100%", borderRadius: 12, display: "block" }}
                   />
                   <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                    Before — a returning buyer sees the same browsing homepage as a first-time visitor. No booking acknowledgement, no next step.
+                    Before, a returning buyer sees the same browsing homepage as a first-time visitor. No booking acknowledgement, no next step.
                   </p>
                 </div>
                 <div>
                   <img
                     src={isDark ? "/images/buy-homepage/final-after.png" : "/images/buy-homepage/final-after-light.png"}
-                    alt="After — state-aware homepage showing test drive details"
+                    alt="After, state-aware homepage showing test drive details"
                     style={{ width: "100%", borderRadius: 12, display: "block" }}
                   />
                   <p style={{ marginTop: 10, fontSize: 12, color: T.mut, lineHeight: 1.6 }}>
-                    After — the homepage surfaces the user&apos;s exact stage, relationship manager details, and one clear next action.
+                    After, the homepage surfaces the user&apos;s exact stage, relationship manager details, and one clear next action.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* 3 — All transaction states + Tab carousel */}
+            {/* 3, All transaction states + Tab carousel */}
             <StatesSection />
           </Reveal>
         </Sec>
@@ -710,7 +710,7 @@ export default function BuyHomepagePage() {
             <Sh>Outcome</Sh>
             <Div />
             <B>
-              By transforming the homepage into a journey-aware experience, active buyers got what they needed — visibility, context, a clear next step.
+              By transforming the homepage into a journey-aware experience, active buyers got what they needed, visibility, context, a clear next step.
               At 2.5M MAU, small percentage improvements compound significantly.
             </B>
           </Reveal>
@@ -722,17 +722,17 @@ export default function BuyHomepagePage() {
                 {
                   number: "−5.14%",
                   label: "Time-to-Visit (T2V)",
-                  context: "Buyers moved faster from booking to showroom — less time in uncertainty, arriving more prepared.",
+                  context: "Buyers moved faster from booking to showroom, less time in uncertainty, arriving more prepared.",
                 },
                 {
                   number: "+3.6%",
                   label: "User-to-Visit (U2V)",
-                  context: "More users who booked actually showed up — the homepage reinforced commitment instead of ignoring it.",
+                  context: "More users who booked actually showed up, the homepage reinforced commitment instead of ignoring it.",
                 },
                 {
                   number: "+3.2%",
                   label: "User-to-Delivery (U2D)",
-                  context: "Users completed purchases with higher confidence — journey visibility reduced second-thoughts before delivery.",
+                  context: "Users completed purchases with higher confidence, journey visibility reduced second-thoughts before delivery.",
                 },
               ].map((m) => (
                 <div key={m.label} style={{ background: T.card, padding: "28px 24px" }}>
@@ -756,7 +756,7 @@ export default function BuyHomepagePage() {
             </div>
 
             <B style={{ marginTop: 24 }}>
-              Uplift deepened further in the funnel — a signal this wasn&apos;t surface engagement, but a genuine improvement in decision quality among active buyers.
+              Uplift deepened further in the funnel, a signal this wasn&apos;t surface engagement, but a genuine improvement in decision quality among active buyers.
               All three downstream metrics moved together.
             </B>
           </Reveal>
@@ -769,11 +769,11 @@ export default function BuyHomepagePage() {
             <Sh>What this<br />taught me</Sh>
             <Div />
             <B>
-              The most important reframe happened before any design work. We weren&apos;t solving a UI problem — we were solving a continuity problem.
+              The most important reframe happened before any design work. We weren&apos;t solving a UI problem, we were solving a continuity problem.
               The homepage didn&apos;t need to look different. It needed to know more.
             </B>
             <B>
-              Working within real constraints — team ownership boundaries, performance limits, leadership risk thresholds — sharpened the solution rather than diluting it.
+              Working within real constraints, team ownership boundaries, performance limits, leadership risk thresholds, sharpened the solution rather than diluting it.
               The best answer wasn&apos;t the most ambitious. It was the one that worked within the system while quietly changing what it could do.
             </B>
 

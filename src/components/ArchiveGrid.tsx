@@ -202,7 +202,7 @@ function SectionHeader({ index, category, count }: {
     <div className="col-span-full mt-20 flex items-end justify-between border-t border-[var(--line)] pt-8 first:mt-0">
       <div>
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--faint)]">
-          {String(index + 1).padStart(2, "0")} ——
+          {String(index + 1).padStart(2, "0")} , , 
         </p>
         <h2
           className="mt-2 font-bold leading-[1.0] tracking-[-0.03em] text-[var(--text)]"

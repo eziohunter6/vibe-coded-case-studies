@@ -5,7 +5,7 @@ import { site } from "@/content/portfolio";
 
 export const metadata: Metadata = {
   title: "AI Practices",
-  description: `${site.name} — AI projects and tools built with artificial intelligence.`,
+  description: `${site.name}, AI projects and tools built with artificial intelligence.`,
 };
 
 const aiProjects = [
@@ -63,7 +63,7 @@ export default function AIPage() {
             <p className="mt-6 max-w-[42rem] text-pretty text-lg leading-[1.7] text-[var(--muted)]">
               The fastest way to understand a design material is to build with it, not just specify it.
               These tools came out of a deliberate practice: pick a problem, write the spec, prototype
-              with AI as a collaborator, and ship. Not to add to a portfolio — to train the muscle.
+              with AI as a collaborator, and ship. Not to add to a portfolio, to train the muscle.
             </p>
             <p className="mt-4 max-w-[42rem] text-pretty text-lg leading-[1.7] text-[var(--muted)]">
               Each one sharpened something different: how to prompt for outcomes not output, how to
@@ -87,7 +87,7 @@ export default function AIPage() {
                   aria-label={`Open ${project.name}`}
                   className="group relative block w-full overflow-hidden rounded-[1.35rem]"
                 >
-                  {/* Light thumbnail — hidden when .dark class is active */}
+                  {/* Light thumbnail, hidden when .dark class is active */}
                   <Image
                     src={project.thumbnailLight}
                     alt={project.name}
@@ -96,7 +96,7 @@ export default function AIPage() {
                     className="w-full [.dark_&]:hidden"
                     sizes="(max-width: 640px) 100vw, 50vw"
                   />
-                  {/* Dark thumbnail — only shown when .dark class is active */}
+                  {/* Dark thumbnail, only shown when .dark class is active */}
                   <Image
                     src={project.thumbnailDark}
                     alt={project.name}
@@ -120,7 +120,7 @@ export default function AIPage() {
               A note on how I use AI
             </p>
             <p className="mt-4 max-w-[56rem] text-pretty text-[17px] leading-[1.75] text-[var(--muted)]">
-              Prompting is a design skill. I treat AI systems the way I treat any collaborator —
+              Prompting is a design skill. I treat AI systems the way I treat any collaborator , 
               with a clear brief, fast iteration loops, and critical judgment on the output.
               The best AI-augmented work doesn&apos;t look like it was generated; it looks like
               someone made sharp decisions quickly. That&apos;s what I&apos;m building toward.

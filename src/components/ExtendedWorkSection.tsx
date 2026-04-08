@@ -65,7 +65,7 @@ export function ExtendedWorkSection({
                       <span className="text-[1.35rem] font-semibold leading-[1.15] tracking-tight text-[var(--text)] sm:text-[1.5rem]">
                         {p.title}
                       </span>
-                      {/* Tags — below heading */}
+                      {/* Tags, below heading */}
                       <span className="flex flex-wrap gap-1.5 pt-0.5" aria-label="Project focus areas">
                         {p.tags.map((t) => (
                           <span

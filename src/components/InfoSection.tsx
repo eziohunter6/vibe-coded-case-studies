@@ -32,10 +32,10 @@ export function InfoSection() {
               Designer. Researcher. Deep thinker.
             </h2>
             <p className="mt-6 max-w-[44rem] text-pretty text-[17px] leading-[1.75] text-[var(--muted)]">
-              I've spent 6+ years designing consumer-facing products — from high-stakes commerce flows to complex logistics dashboards. My process starts with research, moves through systems thinking, and ends in interfaces that earn trust under real-world pressure.
+              I've spent 6+ years designing consumer-facing products, from high-stakes commerce flows to complex logistics dashboards. My process starts with research, moves through systems thinking, and ends in interfaces that earn trust under real-world pressure.
             </p>
             <p className="mt-4 max-w-[44rem] text-pretty text-[17px] leading-[1.75] text-[var(--muted)]">
-              I don't just follow briefs — I reframe them. Good design, to me, begins before the first pixel and persists long after the last release.
+              I don't just follow briefs, I reframe them. Good design, to me, begins before the first pixel and persists long after the last release.
             </p>
           </Reveal>
 

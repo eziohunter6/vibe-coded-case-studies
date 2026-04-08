@@ -63,7 +63,7 @@ export function SmoothCursor() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999]" aria-hidden>
-      {/* Dot — follows cursor exactly */}
+      {/* Dot, follows cursor exactly */}
       <motion.div
         className="absolute rounded-full"
         style={{
@@ -81,7 +81,7 @@ export function SmoothCursor() {
         }}
         transition={{ duration: 0.12 }}
       />
-      {/* Ring — lags behind for depth */}
+      {/* Ring, lags behind for depth */}
       <motion.div
         className="absolute rounded-full border"
         style={{

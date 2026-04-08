@@ -36,7 +36,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     localStorage.setItem("theme", next);
   }
 
-  // Avoid hydration mismatch — render nothing until mounted
+  // Avoid hydration mismatch, render nothing until mounted
   if (!mounted) {
     return (
       <button

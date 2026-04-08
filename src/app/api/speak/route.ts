@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Voice priority list — tries each in order until one succeeds
+// Voice priority list, tries each in order until one succeeds
 // Utkarsh: custom generated voice on this account
 // Sarah: premade fallback confirmed on this account
 const VOICE_PRIORITY = [

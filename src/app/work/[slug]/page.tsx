@@ -96,7 +96,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Metrics — numbers count up on scroll */}
+      {/* Metrics, numbers count up on scroll */}
       {project.metrics?.length ? (
         <div className="border-y border-[var(--line)] bg-[var(--bg-elevated)]">
           <div className="mx-auto grid max-w-[1440px] divide-y divide-[var(--line)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -130,7 +130,7 @@ export default async function CaseStudyPage({ params }: Props) {
               </blockquote>
               {project.pullQuote.attribution ? (
                 <figcaption className="mt-4 text-[14px] text-[var(--muted)]">
-                  — {project.pullQuote.attribution}
+                  {project.pullQuote.attribution}
                 </figcaption>
               ) : null}
             </figure>
