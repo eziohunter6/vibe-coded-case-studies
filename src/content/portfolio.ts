@@ -71,7 +71,7 @@ export const site = {
   heroLead: "Most design dies between Figma and production. Mine doesn't.",
   heroSupporting: [
     "The gap between Figma and production is where most design gets lost. I close it.",
-    "You've probably used something I designed. Millions of daily users never knew my name. The design did the talking.",
+    "You've probably used something I designed. Millions never knew my name. The design did the talking.",
   ] as [string, string],
   /** Single ribbon under hero */
   heroRibbon:

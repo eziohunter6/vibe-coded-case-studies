@@ -32,11 +32,8 @@ export function HomeHero() {
         />
 
         <Reveal delay={0.3}>
-          <p className="mt-6 max-w-[38rem] text-pretty text-base leading-[1.65] text-[var(--text)] opacity-80 sm:text-lg">
-            {site.heroSupporting[0]}
-          </p>
-          <p className="mt-3 max-w-[38rem] text-pretty text-base leading-[1.65] text-[var(--text)] opacity-55 sm:text-lg">
-            {site.heroSupporting[1]}
+          <p className="mt-6 max-w-[38rem] text-pretty text-base leading-[1.8] text-[var(--text)] opacity-80 sm:text-lg">
+            {site.heroSupporting[0]}<br />{site.heroSupporting[1]}
           </p>
           {/* Company logo strip */}
           <div className="mt-10">
