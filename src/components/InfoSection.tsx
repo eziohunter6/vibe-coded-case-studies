@@ -16,7 +16,7 @@ export function InfoSection() {
       className="border-t border-[var(--line)]"
     >
       <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-12 sm:py-28">
-        <div className="grid gap-16 lg:grid-cols-[1fr_auto] lg:gap-24">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:gap-24">
           <Reveal>
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">
               About

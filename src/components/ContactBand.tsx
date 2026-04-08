@@ -28,11 +28,11 @@ export function ContactBand() {
             {site.contactIntro}
           </p>
           <p className="mt-3 text-[14px] text-[var(--faint)]">{site.location}</p>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <MagneticButton strength={0.22}>
               <a
                 href={`mailto:${site.contact.email}`}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[var(--cta)] px-8 text-[14px] font-semibold uppercase tracking-[0.06em] text-[var(--cta-label)] transition hover:bg-[var(--cta-hover)]"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[var(--cta)] px-8 text-[14px] font-semibold uppercase tracking-[0.06em] text-[var(--cta-label)] transition hover:bg-[var(--cta-hover)] sm:w-auto"
               >
                 Email
               </a>
@@ -42,7 +42,7 @@ export function ContactBand() {
                 href={site.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)]"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)] sm:w-auto"
               >
                 LinkedIn
               </a>
@@ -52,7 +52,7 @@ export function ContactBand() {
                 href={site.contact.dribbble}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)]"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)] sm:w-auto"
               >
                 Dribbble
               </a>
@@ -62,7 +62,7 @@ export function ContactBand() {
                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Coffee+Chat+with+Utkarsh+Raj&add=utkarshraj7540@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)]"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-[var(--line-strong)] px-8 text-[14px] font-medium uppercase tracking-[0.06em] text-[var(--text)] transition hover:bg-[var(--surface-elevated)] sm:w-auto"
               >
                 Send coffee ☕
               </a>

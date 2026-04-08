@@ -44,7 +44,7 @@ export default function AIPage() {
     <div className="bg-[var(--bg)]">
       {/* Header */}
       <section className="border-b border-[var(--line)]">
-        <div className="mx-auto max-w-[1440px] px-6 pb-16 pt-28 sm:px-12 sm:pb-24 sm:pt-36">
+        <div className="mx-auto max-w-[1440px] px-6 pb-12 pt-20 sm:px-12 sm:pb-24 sm:pt-36">
           <Reveal>
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">
               AI + Prototyping

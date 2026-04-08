@@ -59,8 +59,8 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="grain opacity-[0.07]" aria-hidden />
 
         <div className="relative z-10 flex min-h-[72svh] flex-col justify-end sm:min-h-[78svh]">
-          <div className="mx-auto w-full max-w-[1440px] px-6 pb-12 pt-24 sm:px-12 sm:pb-16 sm:pt-28">
-            <nav aria-label="Breadcrumb" className="mb-8">
+          <div className="mx-auto w-full max-w-[1440px] px-6 pb-10 pt-20 sm:px-12 sm:pb-16 sm:pt-28">
+            <nav aria-label="Breadcrumb" className="mb-5 sm:mb-8">
               <ol className="flex flex-wrap items-center gap-2 text-[13px] text-[var(--muted)]">
                 <li>
                   <Link href="/" className="transition hover:text-[var(--text)]">
@@ -115,7 +115,7 @@ export default async function CaseStudyPage({ params }: Props) {
       ) : null}
 
       {/* Body */}
-      <div className="mx-auto max-w-[720px] px-5 py-16 sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-[720px] px-5 py-12 sm:px-8 sm:py-24">
         <Reveal>
           <p className="text-pretty text-xl leading-relaxed text-[var(--muted)] sm:text-[1.35rem] sm:leading-[1.6]">
             {project.intro}
@@ -137,7 +137,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </Reveal>
         ) : null}
 
-        <div className="mt-12 space-y-24 sm:mt-16 sm:space-y-28">
+        <div className="mt-10 space-y-16 sm:mt-16 sm:space-y-28">
           {project.sections.map((block, i) => (
             <Reveal key={block.id} delay={i * 0.03}>
               <section aria-labelledby={`section-${block.id}`}>
