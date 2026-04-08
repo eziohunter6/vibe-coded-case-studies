@@ -4,13 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 
 const AI_PHRASES = [
-  "umm.. does this count as design? 🤔",
-  "the model keeps surprising me ✨",
-  "honestly still figuring it out 🙈",
-  "I built it to understand it 🔧",
-  "faster at being wrong, basically 😅",
-  "prompting feels like briefing.. kinda 🤷",
-  "shipped more than I planned 🚀",
+  "honestly, AI changed everything.",
+  "I don't prompt. I brief.",
+  "iteration loops got shorter.",
+  "the model is wrong. stay critical.",
+  "I build to understand the material.",
+  "shipped to learn, not to show.",
+  "design is still the hard part.",
 ];
 
 export function SmoothCursor() {
