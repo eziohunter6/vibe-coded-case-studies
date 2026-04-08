@@ -35,12 +35,13 @@ export function ExtendedWorkSection({
           <Reveal key={p.slug} delay={i * 0.06}>
             <li>
               <TiltCard maxTilt={3.5}>
-                <article className="group relative">
+                <article className="group">
                   <Link
                     href={`/work/${p.slug}`}
-                    className="relative block overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_40px_100px_-40px_rgba(0,87,255,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] sm:rounded-[1.75rem]"
+                    className="flex flex-col overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_40px_100px_-40px_rgba(0,87,255,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] sm:rounded-[1.75rem]"
                   >
-                    <div className="relative aspect-[4/3] w-full">
+                    {/* Image */}
+                    <span className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--surface-elevated)]">
                       <Image
                         src={p.coverImage}
                         alt={p.coverAlt}
@@ -49,38 +50,40 @@ export function ExtendedWorkSection({
                         sizes="(max-width:640px) 100vw, 50vw"
                         priority={i === 0}
                       />
-                      <div
-                        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/5"
+                      <span
+                        className="pointer-events-none absolute inset-0"
+                        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%)" }}
                         aria-hidden
                       />
-                      {/* Tags — top-left inside card */}
-                      <ul className="absolute inset-x-0 top-0 flex flex-wrap gap-1.5 p-4 sm:p-5" aria-label="Project focus areas">
+                    </span>
+
+                    {/* Text */}
+                    <span className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                      <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">
+                        {p.year}{p.client ? ` · ${p.client}` : ""}
+                      </span>
+                      <span className="text-[1.35rem] font-semibold leading-[1.15] tracking-tight text-[var(--text)] sm:text-[1.5rem]">
+                        {p.title}
+                      </span>
+                      {/* Tags — below heading */}
+                      <span className="flex flex-wrap gap-1.5 pt-0.5" aria-label="Project focus areas">
                         {p.tags.map((t) => (
-                          <li key={t}>
-                            <span className="inline-flex rounded-full border border-white/20 bg-black/30 px-2.5 py-1 text-[11px] text-white/80 backdrop-blur-sm">
-                              {t}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
-                        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/55">
-                          {p.year}
-                          {p.client ? ` · ${p.client}` : ""}
-                        </p>
-                        <h3 className="mt-2 max-w-[22ch] text-balance text-[1.35rem] font-semibold leading-[1.15] tracking-tight text-white sm:text-[1.6rem]">
-                          {p.title}
-                        </h3>
-                        <p className="mt-2 line-clamp-2 max-w-sm text-[13px] leading-relaxed text-white/70">
-                          {p.tagline}
-                        </p>
-                        <span className="mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-[var(--cta-label)]">
-                          <span className="rounded-full bg-[var(--cta)] px-4 py-2 shadow-lg shadow-blue-500/20 transition group-hover:bg-[var(--cta-hover)]">
-                            View case study
+                          <span
+                            key={t}
+                            className="inline-flex rounded-full border border-[var(--line-strong)] px-2.5 py-0.5 text-[11px] text-[var(--muted)]"
+                          >
+                            {t}
                           </span>
-                        </span>
-                      </div>
-                    </div>
+                        ))}
+                      </span>
+                      <span className="mt-1 line-clamp-2 text-[14px] leading-relaxed text-[var(--muted)]">
+                        {p.tagline}
+                      </span>
+                      <span className="mt-auto pt-3 flex items-center gap-1 text-[13px] font-medium text-[var(--cta)]">
+                        View case study
+                        <span aria-hidden className="transition group-hover:translate-x-0.5">→</span>
+                      </span>
+                    </span>
                   </Link>
                 </article>
               </TiltCard>
