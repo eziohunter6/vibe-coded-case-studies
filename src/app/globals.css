@@ -30,11 +30,11 @@
   --faint:           #888888;
   --line:            rgba(0, 0, 0, 0.08);
   --line-strong:     rgba(0, 0, 0, 0.14);
-  --cta:             #0057FF;
-  --cta-hover:       #0046CC;
+  --cta:             #000000;
+  --cta-hover:       #1a1a1a;
   --cta-label:       #ffffff;
-  --ring:            #0057FF;
-  --accent-soft:     rgba(0, 87, 255, 0.18);
+  --ring:            #000000;
+  --accent-soft:     rgba(0, 0, 0, 0.08);
 }
 
 /* ─── Dark mode ───────────────────────────────────────────── */
@@ -48,11 +48,11 @@
   --faint:           #555555;
   --line:            rgba(255, 255, 255, 0.07);
   --line-strong:     rgba(255, 255, 255, 0.12);
-  --cta:             #0057FF;
-  --cta-hover:       #2970FF;
-  --cta-label:       #ffffff;
-  --ring:            #0057FF;
-  --accent-soft:     rgba(0, 87, 255, 0.28);
+  --cta:             #ffffff;
+  --cta-hover:       #e0e0e0;
+  --cta-label:       #000000;
+  --ring:            #ffffff;
+  --accent-soft:     rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
@@ -83,7 +83,7 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 87, 255, 0.18);
+  background: rgba(0, 0, 0, 0.12);
   color: var(--text);
 }
 
@@ -163,10 +163,10 @@ body {
     --faint:           #555555;
     --line:            rgba(255, 255, 255, 0.07);
     --line-strong:     rgba(255, 255, 255, 0.12);
-    --cta:             #0057FF;
-    --cta-hover:       #2970FF;
-    --cta-label:       #ffffff;
-    --ring:            #0057FF;
-    --accent-soft:     rgba(0, 87, 255, 0.28);
+    --cta:             #ffffff;
+    --cta-hover:       #e0e0e0;
+    --cta-label:       #000000;
+    --ring:            #ffffff;
+    --accent-soft:     rgba(255, 255, 255, 0.1);
   }
 }

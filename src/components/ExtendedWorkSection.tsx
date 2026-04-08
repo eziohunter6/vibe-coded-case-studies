@@ -40,7 +40,7 @@ export function ExtendedWorkSection({
                   <Link
                     href={`/work/${p.slug}`}
                     data-cursor-label="read the full story"
-                    className="flex flex-col overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_40px_100px_-40px_rgba(0,87,255,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] sm:rounded-[1.75rem]"
+                    className="flex flex-col overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] sm:rounded-[1.75rem]"
                   >
                     {/* Image */}
                     <span className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--surface-elevated)]">

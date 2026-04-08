@@ -11,14 +11,14 @@ const DARK = {
   bg: "#1a1a1a", card: "#242424", lite: "#2e2e2e",
   rule: "rgba(255,255,255,0.12)",
   w: "#ffffff", dim: "#cccccc", mut: "#999999",
-  acc: "#5b7bff", grn: "#4ade80", red: "#f87171", ylw: "#fbbf24",
+  acc: "#ffffff", grn: "#4ade80", red: "#f87171", ylw: "#fbbf24",
 } as const;
 
 const LIGHT = {
   bg: "#f4f4f2", card: "#ffffff", lite: "#e8e8e6",
   rule: "rgba(0,0,0,0.1)",
   w: "#0f0f0f", dim: "#2c2c2c", mut: "#6b6b6b",
-  acc: "#4361ee", grn: "#16a34a", red: "#dc2626", ylw: "#d97706",
+  acc: "#000000", grn: "#16a34a", red: "#dc2626", ylw: "#d97706",
 } as const;
 
 type Theme = { bg: string; card: string; lite: string; rule: string; w: string; dim: string; mut: string; acc: string; grn: string; red: string; ylw: string };
