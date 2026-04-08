@@ -182,7 +182,7 @@ export default function CarComparisonPage() {
     <ThemeCtx.Provider value={T}>
       <article style={{
         background: T.bg, color: T.w,
-        fontFamily: '-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif',
+        fontFamily: '"Inter", system-ui, sans-serif',
         fontSize: 16, lineHeight: 1.65,
         WebkitFontSmoothing: "antialiased",
         colorScheme: isDark ? "dark" : "light",

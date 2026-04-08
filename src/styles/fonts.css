@@ -1,1 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+  font-family: "The Silver Editorial";
+  src: url("/fonts/TheSilverEditorial-Regular.woff2") format("woff2"),
+       url("/fonts/TheSilverEditorial-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Silver Editorial";
+  src: url("/fonts/TheSilverEditorial-Italic.woff2") format("woff2"),
+       url("/fonts/TheSilverEditorial-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}

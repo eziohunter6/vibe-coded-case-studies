@@ -27,7 +27,7 @@ export function HomeHero() {
           initialDelay={0.1}
           className="mt-5 max-w-[20ch] text-balance font-bold leading-[1.05] tracking-[-0.04em] text-[var(--text)] sm:max-w-[24ch]"
           style={{
-            fontFamily: '"Instrument Serif", Georgia, serif',
+            fontFamily: '"Inter", system-ui, sans-serif',
             fontSize: 'clamp(1.92rem, 4.4vw, 4rem)',
           }}
         />

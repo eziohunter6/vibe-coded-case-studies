@@ -26,7 +26,7 @@ export function InfoSection() {
               id="info-heading"
               className="mt-3 text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
               style={{
-                fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+                fontFamily: '"Inter", system-ui, sans-serif',
                 fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
               }}
             >

@@ -70,12 +70,12 @@ export function HeroParticleGrid() {
 
     // ── Sample "Utkarsh" text ────────────────────────────────────────────────
     let fs = Math.round(H * 0.44);
-    ctx.font = `700 ${fs}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+    ctx.font = `700 ${fs}px "Inter", system-ui, sans-serif`;
     const rawW = ctx.measureText("Utkarsh").width;
     if (rawW > maxTextW) fs = Math.round(fs * (maxTextW / rawW));
 
     ctx.fillStyle = "#fff";
-    ctx.font = `700 ${fs}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+    ctx.font = `700 ${fs}px "Inter", system-ui, sans-serif`;
     ctx.textAlign   = "left";
     ctx.textBaseline = "middle";
     ctx.fillText("Utkarsh", pagePad, textY);

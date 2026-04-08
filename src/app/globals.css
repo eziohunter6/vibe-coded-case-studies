@@ -1,6 +1,24 @@
 @import "../styles/fonts.css";
 @import "tailwindcss";
 
+@font-face {
+  font-family: "The Silver Editorial";
+  src: url("/fonts/TheSilverEditorial-Regular.woff2") format("woff2"),
+       url("/fonts/TheSilverEditorial-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Silver Editorial";
+  src: url("/fonts/TheSilverEditorial-Italic.woff2") format("woff2"),
+       url("/fonts/TheSilverEditorial-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ─── Light mode (default) ────────────────────────────────── */
 :root {
   --bg:              #F5F5F0;
@@ -40,8 +58,8 @@
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
-  --font-sans: var(--font-helvetica), "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 

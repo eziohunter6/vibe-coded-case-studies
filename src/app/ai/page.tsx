@@ -52,7 +52,7 @@ export default function AIPage() {
             <h1
               className="mt-4 max-w-[20ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
               style={{
-                fontFamily: '"Instrument Serif", Georgia, serif',
+                fontFamily: '"Inter", system-ui, sans-serif',
                 fontSize: 'clamp(2.4rem, 5vw, 4.5rem)',
               }}
             >

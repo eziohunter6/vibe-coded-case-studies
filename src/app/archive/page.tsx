@@ -211,7 +211,7 @@ export default function ArchivePage() {
                 <h1
                   className="mt-4 font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
                   style={{
-                    fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+                    fontFamily: '"Inter", system-ui, sans-serif',
                     fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
                   }}
                 >

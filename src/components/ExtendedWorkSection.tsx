@@ -22,7 +22,7 @@ export function ExtendedWorkSection({
         <h2
           id="work-heading"
           className="mt-3 text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
-          style={{ fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}
+          style={{ fontFamily: '"Inter", system-ui, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}
         >
           Case studies
         </h2>

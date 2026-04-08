@@ -70,7 +70,7 @@ export const site = {
   /** Hero headline */
   heroLead: "Most design dies between Figma and production. Mine doesn't.",
   heroSupporting: [
-    "Most design gets lost in this gap. I close it.",
+    "I work embedded in engineering, I own outcomes, and I build what I spec.",
     "You've probably used my work. The design did the talking.",
   ] as [string, string],
   /** Single ribbon under hero */
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     slug: "spinny-buy-homepage",
     title: "Redesigning Spinny's homepage for committed buyers",
     tagline:
-      "Returning buyers with booked test drives landed on the same homepage as first-time visitors. The system knew their state. The homepage didn't. I fixed that.",
+      "Returning buyers with booked test drives landed on the same homepage as first-time visitors. The system knew their state. The homepage didn't.",
     role: "Lead Designer",
     year: "2025",
     client: "Spinny",
@@ -222,7 +222,7 @@ export const projects: Project[] = [
       { label: "Scale", value: "~238K users · A/B validated" },
     ],
     pullQuote: {
-      text: "The behaviour was already in the data. The opportunity wasn't to create demand, it was to build the decision architecture for users who already wanted to decide.",
+      text: "Structuring comparison around weighted decision variables — not a flat spec grid — is what moved the funnel, not just the feature.",
     },
     intro:
       "Spinny had 2.3M users on the product detail page. 16.43% of them were comparing cars, bouncing between listings, returning to the same cars repeatedly, showing clear signs of active decision-making. But the product offered them nothing. No way to place two cars side by side. No tool to weigh specs, price, and value. Every comparison happened in the user's head or in browser tabs they managed themselves.",
@@ -315,22 +315,27 @@ export const projects: Project[] = [
       "Paid subscribers were under-using premium features because the interface never surfaced them in context. The gap between subscription value and perceived value was a discoverability problem, not a product one.",
     highlights: [
       { label: "Renewals", value: "+28% Prime renewals post-launch, 8 points above projection" },
-      { label: "Subscriptions", value: "New subscription rate increased; clearer onboarding value reduced the gap between what users paid for and what they understood they were getting" },
-      { label: "Feature engagement", value: "Premium feature usage increased after contextual surfacing — validating that discoverability, not product quality, was the retention gap" },
+      { label: "Subscriptions", value: "New subscription rate increased post-launch; improved onboarding closed the gap between what users paid for and what they understood they were getting" },
+      { label: "Feature engagement", value: "Contextual surfacing increased premium feature usage — confirming discoverability, not product quality, was the retention gap" },
     ],
-    body: [],
+    body: [
+      "ET Prime subscribers were paying for access they couldn't navigate. Premium features existed; they just never appeared at the right moment in the reading flow. The drop-off wasn't dissatisfaction — it was friction. Users left without ever encountering the features that would have kept them.",
+      "The interface treated all users identically regardless of subscription tier. Premium indicators were buried, onboarding gave no clear signal of what the upgrade unlocked, and personalisation levers were invisible unless users already knew to look for them.",
+      "The redesign surfaced premium features in context — inside the reading flow rather than behind a separate discovery layer. Onboarding was restructured around specific feature moments rather than feature lists. Existing personalisation signals were wired to surface relevant premium content without requiring user configuration.",
+      "The result: +28% renewal rate (8 points above projection), higher new subscription conversion, and increased feature engagement — the last metric confirming the core hypothesis that the product was already good enough; the problem was that users never saw it.",
+    ],
     problem:
-      "ET Prime subscribers were paying for premium access but under-utilizing key features within the app. Low discoverability created a value perception gap, users couldn't fully experience what they had already paid for, impacting engagement and long-term retention.",
+      "ET Prime subscribers were paying for premium access but under-using key features because the interface never surfaced them in context. The value gap wasn't a product problem — it was a discoverability problem, and it was costing renewals.",
     challenge: [
-      "Simplify onboarding while clearly communicating premium value, improving time-to-value without increasing drop-offs.",
-      "Surface premium features contextually within a cluttered interface, enhancing visibility without disrupting core reading behaviour.",
-      "Enable meaningful personalisation using existing user signals, improving relevance without adding cognitive or UI overhead.",
-      "Align feature discovery with user intent, embedding premium exploration into natural consumption journeys rather than forcing promotion.",
+      "Surface premium features in the reading flow without disrupting core content consumption.",
+      "Restructure onboarding around specific feature moments rather than feature lists — improving time-to-value without increasing drop-off.",
+      "Wire existing personalisation signals to contextual feature surfacing without adding configuration overhead.",
+      "Establish clear premium indicators at the tier boundary so users understood what the upgrade unlocked before and after converting.",
     ],
     impact: [
-      "+28% increase in Prime user renewals post-launch, exceeding projections by 8%.",
-      "New subscription rate increased, stronger value perception at onboarding reduced the gap between what users paid for and what they understood they were getting.",
-      "Premium feature engagement increased after contextual surfacing, validating that discoverability, not product quality, was the retention gap.",
+      "+28% increase in Prime user renewals post-launch, exceeding projections by 8 points.",
+      "New subscription rate increased; restructured onboarding closed the gap between what users paid for and what they understood they were getting.",
+      "Premium feature engagement increased after contextual surfacing, confirming that discoverability — not product quality — was the retention gap.",
     ],
     href: "https://www.figma.com/proto/aTR4rObDbhSFkR7KoDOiOS/Portfolio-Website?node-id=62-83&t=EcDlaxQr0arGC1bo-1&scaling=scale-down-width&content-scaling=fixed&page-id=1%3A3&starting-point-node-id=62%3A83",
   },
@@ -348,23 +353,28 @@ export const projects: Project[] = [
     summary:
       "~1,600 users were abandoning at trip summary, the highest-intent point in Cleartrip's checkout. The issue wasn't flow length; it was pricing opacity and missing coupon confirmation at the moment users needed certainty most.",
     highlights: [
-      { label: "Drop-offs", value: "~1,600 users/period abandoning at trip summary, the highest-intent point in the funnel; pricing opacity and opaque coupon confirmation identified as primary drivers" },
-      { label: "Trust signals", value: "Redesigned price breakdown and coupon confirmation to surface exact savings at the moment of hesitation, eliminating the last question before payment" },
-      { label: "Conversion", value: "Checkout completion rate increased post-launch; reduced last-mile drop-offs contributed to higher transaction volume for Cleartrip" },
+      { label: "Drop-offs", value: "~1,600 users/period abandoning at trip summary — pricing opacity and missing coupon confirmation identified as primary drivers" },
+      { label: "Trust signals", value: "Redesigned price breakdown and coupon confirmation to surface exact savings at the moment of hesitation, removing the last question before payment" },
+      { label: "Conversion", value: "Checkout completion rate increased post-launch; last-mile drop-offs reduced, contributing directly to higher transaction volume" },
     ],
-    body: [],
+    body: [
+      "Cleartrip's checkout was three steps: Review, Add Traveller, Pay. Short by any standard. But ~1,600 users per period were abandoning at step one — trip summary — despite having already searched, selected, and shown intent strong enough to enter the funnel. The flow length wasn't the problem.",
+      "Exit interviews and funnel analysis identified two failure points: price breakdowns were collapsed by default, leaving users unsure what they were paying; and coupon confirmation showed only a code accepted, never the actual savings. Both gaps concentrated at the highest-intent moment in the purchase.",
+      "The redesign expanded the price breakdown inline by default, showing component-level costs at first render rather than requiring a tap. Coupon confirmation was restructured to surface the exact rupee saving immediately adjacent to the line item it affected — closing the loop users were trying to close themselves.",
+      "Checkout completion increased post-launch. The result was not a redesign of the flow but a redesign of the information architecture at the one moment where users needed certainty and weren't getting it.",
+    ],
     problem:
-      "Despite a simple 3-step flow (Review → Add Traveller → Pay), ~1,600 users were abandoning at trip summary, the highest-intent point in Cleartrip's checkout. Limited visibility of price breakdowns and unclear coupon confirmation reduced trust and weakened purchase motivation at the final step.",
+      "Despite a 3-step checkout (Review → Add Traveller → Pay), ~1,600 users were abandoning at trip summary — the highest-intent point in the funnel. Collapsed price breakdowns and opaque coupon confirmation were eliminating trust at the exact moment users needed certainty to proceed.",
     challenge: [
-      "Improve pricing transparency without adding friction or visual clutter.",
-      "Reinforce cost clarity and coupon confirmation to reduce last-mile hesitation.",
-      "Reduce drop-offs while maintaining a fast checkout experience at peak user intent.",
-      "Increase completion rates without increasing cognitive load in a high-stakes flow.",
+      "Surface component-level price breakdowns at first render without expanding the visual footprint of the summary screen.",
+      "Restructure coupon confirmation to show exact savings inline, adjacent to the affected line item.",
+      "Reduce abandonment at the highest-intent funnel stage without adding steps or review screens.",
+      "Increase completion rate for the ~1,600-user abandonment cohort while preserving flow speed for users who don't hesitate.",
     ],
     impact: [
-      "Targeted the ~1,600-user abandonment cohort at trip summary — the highest-intent drop in the funnel.",
-      "Redesigned price breakdown and coupon confirmation to surface exact savings at the moment of hesitation, eliminating the last question before payment.",
-      "Checkout completion rate increased post-launch; reduced last-mile drop-offs contributed directly to higher transaction volume.",
+      "Targeted the ~1,600-user abandonment cohort at trip summary — the highest-intent drop-off point in the funnel.",
+      "Redesigned price breakdown and coupon confirmation to surface exact savings at the moment of hesitation, removing the last unanswered question before payment.",
+      "Checkout completion rate increased post-launch; reduced last-mile drop-offs contributed directly to higher transaction volume for Cleartrip.",
     ],
     href: "https://www.figma.com/proto/AaHU2t1WEMeJGvbdhi2kk7/Payments-page-Revamp?node-id=1826-1845&t=BU9KR1vWg6DsIfmq-1&scaling=scale-down-width&content-scaling=fixed&page-id=1517%3A56651&starting-point-node-id=1826%3A1845",
   },
@@ -380,15 +390,15 @@ export const projects: Project[] = [
     coverAlt: "Design QA workflow",
     tags: ["Process", "Quality"],
     summary:
-      "Visual and interaction regressions were caught late, or not at all, because QA criteria lived outside the build process. I codified a check kit that sat beside the design system repo so criteria, versions, and owners stayed aligned.",
+      "Visual and interaction regressions were caught late — or not at all — because QA criteria lived in a doc outside the build process. I codified a check kit versioned alongside the design system so criteria, versions, and ownership stayed in sync with the work they governed.",
     highlights: [
       {
         label: "Regressions",
-        value: "Token-heavy and motion component regressions shifted from post-ship to pre-merge, design QA became part of the build gate, not a retrospective",
+        value: "Token-heavy and motion component regressions moved from post-ship discovery to pre-merge detection — QA became a build gate, not a retrospective",
       },
       {
         label: "Ownership",
-        value: "Three-track structure (designer / engineer / QA) gave each role a defined lane; handoff ambiguity eliminated by versioned criteria that moved with the system",
+        value: "Three-track structure (designer / engineer / QA) gave each role a defined lane; versioned criteria tied to the design system eliminated the 'who checks this' question at handoff",
       },
     ],
     body: [

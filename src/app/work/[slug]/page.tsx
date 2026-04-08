@@ -77,7 +77,7 @@ export default async function CaseStudyPage({ params }: Props) {
               {project.year}
               {project.client ? ` · ${project.client}` : ""}
             </p>
-            <h1 className="mt-4 max-w-[18ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-white sm:max-w-[16ch]" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)', fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif' }}>
+            <h1 className="mt-4 max-w-[18ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-white sm:max-w-[16ch]" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)', fontFamily: '"Inter", system-ui, sans-serif' }}>
               {project.title}
             </h1>
             <p className="mt-6 max-w-[40rem] text-pretty text-lg leading-relaxed text-white/78 sm:text-xl">
@@ -144,7 +144,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 <h2
                   id={`section-${block.id}`}
                   className="font-bold tracking-[-0.03em] text-[var(--text)]"
-                  style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif' }}
+                  style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontFamily: '"Inter", system-ui, sans-serif' }}
                 >
                   {block.title}
                 </h2>

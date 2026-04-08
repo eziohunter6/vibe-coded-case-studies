@@ -182,7 +182,7 @@ export default function BuyHomepagePage() {
 
   return (
     <ThemeCtx.Provider value={T}>
-    <article style={{ background: T.bg, color: T.w, fontFamily: '-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif', fontSize: 16, lineHeight: 1.65, WebkitFontSmoothing: "antialiased", colorScheme: isDark ? "dark" : "light", cursor: isDark ? "auto" : "default" }}>
+    <article style={{ background: T.bg, color: T.w, fontFamily: '"Inter", system-ui, sans-serif', fontSize: 16, lineHeight: 1.65, WebkitFontSmoothing: "antialiased", colorScheme: isDark ? "dark" : "light", cursor: isDark ? "auto" : "default" }}>
       <ScrollProgressBar />
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px" }}>
