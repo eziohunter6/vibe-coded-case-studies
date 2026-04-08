@@ -35,7 +35,7 @@ export function MiniCasePanel({
             "transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform",
             "data-[state=open]:translate-y-0 data-[state=closed]:translate-y-full",
             "md:bottom-0 md:left-auto md:right-0 md:top-0 md:h-full md:max-h-none md:w-full md:max-w-[440px]",
-            "md:rounded-none md:rounded-l-[1.5rem] md:rounded-t-none md:border-l md:border-t-0",
+            "md:rounded-none md:border-l md:border-t-0",
             "md:data-[state=closed]:translate-x-full md:data-[state=closed]:translate-y-0",
             "md:data-[state=open]:translate-x-0",
           )}
@@ -175,7 +175,7 @@ export function MiniCasePanel({
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--cta)] px-6 py-3.5 text-[14px] font-semibold text-white transition hover:bg-[var(--cta-hover)]"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--cta)] px-6 py-3.5 text-[14px] font-semibold text-[var(--cta-label)] transition hover:bg-[var(--cta-hover)]"
                 >
                   View full case study
                   <span aria-hidden>↗</span>

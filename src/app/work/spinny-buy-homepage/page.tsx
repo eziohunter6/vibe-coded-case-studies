@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, createContext, useContext } from "react";
+import { WordSnap } from "@/components/WordSnap";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
@@ -41,11 +42,15 @@ function Sn({ n }: { n: string }) {
 }
 
 // ─── Section heading ─────────────────────────────────────────────────────────
-function Sh({ children, tag = "h2" }: { children: React.ReactNode; tag?: "h1" | "h2" }) {
+function Sh({ children, tag = "h2", text }: { children?: React.ReactNode; tag?: "h1" | "h2"; text?: string }) {
   const T = useContext(ThemeCtx);
+  const sharedStyle = { fontSize: "clamp(44px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w };
+  if (text) {
+    return <WordSnap as={tag} text={text} delay={0.05} stagger={0.05} style={sharedStyle} />;
+  }
   const Tag = tag;
   return (
-    <Tag style={{ fontSize: "clamp(44px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w }}>
+    <Tag style={sharedStyle}>
       {children}
     </Tag>
   );
@@ -191,9 +196,7 @@ export default function BuyHomepagePage() {
         <Sec id="hero">
           <Reveal>
             <Sn n="01." />
-            <Sh tag="h1">
-              Redesigning Spinny&apos;s homepage<br />for committed buyers
-            </Sh>
+            <Sh tag="h1" text="Redesigning Spinny's homepage for committed buyers" />
             <Div />
             <Bl>
               After booking a test drive, users returned to the exact same homepage as a first-time visitor.
@@ -231,7 +234,7 @@ export default function BuyHomepagePage() {
         <Sec id="problem" cursorLabel="two users, one page">
           <Reveal>
             <Sn n="02." />
-            <Sh>Problem</Sh>
+            <Sh text="Problem" />
             <Div />
             <h3 style={{ fontSize: "clamp(26px,3.2vw,40px)", fontWeight: 700, letterSpacing: -1, color: T.w, marginBottom: 28, lineHeight: 1.1 }}>
               Two users. One homepage.<br />A product blind to the difference.
@@ -304,7 +307,7 @@ export default function BuyHomepagePage() {
         <Sec id="journey" cursorLabel="where intent went cold">
           <Reveal>
             <Sn n="03." />
-            <Sh>Where the journey<br />broke down</Sh>
+            <Sh text="Where the journey broke down" />
             <Div />
             <B>
               I mapped the transactional lifecycle to locate exactly where committed users were being dropped.
@@ -422,7 +425,7 @@ export default function BuyHomepagePage() {
         <Sec id="competitive" cursorLabel="nobody solved this">
           <Reveal>
             <Sn n="04." />
-            <Sh>Nobody had<br />solved this.</Sh>
+            <Sh text="Nobody had solved this." />
             <Div />
             <B>
               Before designing, I audited how competitors handle returning committed users.
@@ -546,7 +549,7 @@ export default function BuyHomepagePage() {
         <Sec id="reframe" cursorLabel="homepage as co-pilot">
           <Reveal>
             <Sn n="05." />
-            <Sh>How might we guide<br />committed buyers?</Sh>
+            <Sh text="How might we guide committed buyers?" />
             <Div />
             <B>
               Reframing the hypothesis from a system description to a user experience changed how the team thought about the solution space.
@@ -571,7 +574,7 @@ export default function BuyHomepagePage() {
         <Sec id="constraints">
           <Reveal>
             <Sn n="06." />
-            <Sh>Working within<br />the real world</Sh>
+            <Sh text="Working within the real world" />
             <Div />
             <B>
               Four constraints shaped what was possible before any exploration began.
@@ -601,7 +604,7 @@ export default function BuyHomepagePage() {
         <Sec id="ideation" cursorLabel="two paths, one answer">
           <Reveal>
             <Sn n="07." />
-            <Sh>Two paths.<br />One right answer</Sh>
+            <Sh text="Two paths. One right answer" />
             <Div />
             <B>
               I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution, it was the one that solved the problem without creating new ones.
@@ -643,7 +646,7 @@ export default function BuyHomepagePage() {
         <Sec id="final" cursorLabel="state knows you">
           <Reveal>
             <Sn n="08." />
-            <Sh>Final Designs</Sh>
+            <Sh text="Final Designs" />
             <Div />
             <Bl>
               The homepage dynamically adapts based on the user&apos;s transaction stage. Exploratory users see the existing browsing experience unchanged.
@@ -707,7 +710,7 @@ export default function BuyHomepagePage() {
         <Sec id="outcome" cursorLabel="numbers don't lie">
           <Reveal>
             <Sn n="09." />
-            <Sh>Outcome</Sh>
+            <Sh text="Outcome" />
             <Div />
             <B>
               By transforming the homepage into a journey-aware experience, active buyers got what they needed, visibility, context, a clear next step.
@@ -766,7 +769,7 @@ export default function BuyHomepagePage() {
         <Sec id="reflection" cursorLabel="what the data taught">
           <Reveal>
             <Sn n="10." />
-            <Sh>What this<br />taught me</Sh>
+            <Sh text="What this taught me" />
             <Div />
             <B>
               The most important reframe happened before any design work. We weren&apos;t solving a UI problem, we were solving a continuity problem.

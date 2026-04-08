@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { WordSnap } from "@/components/WordSnap";
 import type { MiniProject } from "@/content/portfolio";
 import { site } from "@/content/portfolio";
 import { MiniCasePanel } from "@/components/MiniCasePanel";
@@ -33,13 +34,13 @@ export function MiniWorkSection({ projects }: { projects: MiniProject[] }) {
       >
         <Reveal>
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">Additional work</p>
-          <h2
+          <WordSnap
             id="mini-work-heading"
+            text="More projects"
+            delay={0.05}
             className="mt-3 text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
             style={{ fontFamily: '"Inter", system-ui, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}
-          >
-            More projects
-          </h2>
+          />
           <p className="mt-4 max-w-[40rem] text-pretty text-base leading-relaxed text-[var(--muted)]">
             {site.miniIntro}
           </p>

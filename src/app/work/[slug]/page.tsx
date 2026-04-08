@@ -7,6 +7,7 @@ import { ParallaxLayer } from "@/components/ParallaxLayer";
 import { Reveal } from "@/components/Reveal";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
+import { WordSnap } from "@/components/WordSnap";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -77,9 +78,13 @@ export default async function CaseStudyPage({ params }: Props) {
               {project.year}
               {project.client ? ` · ${project.client}` : ""}
             </p>
-            <h1 className="mt-4 max-w-[18ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-white sm:max-w-[16ch]" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)', fontFamily: '"Inter", system-ui, sans-serif' }}>
-              {project.title}
-            </h1>
+            <WordSnap
+              as="h1"
+              text={project.title}
+              delay={0.1}
+              className="mt-4 max-w-[18ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-white sm:max-w-[16ch]"
+              style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)', fontFamily: '"Inter", system-ui, sans-serif' }}
+            />
             <p className="mt-6 max-w-[40rem] text-pretty text-lg leading-relaxed text-white/78 sm:text-xl">
               {project.tagline}
             </p>
@@ -141,13 +146,13 @@ export default async function CaseStudyPage({ params }: Props) {
           {project.sections.map((block, i) => (
             <Reveal key={block.id} delay={i * 0.03}>
               <section aria-labelledby={`section-${block.id}`}>
-                <h2
-                  id={`section-${block.id}`}
+                <WordSnap
+                  text={block.title}
+                  delay={0.04}
+                  stagger={0.04}
                   className="font-bold tracking-[-0.03em] text-[var(--text)]"
                   style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontFamily: '"Inter", system-ui, sans-serif' }}
-                >
-                  {block.title}
-                </h2>
+                />
                 <div className="mt-6 space-y-5">
                   {block.paragraphs.map((p) => (
                     <p

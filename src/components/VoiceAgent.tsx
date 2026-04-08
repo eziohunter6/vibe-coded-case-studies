@@ -394,7 +394,7 @@ export function VoiceAgent() {
           type="button"
           aria-label="Talk to Utkarsh AI"
           onClick={handleOpen}
-          className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--cta)] text-white shadow-lg hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cta)] focus-visible:ring-offset-2"
+          className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--cta)] text-[var(--cta-label)] shadow-lg hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cta)] focus-visible:ring-offset-2"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
             <rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor" />
@@ -603,8 +603,8 @@ export function VoiceAgent() {
                   state === "listening"
                     ? "bg-red-500 text-white"
                     : state === "thinking"
-                    ? "bg-[var(--cta)] text-white opacity-70"
-                    : "bg-[var(--cta)] text-white hover:opacity-90"
+                    ? "bg-[var(--cta)] text-[var(--cta-label)] opacity-70"
+                    : "bg-[var(--cta)] text-[var(--cta-label)] hover:opacity-90"
                 }`}
               >
                 {state === "listening" ? (

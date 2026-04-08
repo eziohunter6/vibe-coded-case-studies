@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
+import { WordSnap } from "@/components/WordSnap";
 import { ArchiveGrid } from "@/components/ArchiveGrid";
 import type { Photo } from "@/components/ArchiveGrid";
 import { site } from "@/content/portfolio";
@@ -208,19 +209,16 @@ export default function ArchivePage() {
                 <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">
                   Archive
                 </p>
-                <h1
+                <WordSnap
+                  as="h1"
+                  text="Photography & the things I notice."
+                  delay={0.1}
                   className="mt-4 font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
                   style={{
                     fontFamily: '"Inter", system-ui, sans-serif',
                     fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
                   }}
-                >
-                  Photography &amp;
-                  <br />
-                  the things
-                  <br />
-                  I notice.
-                </h1>
+                />
               </div>
 
               {/* Right column, meta */}

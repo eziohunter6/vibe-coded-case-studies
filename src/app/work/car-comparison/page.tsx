@@ -3,6 +3,7 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { WordSnap } from "@/components/WordSnap";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { Reveal } from "@/components/Reveal";
 
@@ -39,11 +40,15 @@ function Sn({ n }: { n: string }) {
   return <p style={{ fontSize: 13, color: T.mut, marginBottom: 10, fontWeight: 400 }}>{n}</p>;
 }
 
-function Sh({ children, tag = "h2" }: { children: React.ReactNode; tag?: "h1" | "h2" }) {
+function Sh({ children, tag = "h2", text }: { children?: React.ReactNode; tag?: "h1" | "h2"; text?: string }) {
   const T = useContext(ThemeCtx);
+  const sharedStyle = { fontSize: "clamp(44px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w };
+  if (text) {
+    return <WordSnap as={tag} text={text} delay={0.05} stagger={0.05} style={sharedStyle} />;
+  }
   const Tag = tag;
   return (
-    <Tag style={{ fontSize: "clamp(44px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w }}>
+    <Tag style={sharedStyle}>
       {children}
     </Tag>
   );
@@ -195,9 +200,7 @@ export default function CarComparisonPage() {
           <Sec id="hero">
             <Reveal>
               <Sn n="01." />
-              <Sh tag="h1">
-                Designing a comparison feature<br />for decision speed
-              </Sh>
+              <Sh tag="h1" text="Designing a comparison feature for decision speed" />
               <Div />
               <Bl>
                 Users comparing cars on Spinny were making a decision the product couldn&apos;t see.
@@ -222,7 +225,7 @@ export default function CarComparisonPage() {
           <Sec id="problem" cursorLabel="the A to B pattern">
             <Reveal>
               <Sn n="02." />
-              <Sh>Problem</Sh>
+              <Sh text="Problem" />
               <Div />
               <h3 style={{ fontSize: "clamp(26px,3.2vw,40px)", fontWeight: 700, letterSpacing: -1, color: T.w, marginBottom: 28, lineHeight: 1.1 }}>
                 The A→B→A pattern.<br />A user doing comparison work the product wouldn&apos;t help with.
@@ -295,7 +298,7 @@ export default function CarComparisonPage() {
           <Sec id="data" cursorLabel="capable users, let down">
             <Reveal>
               <Sn n="03." />
-              <Sh>The data</Sh>
+              <Sh text="The data" />
               <Div />
               <B>
                 I analysed conversion across the 2.3M PDP user base to understand how comparison behaviour
@@ -346,7 +349,7 @@ export default function CarComparisonPage() {
           <Sec id="design-question" cursorLabel="support, don't interrupt">
             <Reveal>
               <Sn n="04." />
-              <Sh>Design question</Sh>
+              <Sh text="Design question" />
               <Div />
 
               {/* HMW callout, matches Buy Homepage design question block */}
@@ -375,7 +378,7 @@ export default function CarComparisonPage() {
           <Sec id="constraints">
             <Reveal>
               <Sn n="05." />
-              <Sh>Working within<br />the real world</Sh>
+              <Sh text="Working within the real world" />
               <Div />
               <B>Four constraints shaped what was possible before exploration began.</B>
             </Reveal>
@@ -401,7 +404,7 @@ export default function CarComparisonPage() {
           <Sec id="exploration" cursorLabel="three structures, one winner">
             <Reveal>
               <Sn n="06." />
-              <Sh>Two paths.<br />One right answer.</Sh>
+              <Sh text="Two paths. One right answer." />
               <Div />
               <B>
                 I explored two structurally distinct approaches. The goal wasn&apos;t the most ambitious solution,
@@ -444,7 +447,7 @@ export default function CarComparisonPage() {
           <Sec id="final-designs" cursorLabel="tested before it shipped">
             <Reveal>
               <Sn n="07." />
-              <Sh>Final Designs</Sh>
+              <Sh text="Final Designs" />
               <Div />
               <B>
                 The comparison feature surfaces at the exact moment a user shows comparison intent — after visiting
@@ -519,7 +522,7 @@ export default function CarComparisonPage() {
           <Sec id="outcome" cursorLabel="funnel went deeper">
             <Reveal>
               <Sn n="08." />
-              <Sh>Outcome</Sh>
+              <Sh text="Outcome" />
               <Div />
               <B>
                 By giving users a structured way to compare, we shortened the decision cycle and improved
@@ -578,7 +581,7 @@ export default function CarComparisonPage() {
           <Sec id="reflection" cursorLabel="demand was already there">
             <Reveal>
               <Sn n="09." />
-              <Sh>What this<br />taught me</Sh>
+              <Sh text="What this taught me" />
               <Div />
               <Bl>
                 The most important discovery happened in the data before any design work.

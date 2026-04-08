@@ -4,6 +4,7 @@ import type { ExtendedProject } from "@/content/portfolio";
 import { site } from "@/content/portfolio";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
+import { WordSnap } from "@/components/WordSnap";
 
 export function ExtendedWorkSection({
   projects,
@@ -19,13 +20,13 @@ export function ExtendedWorkSection({
     >
       <Reveal>
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">Selected work</p>
-        <h2
+        <WordSnap
           id="work-heading"
+          text="Case studies"
+          delay={0.05}
           className="mt-3 text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
           style={{ fontFamily: '"Inter", system-ui, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}
-        >
-          Case studies
-        </h2>
+        />
         <p className="mt-4 max-w-[40rem] text-pretty text-base leading-relaxed text-[var(--muted)]">
           {site.workIntro}
         </p>

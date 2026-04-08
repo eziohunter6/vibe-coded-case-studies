@@ -3,7 +3,7 @@ import { site } from "@/content/portfolio";
 import { HeroArt } from "@/components/HeroArt";
 import { HeroVideo } from "@/components/HeroVideo";
 import { Reveal } from "@/components/Reveal";
-import { AnimatedHeadline } from "@/components/AnimatedHeadline";
+import { WordSnap } from "@/components/WordSnap";
 
 export function HomeHero() {
   return (
@@ -21,10 +21,11 @@ export function HomeHero() {
           </p>
         </Reveal>
 
-        <AnimatedHeadline
+        <WordSnap
+          as="h1"
           id="hero-heading"
           text={site.heroLead}
-          initialDelay={0.1}
+          delay={0.1}
           className="mt-5 max-w-[20ch] text-balance font-bold leading-[1.05] tracking-[-0.04em] text-[var(--text)] sm:max-w-[24ch]"
           style={{
             fontFamily: '"Inter", system-ui, sans-serif',

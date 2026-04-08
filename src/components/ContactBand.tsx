@@ -1,6 +1,7 @@
 import { site } from "@/content/portfolio";
 import { Reveal } from "@/components/Reveal";
 import { MagneticButton } from "@/components/MagneticButton";
+import { WordSnap } from "@/components/WordSnap";
 
 export function ContactBand() {
   return (
@@ -15,16 +16,17 @@ export function ContactBand() {
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">
             Get in touch
           </p>
-          <h2
+          <WordSnap
             id="contact-heading"
+            text="Let's talk."
+            delay={0.05}
+            stagger={0.08}
             className="mt-5 max-w-[14ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
             style={{
               fontFamily: '"Inter", system-ui, sans-serif',
               fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
             }}
-          >
-            Let&apos;s talk.
-          </h2>
+          />
           <p className="mt-6 max-w-[36rem] text-pretty text-lg leading-relaxed text-[var(--muted)]">
             {site.contactIntro}
           </p>

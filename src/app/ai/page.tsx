@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { WordSnap } from "@/components/WordSnap";
 import { site } from "@/content/portfolio";
 
 export const metadata: Metadata = {
@@ -49,16 +50,16 @@ export default function AIPage() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">
               AI + Prototyping
             </p>
-            <h1
+            <WordSnap
+              as="h1"
+              text="Tools I've built, not just used."
+              delay={0.1}
               className="mt-4 max-w-[20ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
               style={{
                 fontFamily: '"Inter", system-ui, sans-serif',
                 fontSize: 'clamp(2.4rem, 5vw, 4.5rem)',
               }}
-            >
-              Tools I&apos;ve built,
-              not just used.
-            </h1>
+            />
             <div className="mt-8 h-px w-12 bg-[var(--cta)]" aria-hidden />
             <p className="mt-6 max-w-[42rem] text-pretty text-lg leading-[1.7] text-[var(--muted)]">
               The fastest way to understand a design material is to build with it, not just specify it.

@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { WordSnap } from "@/components/WordSnap";
 
 const facts = [
   { label: "Experience", value: "6+ years" },
@@ -22,16 +23,16 @@ export function InfoSection() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--faint)]">
               About
             </p>
-            <h2
+            <WordSnap
               id="info-heading"
+              text="Designer. Researcher. Deep thinker."
+              delay={0.05}
               className="mt-3 text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
               style={{
                 fontFamily: '"Inter", system-ui, sans-serif',
                 fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
               }}
-            >
-              Designer. Researcher. Deep thinker.
-            </h2>
+            />
             <p className="mt-6 max-w-[44rem] text-pretty text-[17px] leading-[1.75] text-[var(--muted)]">
               I've spent 6+ years designing consumer-facing products, from high-stakes commerce flows to complex logistics dashboards. My process starts with research, moves through systems thinking, and ends in interfaces that earn trust under real-world pressure.
             </p>
