@@ -77,8 +77,11 @@ export function HeroVideo() {
       />
       {/* Top fade */}
       <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[var(--bg)] to-transparent" />
-      {/* Bottom fade — stronger so text over video always reads */}
-      <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/80 to-transparent" />
+      {/* Bottom overlay — solid floor for text region, accessible contrast guaranteed */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-full pointer-events-none"
+        style={{ background: "linear-gradient(to top, var(--bg) 0%, var(--bg) 42%, transparent 78%)" }}
+      />
     </div>
   );
 }

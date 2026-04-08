@@ -8,7 +8,7 @@ import { AnimatedHeadline } from "@/components/AnimatedHeadline";
 export function HomeHero() {
   return (
     <section
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden border-b border-[var(--line)] pb-16 pt-24 sm:pb-28 sm:pt-40"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden border-b border-[var(--line)] pb-20 pt-24 sm:pb-32 sm:pt-40"
       aria-labelledby="hero-heading"
     >
       <HeroArt />
