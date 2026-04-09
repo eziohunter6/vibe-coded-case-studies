@@ -111,7 +111,7 @@ export function HeroVideo() {
           objectFit: "cover",
           // Pull focus up so the subject lands in the upper-centre,
           // closer to the nav bar rather than getting cropped at the bottom.
-          objectPosition: "center 18%",
+          objectPosition: "center top",
           opacity: 0,
         }}
       />
