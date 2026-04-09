@@ -49,7 +49,7 @@ export function ExtendedWorkSection({
                         src={p.coverImage}
                         alt={p.coverAlt}
                         fill
-                        className="object-cover transition duration-[1.4s] ease-out group-hover:scale-[1.03]"
+                        className="object-cover object-left-top transition duration-[1.4s] ease-out group-hover:scale-[1.03]"
                         sizes="(max-width:640px) 100vw, 50vw"
                         priority={i === 0}
                       />
