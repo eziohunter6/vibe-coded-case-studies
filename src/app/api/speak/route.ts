@@ -1,108 +1,79 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// ── Voice description for Parler-TTS ──────────────────────────────────────────
-// Targets: calm, mid-20s Indian male, natural accent, warm and relaxed delivery.
-const VOICE_DESCRIPTION =
-  "A calm, warm Indian male voice in his mid-twenties. He speaks softly and clearly with a gentle South Asian accent, measured pace, and a relaxed, reassuring tone. The recording is clean and close-mic'd with no background noise.";
-
-// ── Model priority list ────────────────────────────────────────────────────────
-// 1. Parler-TTS mini — conditional voice via natural-language description
-// 2. Kokoro-82M — multi-voice model, British male as calm fallback
-const MODELS = [
-  {
-    id: "parler-tts/parler-tts-mini-v1",
-    label: "Parler-TTS (Indian male)",
-    body: (text: string) =>
-      JSON.stringify({
-        inputs: text,
-        parameters: { description: VOICE_DESCRIPTION },
-      }),
-  },
-  {
-    id: "hexgrad/Kokoro-82M",
-    label: "Kokoro (British male fallback)",
-    body: (text: string) =>
-      JSON.stringify({
-        inputs: text,
-        parameters: { voice: "bm_lewis" },
-      }),
-  },
+// ── ElevenLabs ────────────────────────────────────────────────────────────────
+// Re-enable by setting ELEVENLABS_API_KEY in .env.local / Vercel env vars.
+// Free tier: 10,000 chars/month, resets on billing anniversary.
+// Create a new account at elevenlabs.io if quota is exhausted.
+const ELEVENLABS_VOICES = [
+  { id: "uVZW0wfQfYdBFVa48V9i", label: "Utkarsh (custom)" },
+  { id: "EXAVITQu4vr4xnSDxMaL", label: "Sarah (fallback)" },
 ];
 
-async function tryModel(
-  token: string,
-  modelId: string,
-  body: string
-): Promise<{ buffer: ArrayBuffer; contentType: string } | null> {
+async function tryElevenLabs(
+  apiKey: string,
+  voiceId: string,
+  text: string
+): Promise<ArrayBuffer | null> {
   const res = await fetch(
-    `https://api-inference.huggingface.co/models/${modelId}`,
+    `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        "xi-api-key": apiKey,
         "Content-Type": "application/json",
+        Accept: "audio/mpeg",
       },
-      body,
-      // HF TTS models can take 10–20 s on first request (cold start)
-      signal: AbortSignal.timeout(30_000),
+      body: JSON.stringify({
+        text,
+        model_id: "eleven_turbo_v2_5",
+        voice_settings: {
+          stability: 0.55,
+          similarity_boost: 0.8,
+          style: 0.2,
+          use_speaker_boost: true,
+        },
+      }),
     }
   );
-
   if (!res.ok) {
-    const err = await res.text();
-    console.error(`HF [${modelId}] ${res.status}:`, err);
+    console.error(`ElevenLabs [${voiceId}] ${res.status}:`, await res.text());
     return null;
   }
-
-  const contentType =
-    res.headers.get("content-type") ?? "audio/flac";
-  const buffer = await res.arrayBuffer();
-
-  // Sanity-check: HF returns JSON errors even with a 200 in rare cases
-  if (buffer.byteLength < 512) {
-    console.error(`HF [${modelId}] suspiciously small response (${buffer.byteLength} bytes)`);
-    return null;
-  }
-
-  return { buffer, contentType };
+  return res.arrayBuffer();
 }
 
 export async function POST(req: NextRequest) {
-  const token = process.env.HF_TOKEN;
-  if (!token) {
-    return NextResponse.json(
-      { error: "HF_TOKEN is not configured." },
-      { status: 500 }
-    );
-  }
-
   let text: string;
   try {
     const body = await req.json();
     text = body.text?.trim();
     if (!text) throw new Error("empty");
   } catch {
-    return NextResponse.json(
-      { error: "Invalid request body." },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  for (const model of MODELS) {
-    const result = await tryModel(token, model.id, model.body(text));
-    if (result) {
-      console.log(`HF TTS: using ${model.label}`);
-      return new NextResponse(result.buffer, {
-        headers: {
-          "Content-Type": result.contentType,
-          "Content-Length": String(result.buffer.byteLength),
-        },
-      });
+  // ── Try ElevenLabs if key is set ─────────────────────────────────────────
+  const elevenKey = process.env.ELEVENLABS_API_KEY;
+  if (elevenKey) {
+    for (const voice of ELEVENLABS_VOICES) {
+      const audio = await tryElevenLabs(elevenKey, voice.id, text);
+      if (audio) {
+        console.log(`TTS: ElevenLabs ${voice.label}`);
+        return new NextResponse(audio, {
+          headers: {
+            "Content-Type": "audio/mpeg",
+            "Content-Length": String(audio.byteLength),
+          },
+        });
+      }
     }
   }
 
+  // ── No working API — tell client to use browser TTS ──────────────────────
+  // VoiceAgent.tsx catches non-ok responses and falls back to
+  // window.speechSynthesis (Rishi / Google Indian English / system default).
   return NextResponse.json(
-    { error: "All TTS models failed. Check HF_TOKEN and model availability." },
-    { status: 502 }
+    { error: "No TTS API key configured. Using browser speech synthesis." },
+    { status: 503 }
   );
 }

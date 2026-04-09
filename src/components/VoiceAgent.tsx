@@ -239,30 +239,40 @@ export function VoiceAgent() {
     setInterimText("");
   }, []);
 
-  // Browser TTS fallback (used when ElevenLabs quota is exhausted)
+  // Browser TTS fallback — prefers Indian English male voices where available.
+  // Priority: Rishi (Apple Indian EN male) → Google Indian English →
+  //           Heera/Ravi (Windows Indian) → calm generic male → any voice.
   const browserSpeak = useCallback((text: string) => new Promise<void>((resolve) => {
     const synth = window.speechSynthesis;
     if (!synth) { resolve(); return; }
     synth.cancel();
     const utter = new SpeechSynthesisUtterance(text);
-    utter.rate = 0.92;
-    utter.pitch = 1.02;
+    // Slightly slower, lower pitch → calmer, more measured feel
+    utter.rate = 0.88;
+    utter.pitch = 0.95;
     utter.volume = 1;
-    // Prefer a natural-sounding voice if available
-    const loadVoices = () => {
+
+    const pickVoice = () => {
       const voices = synth.getVoices();
-      const preferred = voices.find(
-        (v) =>
-          v.name.includes("Samantha") ||
-          v.name.includes("Karen") ||
-          v.name.includes("Google UK English Female") ||
-          v.name.includes("Google US English")
-      );
-      if (preferred) utter.voice = preferred;
+      if (voices.length === 0) return;
+      // Ordered preference list — first match wins
+      const pick =
+        voices.find((v) => v.name === "Rishi") ||                              // Apple Indian EN male
+        voices.find((v) => v.name.includes("Google हिन्दी")) ||              // Chrome Indian
+        voices.find((v) => v.lang === "en-IN" && !v.name.includes("female") && !v.name.includes("Female")) ||
+        voices.find((v) => v.name.includes("Ravi")) ||                         // Windows Indian male
+        voices.find((v) => v.lang === "en-IN") ||                              // any Indian EN
+        voices.find((v) => v.name.includes("Google UK English Male")) ||
+        voices.find((v) => v.name.includes("Daniel")) ||                       // Apple British male
+        voices.find((v) => v.name.includes("Google US English")) ||
+        voices.find((v) => !v.name.toLowerCase().includes("female") && v.lang.startsWith("en"));
+      if (pick) utter.voice = pick;
     };
-    loadVoices();
+
+    pickVoice();
+    // Chrome loads voices async — retry once they're ready
     if (synth.getVoices().length === 0) {
-      synth.addEventListener("voiceschanged", loadVoices, { once: true });
+      synth.addEventListener("voiceschanged", pickVoice, { once: true });
     }
     utter.onend = () => resolve();
     utter.onerror = () => resolve();
