@@ -1,18 +1,56 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const VIDEO_URL = "/hero.mp4";
+// Light theme → original video  |  Dark theme → new video
+const VIDEOS = {
+  light:
+    "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4",
+  dark: "/hero.mp4",
+};
 
 const FADE = 0.5; // seconds
 
+function useIsDark() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const check = () =>
+      setIsDark(document.documentElement.classList.contains("dark"));
+    check();
+
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  return isDark;
+}
+
 export function HeroVideo() {
+  const isDark = useIsDark();
+  const src = isDark ? VIDEOS.dark : VIDEOS.light;
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const rafRef = useRef<number>(0);
+  const prevSrc = useRef<string>("");
 
+  // Fade-in / fade-out tick
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // If src changed, reset and replay
+    if (prevSrc.current !== src) {
+      prevSrc.current = src;
+      cancelAnimationFrame(rafRef.current);
+      video.style.opacity = "0";
+      video.load();
+      video.play().catch(() => {});
+    }
 
     function tick() {
       if (!video || !video.duration) {
@@ -51,13 +89,13 @@ export function HeroVideo() {
       cancelAnimationFrame(rafRef.current);
       video.removeEventListener("ended", handleEnded);
     };
-  }, []);
+  }, [src]);
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <video
         ref={videoRef}
-        src={VIDEO_URL}
+        src={src}
         autoPlay
         muted
         playsInline
@@ -71,12 +109,15 @@ export function HeroVideo() {
           width: "100%",
           height: "100%",
           objectFit: "cover",
+          // Pull focus up so the subject lands in the upper-centre,
+          // closer to the nav bar rather than getting cropped at the bottom.
+          objectPosition: "center 18%",
           opacity: 0,
         }}
       />
       {/* Top fade */}
       <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[var(--bg)] to-transparent" />
-      {/* Bottom overlay, solid floor for the text region, video visible above it */}
+      {/* Bottom overlay — solid floor for text, video visible above */}
       <div
         className="absolute inset-x-0 bottom-0 h-full pointer-events-none"
         style={{ background: "linear-gradient(to top, var(--bg) 0%, var(--bg) 45%, transparent 72%)" }}
