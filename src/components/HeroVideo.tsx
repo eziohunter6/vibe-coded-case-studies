@@ -102,16 +102,17 @@ export function HeroVideo() {
         preload="auto"
         style={{
           position: "absolute",
-          top: 0,
+          // Offset the video element 120px above the container so objectFit:cover
+          // crops from 120px down — pulling the subject up toward the nav bar.
+          // Height compensates so the bottom still fills the container.
+          top: "-120px",
           right: 0,
           bottom: 0,
           left: 0,
           width: "100%",
-          height: "100%",
+          height: "calc(100% + 120px)",
           objectFit: "cover",
-          // Pull focus up so the subject lands in the upper-centre,
-          // closer to the nav bar rather than getting cropped at the bottom.
-          objectPosition: "center top",
+          objectPosition: "center center",
           opacity: 0,
         }}
       />
