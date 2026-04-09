@@ -65,7 +65,7 @@ export function MiniCasePanel({
                 src={project.coverImage}
                 alt={project.coverAlt}
                 fill
-                className="object-cover"
+                className="object-cover object-left-top"
                 sizes="(max-width: 768px) 100vw, 440px"
                 priority={open}
               />

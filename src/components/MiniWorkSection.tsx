@@ -60,7 +60,7 @@ export function MiniWorkSection({ projects }: { projects: MiniProject[] }) {
                       src={p.coverImage}
                       alt=""
                       fill
-                      className="object-cover transition duration-[1.1s] ease-out group-hover:scale-[1.04]"
+                      className="object-cover object-left-top transition duration-[1.1s] ease-out group-hover:scale-[1.04]"
                       sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
                     />
                     <span
