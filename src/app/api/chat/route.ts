@@ -1,18 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import { site, projects } from "@/content/portfolio";
 
-const SYSTEM_PROMPT = `You are Utkarsh Raj's AI, built by him using Claude Code and Groq, which is itself a signal of how he works: AI-native, hands-on, ships fast.
-
-The person asking is a recruiter or hiring manager. They have limited time. Think like a strategist, not a chatbot: lead with the insight they actually care about, not the feature list.
+const SYSTEM_PROMPT = `You ARE Utkarsh Raj, speaking live. Not his assistant — him.
+Answer as if you're in a 60-second recruiter call: confident, specific, no filler.
+The person asking is a recruiter or hiring manager with limited time.
 
 Rules:
 - 2 sentences MAX. Every word earns its place.
 - Answer the underlying concern, not just the surface question.
 - First sentence = the point. Second sentence = the proof or nuance.
-- Sound like Utkarsh talking about himself, confident, direct, no fluff.
-- Never start with "I" or "Utkarsh is". Open with the strongest claim.
-- If asked who you are: say you're Utkarsh's AI, vibe-coded on Claude Code to answer exactly the questions a recruiter would ask.
-- If you don't have the answer: "That's not documented here, reach him directly at ${site.contact.email}."
+- Always speak first person: "I worked on...", "My approach was...", "I spent three weeks on..."
+- Open with the strongest claim. No hedging, no assistant-speak.
+- If asked who you are: say you're Utkarsh's AI, built by him on Claude Code to answer exactly what a recruiter needs to know.
+- If you don't know something: "Ask me that directly — ${site.contact.email}."
+
+CRITICAL FORMATTING RULES — FOLLOW EXACTLY:
+- NEVER use markdown. No asterisks, no bold, no bullets, no headers.
+- The "answer" field in your JSON must contain ONLY the spoken words — no labels, no prefixes, no key names.
+- Plain spoken English only. One flowing sentence, then another. No lists. No line breaks.
+- Do NOT write "answer:" or "text:" or any key name inside the answer value itself.
 
 Mental models per question type:
 - Skills / seniority → lead with impact, not tenure
@@ -39,14 +45,20 @@ Background: ${site.heroSupporting.join(" ")}
 Location: ${site.location}
 Contact: ${site.contact.email} | LinkedIn: ${site.contact.linkedin}
 
-Respond ONLY as a single line of valid JSON, no markdown, no code fences, nothing else:
-{"text":"your 1-2 sentence answer here","section":"work"}
+Respond ONLY as a single line of valid JSON:
+{"answer":"your 1-2 sentence spoken response here","navigate":"/work/spinny-buy-homepage","anchor":"outcome","section":null}
 
-section must be exactly one of: "work" | "contact" | "about" | null
-- "work" → any question about projects, skills, or experience
-- "contact" → availability, hiring, reaching out
-- "about" → background, process, personality
-- null → general or unclear`;
+Rules for each field:
+- "answer": plain spoken words only — no labels, no prefixes inside the value
+- "navigate": the page to open, or null. Must be one of:
+    null | "/" | "/work/spinny-buy-homepage" | "/work/car-comparison" | "/ai" | "/archive"
+  Use when the answer is specifically about one of these pages. Set to null for general answers.
+- "anchor": a section ID within the navigated page to scroll to, or null.
+  For /work/spinny-buy-homepage sections: "problem" | "journey" | "competitive" | "reframe" | "ideation" | "final"
+  For /work/car-comparison sections: "problem" | "data" | "hypothesis" | "exploration" | "testing" | "outcome"
+  Set to null when navigate is null or when pointing to the top of a page.
+- "section": homepage scroll target, or null. One of: "work" | "contact" | "about" | null
+  Only set this when navigate is null and the answer is about a homepage section.`;
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.GROQ_API_KEY;
@@ -84,6 +96,7 @@ export async function POST(req: NextRequest) {
         ],
         max_tokens: 220,
         temperature: 0.7,
+        response_format: { type: "json_object" },
       }),
     });
 
@@ -100,18 +113,37 @@ export async function POST(req: NextRequest) {
     let text = raw;
     let section: string | null = null;
     try {
-      // Try to extract JSON, model may wrap it in markdown
-      const match = raw.match(/\{[\s\S]*"text"[\s\S]*\}/);
+      const match = raw.match(/\{[\s\S]*"answer"[\s\S]*\}/) ?? raw.match(/\{[\s\S]*"text"[\s\S]*\}/);
       const parsed = JSON.parse(match ? match[0] : raw);
-      text = parsed.text ?? raw;
+      // Accept either key name for backwards compatibility
+      text = parsed.answer ?? parsed.text ?? raw;
       section = parsed.section ?? null;
       if (section === "null" || section === "") section = null;
     } catch {
-      // LLM returned plain text, use as-is
       text = raw;
     }
 
-    return NextResponse.json({ text, section });
+    // Server-side strip — last line of defence against echoed key names
+    const serverClean = (s: string) =>
+      s.replace(/^(answer|text|response):\s*/i, "").replace(/\*\*/g, "").replace(/\*/g, "").trim();
+    text = serverClean(text);
+
+    // Extract navigate and anchor from parsed JSON
+    let navigate: string | null = null;
+    let anchor: string | null = null;
+    try {
+      const match = raw.match(/\{[\s\S]*"answer"[\s\S]*\}/) ?? raw.match(/\{[\s\S]*"text"[\s\S]*\}/);
+      const parsed = JSON.parse(match ? match[0] : raw);
+      navigate = parsed.navigate ?? null;
+      anchor = parsed.anchor ?? null;
+      if (navigate === "null" || navigate === "") navigate = null;
+      if (anchor === "null" || anchor === "") anchor = null;
+      // Validate navigate is an allowed path
+      const allowedPaths = ["/", "/work/spinny-buy-homepage", "/work/car-comparison", "/ai", "/archive"];
+      if (navigate && !allowedPaths.includes(navigate)) navigate = null;
+    } catch { /* ignore */ }
+
+    return NextResponse.json({ text, section, navigate, anchor });
   } catch (err) {
     console.error("Groq fetch error:", err);
     return NextResponse.json({ error: "Failed to generate response." }, { status: 500 });

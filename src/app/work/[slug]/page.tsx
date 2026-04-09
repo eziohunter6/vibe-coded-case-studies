@@ -145,7 +145,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="mt-10 space-y-16 sm:mt-16 sm:space-y-28">
           {project.sections.map((block, i) => (
             <Reveal key={block.id} delay={i * 0.03}>
-              <section aria-labelledby={`section-${block.id}`}>
+              <section id={block.id} aria-labelledby={`section-${block.id}`}>
                 <WordSnap
                   text={block.title}
                   delay={0.04}

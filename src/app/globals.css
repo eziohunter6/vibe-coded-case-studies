@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import "../styles/fonts.css";
 @import "tailwindcss";
 
@@ -63,6 +64,27 @@
   --font-body: "Inter", system-ui, sans-serif;
 }
 
+/* ─── Voice bot active: page floats as a rounded card ────── */
+html.voice-active {
+  background: #000;
+}
+
+html.voice-active body {
+  /* All four corners rounded — overflow:clip clips sticky header to boundary
+     without creating a scroll container (unlike overflow:hidden). */
+  border-radius: 28px;
+  overflow: clip;
+  transition: border-radius 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              padding-right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset on close */
+html:not(.voice-active) body {
+  border-radius: 0;
+  transition: border-radius 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              padding-right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* ─── Base ────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
@@ -124,22 +146,165 @@ body {
 #work,
 #contact,
 #info,
-#about {
-  scroll-margin-top: 80px;
+#about,
+#problem,
+#journey,
+#competitive,
+#reframe,
+#ideation,
+#final,
+#data,
+#hypothesis,
+#exploration,
+#testing,
+#outcome {
+  scroll-margin-top: 96px;
 }
 
 /* ─── Voice agent scroll highlight ───────────────────────── */
 .voice-highlight {
-  outline: 2px solid var(--cta) !important;
-  outline-offset: 8px;
-  border-radius: 4px;
-  animation: voice-highlight-fade 2.2s ease forwards;
+  animation: voice-highlight-fade 2.6s ease forwards !important;
 }
 
 @keyframes voice-highlight-fade {
-  0%   { outline-color: var(--cta); }
-  70%  { outline-color: var(--cta); }
-  100% { outline-color: transparent; }
+  0%   { box-shadow: 0 0 0 2px rgba(129,140,248,0.8), 0 0 48px 6px rgba(129,140,248,0.25); }
+  15%  { box-shadow: 0 0 0 2px rgba(129,140,248,0.8), 0 0 64px 10px rgba(129,140,248,0.3); }
+  70%  { box-shadow: 0 0 0 2px rgba(129,140,248,0.6), 0 0 48px 6px rgba(129,140,248,0.18); }
+  100% { box-shadow: 0 0 0 2px rgba(129,140,248,0),   0 0 0   0px rgba(129,140,248,0); }
+}
+
+/* ─── Aurora border (voice bot active) — Apple Intelligence style ── */
+@property --aurora-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes aurora-spin {
+  to { --aurora-angle: 360deg; }
+}
+
+/* Shared gradient — Apple Intelligence palette */
+.aurora-glow,
+.aurora-border {
+  background: conic-gradient(
+    from var(--aurora-angle) at 50% 50%,
+    #C686FF 0deg,
+    #BC82F3 50deg,
+    #8D9FFF 100deg,
+    #F5B9EA 150deg,
+    #FF6778 200deg,
+    #FFBA71 240deg,
+    #AA6EEE 290deg,
+    #C686FF 340deg,
+    #C686FF 360deg
+  );
+  animation: aurora-spin 5s linear infinite;
+  pointer-events: none;
+}
+
+/* Layer 1 — ambient edge glow, sits above page bg via screen blend */
+.aurora-glow {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  bottom: -4px;
+  right: clamp(300px, 25vw, 440px);
+  /* Above page background (z-index 0 was buried under --bg).
+     mix-blend-mode: screen makes it visible on any bg without covering content. */
+  z-index: 2;
+  pointer-events: none;
+  filter: blur(56px);
+  opacity: 0.45;
+  border-radius: 28px;
+  mix-blend-mode: screen;
+  /* Smooth multi-stop bloom from centre outward to all four corners.
+     200% ellipse = corner coverage guaranteed. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 200% 200% at 50% 50%,
+    transparent 18%,
+    rgba(0,0,0,0.08) 34%,
+    rgba(0,0,0,0.32) 52%,
+    rgba(0,0,0,0.68) 70%,
+    black 88%
+  );
+  mask-image: radial-gradient(
+    ellipse 200% 200% at 50% 50%,
+    transparent 18%,
+    rgba(0,0,0,0.08) 34%,
+    rgba(0,0,0,0.32) 52%,
+    rgba(0,0,0,0.68) 70%,
+    black 88%
+  );
+}
+
+/* In light mode screen blend washes out — use multiply instead */
+html:not(.dark) .aurora-glow {
+  mix-blend-mode: multiply;
+  opacity: 0.22;
+}
+
+/* Layer 2 — crisp 2.5px rotating border */
+.aurora-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: clamp(300px, 25vw, 440px);
+  z-index: 999;
+  padding: 2.5px;
+  border-radius: 28px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.85;
+}
+
+/* Mobile: bot is a bottom sheet, restore full-width / no rounding */
+@media (max-width: 767px) {
+  .aurora-glow  { top: -4px; left: -4px; bottom: -4px; right: -4px; border-radius: 0; }
+  .aurora-border { top: 0; left: 0; bottom: 0; right: 0; border-radius: 0; }
+}
+
+/* ─── Aurora gradient utilities ──────────────────────────── */
+
+/* Gradient text — background + clip MUST be in the same rule.
+   If background is set in a separate rule, the shorthand resets
+   background-clip back to border-box, breaking the text clip. */
+.dark .aurora-text {
+  background: linear-gradient(135deg, #C686FF 0%, #8D9FFF 42%, #F5B9EA 72%, #FFBA71 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html:not(.dark) .aurora-text {
+  background: linear-gradient(135deg, #7C3AED 0%, #4338CA 42%, #BE185D 72%, #B45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient border wrapper for inputs — 1px gradient strip */
+.aurora-input-wrap {
+  flex: 1;
+  min-width: 0;
+  padding: 1px;
+  border-radius: 80px;
+  background: linear-gradient(135deg, #C686FF, #8D9FFF, #F5B9EA, #FFBA71);
+  opacity: 1;
+  transition: opacity 0.15s;
+}
+html:not(.dark) .aurora-input-wrap {
+  background: linear-gradient(135deg, #7C3AED, #4338CA, #BE185D, #B45309);
+}
+.aurora-input-wrap.disabled { opacity: 0.35; }
+
+/* Static gradient mic button — gradient is fixed, only the wave icon animates */
+.aurora-mic-btn {
+  background: linear-gradient(135deg, #C686FF, #8D9FFF, #F5B9EA, #AA6EEE) !important;
+  border: none !important;
+  color: #fff !important;
 }
 
 /* ─── Grain overlay ───────────────────────────────────────── */

@@ -104,7 +104,7 @@ export const projects: Project[] = [
     slug: "spinny-buy-homepage",
     title: "Redesigning Spinny's homepage for committed buyers",
     tagline:
-      "Returning buyers with booked test drives landed on the same homepage as first-time visitors. The system knew their state. The homepage didn't.",
+      "Returning buyers landed on the same homepage as first-time visitors. I made it state-aware — +3.2% U2D at 2.5M MAU.",
     role: "Lead Designer",
     year: "2025",
     client: "Spinny",
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     slug: "car-comparison",
     title: "Comparison feature adding decision speed",
     tagline:
-      "16% of PDP users were already comparing cars — bouncing between listings, returning to the same ones. The behaviour was there. The product offered nothing to match it. I designed the decision layer that closed that gap.",
+      "16% of users were comparing cars with no tool to do it. I built the decision layer that closed the gap — +5.3% U2D, −18.3% time-to-visit.",
     role: "Lead Designer",
     year: "2025",
     client: "Spinny",
@@ -297,7 +297,7 @@ export const projects: Project[] = [
       "High-intent comparison behaviour was already in the data. The opportunity wasn't to create demand — it was to build decision architecture for users who already wanted to decide. That distinction shapes what you build completely.",
       "The A→B→A pattern was the most useful thing the data gave us. It reframed the problem from 'users can't decide' to 'the product isn't helping users who already want to decide.' That reframe changed everything about scope, structure, and what we chose not to build.",
       "If I were doing this again, I'd push for behavioural trigger testing earlier — specifically, I'd want to validate the no-explicit-CTA constraint with a small holdout group before committing to it as the rollout strategy. We were confident in the reasoning; a two-week micro-test would have made it a data point.",
-      "Structuring evaluation around weighted decision variables, not flat spec display, reduced cognitive friction for high-intent users and improved downstream qualification across all three key business metrics (U2Tds +1.6%, U2T +3.8%, U2D +5.3%). The deeper the funnel, the larger the improvement.",
+      "Giving users a structure to compare turned out to matter more than what they were comparing. The decision architecture moved the funnel — the specs were always there.",
     ],
   },
   {
@@ -305,7 +305,7 @@ export const projects: Project[] = [
     slug: "et-prime",
     title: "Improving ET Prime feature discoverability",
     tagline:
-      "ET Prime subscribers were paying for features they couldn't find. I redesigned feature discovery to close the gap between what users paid for and what they actually used.",
+      "+28% Prime renewals. Subscribers were paying for features they couldn't find — I fixed the discovery, not the product.",
     role: "Product designer",
     year: "2023",
     coverImage: "/images/analytics-cover.jpg",
@@ -344,7 +344,7 @@ export const projects: Project[] = [
     slug: "cleartrip-payments",
     title: "Reducing drop-offs at Payment Funnel",
     tagline:
-      "~1,600 users were dropping off at trip summary despite a 3-step checkout. Opaque pricing and unclear coupon confirmation were killing intent at the highest-stakes moment in the funnel.",
+      "~1,600 users dropped at trip summary — highest intent, wrong information. I fixed the pricing architecture at the one moment it had to work.",
     role: "Product designer",
     year: "2024",
     coverImage: "/images/checkout-cover.jpg",
@@ -355,7 +355,7 @@ export const projects: Project[] = [
     highlights: [
       { label: "Drop-offs", value: "~1,600 users/period abandoning at trip summary — pricing opacity and missing coupon confirmation identified as primary drivers" },
       { label: "Trust signals", value: "Redesigned price breakdown and coupon confirmation to surface exact savings at the moment of hesitation, removing the last question before payment" },
-      { label: "Conversion", value: "Checkout completion rate increased post-launch; last-mile drop-offs reduced, contributing directly to higher transaction volume" },
+      { label: "Conversion", value: "First-attempt checkout completion improved post-launch — last-mile drop-offs reduced, contributing directly to higher transaction volume." },
     ],
     body: [
       "Cleartrip's checkout was three steps: Review, Add Traveller, Pay. Short by any standard. But ~1,600 users per period were abandoning at step one — trip summary — despite having already searched, selected, and shown intent strong enough to enter the funnel. The flow length wasn't the problem.",
@@ -383,7 +383,7 @@ export const projects: Project[] = [
     slug: "release-craft",
     title: "Release craft the whole team could see",
     tagline:
-      "Release QA lived in a doc nobody opened. I built a visual and interaction check kit that shipped alongside the design system, so designers and engineers shared the same pass/fail criteria before anything merged.",
+      "Release QA lived in a doc nobody opened. I built a check kit versioned with the design system so designers and engineers shared the same pass/fail criteria.",
     role: "Design lead",
     year: "2022",
     coverImage: "/images/placeholder-cover.svg",
