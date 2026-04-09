@@ -32,16 +32,16 @@ export function ExtendedWorkSection({
         </p>
       </Reveal>
 
-      <ul className="mt-12 grid gap-5 sm:mt-16 sm:grid-cols-2 sm:gap-6">
+      <ul className="mt-12 grid gap-5 sm:mt-16 sm:grid-cols-2 sm:gap-6 sm:items-stretch">
         {projects.map((p, i) => (
-          <Reveal key={p.slug} delay={i * 0.06}>
-            <li>
-              <TiltCard maxTilt={3.5}>
-                <article className="group">
+          <Reveal key={p.slug} delay={i * 0.06} className="h-full">
+            <li className="h-full">
+              <TiltCard maxTilt={3.5} className="h-full">
+                <article className="group h-full">
                   <Link
                     href={`/work/${p.slug}`}
                     data-cursor-label="read the full story"
-                    className="flex flex-col overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] sm:rounded-[1.75rem]"
+                    className="flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] transition-[transform,box-shadow] duration-500 ease-out hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_40px_100px_-40px_rgba(0,0,0,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] sm:rounded-[1.75rem]"
                   >
                     {/* Image */}
                     <span className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--surface-elevated)]">
