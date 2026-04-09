@@ -239,6 +239,36 @@ export function VoiceAgent() {
     setInterimText("");
   }, []);
 
+  // Browser TTS fallback (used when ElevenLabs quota is exhausted)
+  const browserSpeak = useCallback((text: string) => new Promise<void>((resolve) => {
+    const synth = window.speechSynthesis;
+    if (!synth) { resolve(); return; }
+    synth.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 0.92;
+    utter.pitch = 1.02;
+    utter.volume = 1;
+    // Prefer a natural-sounding voice if available
+    const loadVoices = () => {
+      const voices = synth.getVoices();
+      const preferred = voices.find(
+        (v) =>
+          v.name.includes("Samantha") ||
+          v.name.includes("Karen") ||
+          v.name.includes("Google UK English Female") ||
+          v.name.includes("Google US English")
+      );
+      if (preferred) utter.voice = preferred;
+    };
+    loadVoices();
+    if (synth.getVoices().length === 0) {
+      synth.addEventListener("voiceschanged", loadVoices, { once: true });
+    }
+    utter.onend = () => resolve();
+    utter.onerror = () => resolve();
+    synth.speak(utter);
+  }), []);
+
   const speak = useCallback(async (text: string) => {
     setState("speaking");
     abortRef.current = new AbortController();
@@ -249,19 +279,26 @@ export function VoiceAgent() {
         body: JSON.stringify({ text }),
         signal: abortRef.current.signal,
       });
-      if (!res.ok) throw new Error("TTS failed");
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-      audioRef.current = audio;
-      audio.onended = () => { URL.revokeObjectURL(url); setState("idle"); };
-      audio.onerror = () => { URL.revokeObjectURL(url); setState("idle"); };
-      await audio.play();
+      if (res.ok) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        audioRef.current = audio;
+        audio.onended = () => { URL.revokeObjectURL(url); setState("idle"); };
+        audio.onerror = () => { URL.revokeObjectURL(url); setState("idle"); };
+        await audio.play();
+      } else {
+        // ElevenLabs unavailable (quota/key issue) — fall back to browser TTS
+        await browserSpeak(text);
+        setState("idle");
+      }
     } catch (err: unknown) {
       if (err instanceof Error && err.name === "AbortError") return;
+      // Last-resort browser TTS on any unexpected error
+      try { await browserSpeak(text); } catch { /* ignore */ }
       setState("idle");
     }
-  }, []);
+  }, [browserSpeak]);
 
   const ask = useCallback(
     async (question: string, withHistory: Message[]) => {
