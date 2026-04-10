@@ -506,8 +506,8 @@ export function VoiceAgent() {
       {/* ── Floating trigger ─────────────────────────────────────────────── */}
       {!open && (
         <div className="fixed bottom-6 right-6 z-50" style={{ width: 48, height: 48 }}>
-          {/* Sonar ping rings — periodic while discovery sequence is active */}
-          {fabState !== "dismissed" && !prefersReducedMotion && (
+          {/* Sonar ping rings — only while button is a circle (not when expanded) */}
+          {(fabState === "idle" || fabState === "ping") && !prefersReducedMotion && (
             <>
               <span className="aurora-ping" style={{ animationDelay: "0s" }} aria-hidden />
               <span className="aurora-ping" style={{ animationDelay: "0.45s" }} aria-hidden />
@@ -545,13 +545,30 @@ export function VoiceAgent() {
               )}
             </AnimatePresence>
 
-            {/* Mic icon — always visible */}
+            {/* AI stars icon — always visible */}
             <span className="flex h-12 w-12 shrink-0 items-center justify-center">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-                <rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor" />
-                <path d="M5 10a7 7 0 0014 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                <line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                {/* Large 4-pointed star — slow 45° shimmer oscillation */}
+                <motion.path
+                  d="M10 1 L11.5 8.5 L19 10 L11.5 11.5 L10 19 L8.5 11.5 L1 10 L8.5 8.5 Z"
+                  animate={prefersReducedMotion ? {} : { rotate: [0, 45, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  style={{ transformOrigin: "10px 10px" }}
+                />
+                {/* Small satellite star — twinkle */}
+                <motion.path
+                  d="M16 3 L16.6 4.4 L18 5 L16.6 5.6 L16 7 L15.4 5.6 L14 5 L15.4 4.4 Z"
+                  animate={prefersReducedMotion ? {} : { scale: [0.6, 1, 0.6], opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                  style={{ transformOrigin: "16px 5px" }}
+                />
+                {/* Tiny satellite star — offset twinkle */}
+                <motion.path
+                  d="M4.5 13 L4.9 14.1 L6 14.5 L4.9 14.9 L4.5 16 L4.1 14.9 L3 14.5 L4.1 14.1 Z"
+                  animate={prefersReducedMotion ? {} : { scale: [0.4, 0.9, 0.4], opacity: [0.35, 0.85, 0.35] }}
+                  transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 1.3 }}
+                  style={{ transformOrigin: "4.5px 14.5px" }}
+                />
               </svg>
             </span>
           </motion.button>
