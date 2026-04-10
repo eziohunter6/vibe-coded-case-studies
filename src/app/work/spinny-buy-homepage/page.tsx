@@ -29,7 +29,7 @@ const ThemeCtx = createContext<Theme>(DARK);
 function Sec({ children, id, cursorLabel }: { children: React.ReactNode; id?: string; cursorLabel?: string }) {
   const T = useContext(ThemeCtx);
   return (
-    <section id={id} data-cursor-label={cursorLabel} style={{ borderBottom: `1px solid ${T.rule}`, padding: "96px 0 56px" }}>
+    <section id={id} data-cursor-label={cursorLabel} style={{ borderBottom: `1px solid ${T.rule}`, padding: "clamp(40px, 8vw, 96px) 0 clamp(28px, 5vw, 56px)" }}>
       {children}
     </section>
   );
@@ -44,7 +44,7 @@ function Sn({ n }: { n: string }) {
 // ─── Section heading ─────────────────────────────────────────────────────────
 function Sh({ children, tag = "h2", text }: { children?: React.ReactNode; tag?: "h1" | "h2"; text?: string }) {
   const T = useContext(ThemeCtx);
-  const sharedStyle = { fontSize: "clamp(44px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w };
+  const sharedStyle = { fontSize: "clamp(26px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w };
   if (text) {
     return <WordSnap as={tag} text={text} delay={0.05} stagger={0.05} style={sharedStyle} />;
   }
@@ -154,7 +154,7 @@ function StatesSection() {
       </div>
 
       {/* 4-up horizontal grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 16 }}>
         {slides.map((slide) => (
           <div key={slide.src}>
             <img
@@ -190,7 +190,7 @@ export default function BuyHomepagePage() {
     <article style={{ background: T.bg, color: T.w, fontFamily: '"Inter", system-ui, sans-serif', fontSize: 16, lineHeight: 1.65, WebkitFontSmoothing: "antialiased", colorScheme: isDark ? "dark" : "light", cursor: isDark ? "auto" : "default" }}>
       <ScrollProgressBar />
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 clamp(16px, 5vw, 60px)" }}>
 
         {/* ── 01 HERO ─────────────────────────────────────────────────────── */}
         <Sec id="hero">
@@ -205,20 +205,16 @@ export default function BuyHomepagePage() {
             </Bl>
 
             {/* Meta row */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", marginTop: 44, borderTop: `1px solid ${T.rule}` }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", marginTop: 44, borderTop: `1px solid ${T.rule}`, gap: 1, background: T.rule }}>
               {[
                 { label: "Role", value: "Lead Designer" },
                 { label: "Team", value: "1 PM · 3 Eng · 1 Analyst" },
                 { label: "Platform", value: "iOS · Android · PWA" },
                 { label: "Timeline", value: "4 Weeks · 2025" },
-              ].map((m, i) => (
+              ].map((m) => (
                 <div
                   key={m.label}
-                  style={{
-                    padding: "20px 0 0 20px",
-                    borderLeft: i === 0 ? "none" : `1px solid ${T.rule}`,
-                    paddingLeft: i === 0 ? 0 : 20,
-                  }}
+                  style={{ padding: "20px", background: T.bg }}
                 >
                   <div style={{ fontSize: 11, fontWeight: 600, color: T.mut, letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: 5 }}>
                     {m.label}
@@ -254,7 +250,7 @@ export default function BuyHomepagePage() {
 
           <Reveal delay={0.05}>
             {/* Browser vs Buyer table, Figma design */}
-            <table style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
+            <table className="cmp-compare" style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
               <thead>
                 <tr>
                   <th style={{ width: 140, padding: "16px 20px", background: tbl.labelBg, border: `1px solid ${T.rule}`, textAlign: "left" }} />
@@ -277,13 +273,13 @@ export default function BuyHomepagePage() {
                   { label: "INTENT",       browser: "Exploratory · low commitment",              buyer: "Highest intent · completely ignored" },
                 ].map((row, i) => (
                   <tr key={row.label} style={{ borderTop: i === 0 ? "none" : `1px solid ${T.rule}` }}>
-                    <td style={{ fontSize: 10, fontWeight: 700, color: tbl.labelColor, letterSpacing: "0.08em", textTransform: "uppercase", background: tbl.labelBg, whiteSpace: "nowrap", padding: "18px 20px", border: `1px solid ${T.rule}`, verticalAlign: "middle" }}>
+                    <td data-label="" style={{ fontSize: 10, fontWeight: 700, color: tbl.labelColor, letterSpacing: "0.08em", textTransform: "uppercase", background: tbl.labelBg, whiteSpace: "nowrap", padding: "18px 20px", border: `1px solid ${T.rule}`, verticalAlign: "middle" }}>
                       {row.label}
                     </td>
-                    <td style={{ padding: "18px 20px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
+                    <td data-label="Browser" style={{ padding: "18px 20px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
                       {row.browser}
                     </td>
-                    <td style={{ padding: "18px 20px", background: tbl.buyerBg, borderTop: "1px solid rgba(200,60,80,0.18)", borderRight: "1px solid rgba(200,60,80,0.18)", borderBottom: "1px solid rgba(200,60,80,0.18)", borderLeft: "2px solid #c83c50", color: T.w, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
+                    <td data-label="Buyer" style={{ padding: "18px 20px", background: tbl.buyerBg, borderTop: "1px solid rgba(200,60,80,0.18)", borderRight: "1px solid rgba(200,60,80,0.18)", borderBottom: "1px solid rgba(200,60,80,0.18)", borderLeft: "2px solid #c83c50", color: T.w, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
                       {row.buyer}
                     </td>
                   </tr>
@@ -317,9 +313,9 @@ export default function BuyHomepagePage() {
 
           <Reveal delay={0.05}>
             {/* Lifecycle diagram, Figma design */}
-            <div style={{ margin: "40px 0 24px", background: isDark ? "#141414" : "#e8e8e6", borderRadius: 12, padding: "40px 32px 36px" }}>
+            <div style={{ margin: "40px 0 24px", background: isDark ? "#141414" : "#e8e8e6", borderRadius: 12, padding: "40px 32px 36px", overflowX: "auto" }}>
               {/* Stage track */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8, position: "relative" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8, position: "relative", minWidth: 520 }}>
                 {/* Connecting line, top: 34px spacer + 28px (half of 56px icon) = 62 */}
                 <div style={{ position: "absolute", top: 62, left: "12.5%", right: "12.5%", height: 1, background: isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.12)", zIndex: 0 }} />
 
@@ -435,7 +431,7 @@ export default function BuyHomepagePage() {
 
           <Reveal delay={0.05}>
             {/* Competitive audit table, Figma design */}
-            <table style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
+            <table className="cmp-audit" style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
               <thead>
                 <tr>
                   <th style={{ width: 160, padding: "12px 18px", background: T.card, border: `1px solid ${T.rule}`, textAlign: "left", fontSize: 12, fontWeight: 600, color: T.mut, letterSpacing: "0.05em", textTransform: "uppercase" }}>Platform</th>
@@ -447,59 +443,59 @@ export default function BuyHomepagePage() {
               <tbody>
                 {/* Cars 24 */}
                 <tr>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <div style={{ fontSize: 14, fontWeight: 600, color: T.w }}>Cars 24</div>
                     <div style={{ fontSize: 11, fontWeight: 600, color: T.mut, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 3 }}>Indian Market</div>
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
+                  <td data-label="Post-booking" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
                     Dashboard widget with delivery tracker but only visible when logged in.
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="State awareness" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                       {["Conditional", "Anonymous", "Users sees nothing"].map(c => (
                         <span key={c} style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: tbl.chipBg, color: T.mut, border: `1px solid ${tbl.chipBorder}` }}>{c}</span>
                       ))}
                     </div>
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="Verdict" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <span style={{ fontSize: 11, fontWeight: 700, padding: "4px 12px", borderRadius: 100, background: "rgba(251,191,36,0.12)", color: T.ylw, border: "1px solid rgba(251,191,36,0.3)" }}>Partial</span>
                   </td>
                 </tr>
                 {/* Car Dekho */}
                 <tr>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <div style={{ fontSize: 14, fontWeight: 600, color: T.w }}>Car Dekho</div>
                     <div style={{ fontSize: 11, fontWeight: 600, color: T.mut, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 3 }}>Indian Market</div>
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
+                  <td data-label="Post-booking" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
                     Generic inventory homepage. Identical to a first visit. No booking state.
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="State awareness" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <span style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: tbl.chipBg, color: T.mut, border: `1px solid ${tbl.chipBorder}` }}>None</span>
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="Verdict" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <span style={{ fontSize: 11, fontWeight: 700, padding: "4px 12px", borderRadius: 100, background: "rgba(248,113,113,0.12)", color: T.red, border: "1px solid rgba(248,113,113,0.3)" }}>None</span>
                   </td>
                 </tr>
                 {/* CarWale */}
                 <tr>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <div style={{ fontSize: 14, fontWeight: 600, color: T.w }}>CarWale</div>
                     <div style={{ fontSize: 11, fontWeight: 600, color: T.mut, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 3 }}>Indian Market</div>
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
+                  <td data-label="Post-booking" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
                     Category filters and listings. Transactional intent invisible to the interface.
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="State awareness" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <span style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: tbl.chipBg, color: T.mut, border: `1px solid ${tbl.chipBorder}` }}>None</span>
                   </td>
-                  <td style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
+                  <td data-label="Verdict" style={{ padding: "16px 18px", border: `1px solid ${T.rule}`, verticalAlign: "top" }}>
                     <span style={{ fontSize: 11, fontWeight: 700, padding: "4px 12px", borderRadius: 100, background: "rgba(248,113,113,0.12)", color: T.red, border: "1px solid rgba(248,113,113,0.3)" }}>None</span>
                   </td>
                 </tr>
                 {/* Spinny */}
                 <tr style={{ background: "rgba(91,123,255,0.05)" }}>
-                  <td style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", verticalAlign: "top" }}>
+                  <td data-label="" style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", verticalAlign: "top" }}>
                     <svg width="81" height="32" viewBox="0 0 102 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                       {/* Diamond dots and inner S, white on red, fine in both modes */}
                       <path d="M27.9483 19.0205C27.7538 19.0204 27.5637 19.078 27.402 19.186C27.2403 19.294 27.1142 19.4475 27.0398 19.6271C26.9653 19.8067 26.9458 20.0044 26.9837 20.1951C27.0216 20.3858 27.1152 20.561 27.2526 20.6985C27.3901 20.8361 27.5653 20.9297 27.756 20.9677C27.9467 21.0057 28.1444 20.9862 28.324 20.9118C28.5037 20.8374 28.6572 20.7114 28.7652 20.5498C28.8733 20.3881 28.9309 20.198 28.9309 20.0036C28.931 19.8745 28.9056 19.7467 28.8563 19.6274C28.8069 19.5081 28.7345 19.3997 28.6433 19.3085C28.552 19.2172 28.4437 19.1448 28.3244 19.0953C28.2052 19.0459 28.0773 19.0205 27.9483 19.0205Z" fill="white"/>
@@ -517,16 +513,16 @@ export default function BuyHomepagePage() {
                     </svg>
                     <div style={{ fontSize: 11, fontWeight: 600, color: T.mut, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 6 }}>Indian Market</div>
                   </td>
-                  <td style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
+                  <td data-label="Post-booking" style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", color: T.dim, verticalAlign: "top", lineHeight: 1.65, fontSize: 13 }}>
                     The homepage tends to have a Phoenix Experience which enables a user with scarce and surface level information. This enables in low confidence and reduces the decision velocity.
                   </td>
-                  <td style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", verticalAlign: "top" }}>
+                  <td data-label="State awareness" style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", verticalAlign: "top" }}>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                       <span style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: tbl.chipBg, color: T.mut, border: `1px solid ${tbl.chipBorder}` }}>None</span>
                       <span style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: tbl.chipBg, color: T.mut, border: `1px solid ${tbl.chipBorder}` }}>Committed users are invisible</span>
                     </div>
                   </td>
-                  <td style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", verticalAlign: "top" }}>
+                  <td data-label="Verdict" style={{ padding: "16px 18px", border: "1px solid rgba(91,123,255,0.2)", verticalAlign: "top" }}>
                     <span style={{ fontSize: 11, fontWeight: 700, padding: "4px 12px", borderRadius: 100, background: "rgba(91,123,255,0.15)", color: "#8fa8ff", border: "1px solid rgba(91,123,255,0.35)" }}>Gap</span>
                   </td>
                 </tr>
@@ -583,7 +579,7 @@ export default function BuyHomepagePage() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
               {[
                 { title: "ReactJS performance limits", body: "Complex patterns like snappable carousels were off the table. Clarity had to come from content hierarchy, not animation." },
                 { title: "Platform team ownership", body: "The transaction dashboard under Profile was owned by a separate team. We could extend the homepage, not reorganise the architecture." },
@@ -720,7 +716,7 @@ export default function BuyHomepagePage() {
 
           <Reveal delay={0.05}>
             {/* Metric cards */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: T.rule, margin: "32px 0" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 1, background: T.rule, margin: "32px 0" }}>
               {[
                 {
                   number: "−5.14%",

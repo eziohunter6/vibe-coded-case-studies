@@ -59,7 +59,7 @@ export function MiniCasePanel({
             </Dialog.Close>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-10 pt-4">
+          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-[max(2.5rem,env(safe-area-inset-bottom,2.5rem))] pt-4">
             <div className="relative mb-7 aspect-[16/10] w-full overflow-hidden rounded-[1rem] rounded-xl border border-[var(--line)] bg-[var(--surface-elevated)]">
               <Image
                 src={project.coverImage}

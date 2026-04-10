@@ -29,7 +29,7 @@ const ThemeCtx = createContext<Theme>(DARK);
 function Sec({ children, id, cursorLabel }: { children: React.ReactNode; id?: string; cursorLabel?: string }) {
   const T = useContext(ThemeCtx);
   return (
-    <section id={id} data-cursor-label={cursorLabel} style={{ borderBottom: `1px solid ${T.rule}`, padding: "96px 0 56px" }}>
+    <section id={id} data-cursor-label={cursorLabel} style={{ borderBottom: `1px solid ${T.rule}`, padding: "clamp(40px, 8vw, 96px) 0 clamp(28px, 5vw, 56px)" }}>
       {children}
     </section>
   );
@@ -42,7 +42,7 @@ function Sn({ n }: { n: string }) {
 
 function Sh({ children, tag = "h2", text }: { children?: React.ReactNode; tag?: "h1" | "h2"; text?: string }) {
   const T = useContext(ThemeCtx);
-  const sharedStyle = { fontSize: "clamp(44px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w };
+  const sharedStyle = { fontSize: "clamp(26px, 5.5vw, 72px)", fontWeight: 700, letterSpacing: -1.5, lineHeight: 1.06, color: T.w };
   if (text) {
     return <WordSnap as={tag} text={text} delay={0.05} stagger={0.05} style={sharedStyle} />;
   }
@@ -194,7 +194,7 @@ export default function CarComparisonPage() {
       }}>
         <ScrollProgressBar />
 
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 clamp(16px, 5vw, 60px)" }}>
 
           {/* ── 01 HERO ──────────────────────────────────────────────────────── */}
           <Sec id="hero">
@@ -209,9 +209,9 @@ export default function CarComparisonPage() {
               </Bl>
 
               {/* Metadata grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", marginTop: 44, borderTop: `1px solid ${T.rule}` }}>
-                {meta.map((m, i) => (
-                  <div key={m.label} style={{ padding: "20px 0 0", paddingLeft: i === 0 ? 0 : 20, borderLeft: i === 0 ? "none" : `1px solid ${T.rule}` }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", marginTop: 44, borderTop: `1px solid ${T.rule}`, gap: 1, background: T.rule }}>
+                {meta.map((m) => (
+                  <div key={m.label} style={{ padding: "20px", background: T.bg }}>
                     <div style={{ fontSize: 11, fontWeight: 600, color: T.mut, letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: 5 }}>{m.label}</div>
                     <div style={{ fontSize: 14, fontWeight: 500, color: T.w }}>{m.value}</div>
                   </div>
@@ -252,7 +252,7 @@ export default function CarComparisonPage() {
 
             <Reveal delay={0.05}>
               {/* Browser vs Comparer table */}
-              <table style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
+              <table className="cmp-compare" style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0", fontSize: 14 }}>
                 <thead>
                   <tr>
                     <th style={{ width: 140, padding: "16px 20px", background: tbl.labelBg, border: `1px solid ${T.rule}`, textAlign: "left" }} />
@@ -275,13 +275,13 @@ export default function CarComparisonPage() {
                     { label: "DROP-OFF RISK", browser: "Low, still discovering",                                           comp: "High, cognitive overload leads to abandonment" },
                   ].map((row, i) => (
                     <tr key={row.label} style={{ borderTop: i === 0 ? "none" : `1px solid ${T.rule}` }}>
-                      <td style={{ fontSize: 10, fontWeight: 700, color: tbl.labelColor, letterSpacing: "0.08em", textTransform: "uppercase", background: tbl.labelBg, padding: "18px 20px", border: `1px solid ${T.rule}`, verticalAlign: "middle" }}>
+                      <td data-label="" style={{ fontSize: 10, fontWeight: 700, color: tbl.labelColor, letterSpacing: "0.08em", textTransform: "uppercase", background: tbl.labelBg, padding: "18px 20px", border: `1px solid ${T.rule}`, verticalAlign: "middle" }}>
                         {row.label}
                       </td>
-                      <td style={{ padding: "18px 20px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
+                      <td data-label="Browser" style={{ padding: "18px 20px", border: `1px solid ${T.rule}`, color: T.dim, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
                         {row.browser}
                       </td>
-                      <td style={{ padding: "18px 20px", background: tbl.compBg, borderTop: "1px solid rgba(200,60,80,0.18)", borderRight: "1px solid rgba(200,60,80,0.18)", borderBottom: "1px solid rgba(200,60,80,0.18)", borderLeft: "2px solid #c83c50", color: T.w, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
+                      <td data-label="Comparer" style={{ padding: "18px 20px", background: tbl.compBg, borderTop: "1px solid rgba(200,60,80,0.18)", borderRight: "1px solid rgba(200,60,80,0.18)", borderBottom: "1px solid rgba(200,60,80,0.18)", borderLeft: "2px solid #c83c50", color: T.w, verticalAlign: "middle", lineHeight: 1.6, fontSize: 13 }}>
                         {row.comp}
                       </td>
                     </tr>
@@ -307,7 +307,7 @@ export default function CarComparisonPage() {
               </B>
 
               {/* 3 stat cards */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: T.rule, margin: "36px 0" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 1, background: T.rule, margin: "36px 0" }}>
                 {[
                   { n: "1 in 6", l: "PDP users ever compare", c: "318,287 comparing users out of 2.3M. Most users browse without ever comparing, the behaviour is undiscovered." },
                   { n: "11×",    l: "Higher delivery conversion", c: "Comparing users deliver at 1.74% vs 0.15% for non-comparing. Same funnel, same period, entirely different outcomes." },
@@ -384,7 +384,7 @@ export default function CarComparisonPage() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
                 {[
                   { title: "Performance budget", body: "A significant portion of users were on mid-to-low Android devices. The comparison view had to load fast and avoid layout shifts, CLS was a hard constraint, not a nice-to-have." },
                   { title: "Team ownership", body: "The PDP was owned by a separate team. The comparison entry point had to work without touching PDP code, the tray had to be fully self-contained and contextually injected." },
@@ -414,7 +414,7 @@ export default function CarComparisonPage() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, margin: "32px 0" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16, margin: "32px 0" }}>
                 <div>
                   <img
                     src={isDark ? "/images/car-comparison/two-paths-option1-dark.png" : "/images/car-comparison/two-paths-option1-light.png"}
@@ -532,7 +532,7 @@ export default function CarComparisonPage() {
 
             <Reveal delay={0.05}>
               {/* 3 primary metric cards, same pattern as Buy Homepage */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: T.rule, margin: "32px 0" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 1, background: T.rule, margin: "32px 0" }}>
                 {[
                   { value: "+5.3%", label: "User-to-Delivery (U2D)", context: "The most downstream measure. Comparing users reaching delivery increased significantly post-launch, confirmed via randomised A/B test." },
                   { value: "+3.8%", label: "User-to-Test Drive (U2T)", context: "Earlier in the funnel but harder to move. The comparison view surfacing direct booking drove this metric up independently." },
@@ -554,7 +554,7 @@ export default function CarComparisonPage() {
               </div>
 
               {/* Speed metrics, 2-column, same grid treatment */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: T.rule }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 1, background: T.rule }}>
                 {[
                   { value: "−12.4%", label: "Time-to-Token", context: "Users moved from comparison to token payment faster after the feature launched." },
                   { value: "−18.3%", label: "Time-to-Visit", context: "Time from first PDP view to test drive visit dropped, fewer sessions needed to reach commitment." },

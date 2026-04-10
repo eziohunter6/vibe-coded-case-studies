@@ -840,7 +840,7 @@ export function VoiceAgent() {
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
-                padding: "12px 20px 20px",
+                padding: "12px 20px max(20px, env(safe-area-inset-bottom, 20px)) 20px",
                 flexShrink: 0,
                 borderTop: "1px solid rgba(198,134,255,0.2)",
               }}

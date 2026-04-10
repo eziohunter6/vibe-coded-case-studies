@@ -81,7 +81,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-12 max-w-[1440px] items-center justify-between px-6 sm:h-14 sm:px-12">
         <Link
           href="/"
-          className="text-3xl font-bold tracking-tight transition-opacity hover:opacity-60"
+          className="text-2xl font-bold tracking-tight transition-opacity hover:opacity-60 sm:text-3xl"
           style={{ fontFamily: '"Inter", system-ui, sans-serif', color: 'var(--text)', textDecoration: 'none' }}
           suppressHydrationWarning
         >
@@ -154,7 +154,7 @@ export function SiteHeader() {
                     href={href}
                     onClick={() => setMobileOpen(false)}
                     data-cursor-label={cursorLabel}
-                    className={`flex items-center justify-between border-b border-[var(--line)] py-4 text-[15px] font-medium last:border-0 transition-colors ${
+                    className={`flex items-center justify-between border-b border-[var(--line)] py-3 text-[15px] font-medium last:border-0 transition-colors sm:py-4 ${
                       isActive(href, sectionId)
                         ? "text-[var(--text)]"
                         : "text-[var(--muted)]"

@@ -316,6 +316,77 @@ html:not(.dark) .aurora-input-wrap {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* ─── Responsive tables for custom case study pages ──────── */
+@media (max-width: 640px) {
+  /* 3-col comparison table: label | browser | buyer */
+  .cmp-compare { display: block !important; width: 100% !important; }
+  .cmp-compare thead { display: none !important; }
+  .cmp-compare tbody { display: flex !important; flex-direction: column !important; gap: 10px !important; }
+  .cmp-compare tbody tr {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(0,0,0,0.09) !important;
+  }
+  html.dark .cmp-compare tbody tr { border-color: rgba(255,255,255,0.1) !important; }
+  .cmp-compare tbody td { border: none !important; padding: 12px 14px !important; font-size: 12px !important; }
+  .cmp-compare tbody td:first-child {
+    grid-column: 1 / -1 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    font-size: 10px !important;
+    padding: 9px 14px !important;
+  }
+  html.dark .cmp-compare tbody td:first-child { border-bottom-color: rgba(255,255,255,0.08) !important; }
+  .cmp-compare tbody td[data-label="Buyer"],
+  .cmp-compare tbody td[data-label="Comparer"] {
+    border-left: 2px solid #c83c50 !important;
+  }
+  .cmp-compare tbody td[data-label]:not([data-label=""])::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.45;
+    margin-bottom: 5px;
+  }
+
+  /* 4-col audit table: platform | description | state-awareness | verdict */
+  .cmp-audit { display: block !important; width: 100% !important; }
+  .cmp-audit thead { display: none !important; }
+  .cmp-audit tbody { display: flex !important; flex-direction: column !important; gap: 10px !important; }
+  .cmp-audit tbody tr {
+    display: block !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(0,0,0,0.09) !important;
+  }
+  html.dark .cmp-audit tbody tr { border-color: rgba(255,255,255,0.1) !important; }
+  .cmp-audit tbody td {
+    display: block !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(0,0,0,0.07) !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 12px !important;
+  }
+  html.dark .cmp-audit tbody td { border-bottom-color: rgba(255,255,255,0.07) !important; }
+  .cmp-audit tbody td:last-child { border-bottom: none !important; }
+  .cmp-audit tbody td[data-label]:not([data-label=""])::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.45;
+    margin-bottom: 5px;
+  }
+}
+
 /* ─── No-script fallback: respect system dark pref ───────── */
 @media (prefers-color-scheme: dark) {
   html:not(.light):not(.dark) {

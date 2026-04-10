@@ -40,7 +40,7 @@ export default async function CaseStudyPage({ params }: Props) {
       <ScrollProgressBar />
 
       {/* Hero */}
-      <div className="relative min-h-[72svh] w-full overflow-hidden sm:min-h-[78svh]">
+      <div className="relative min-h-[55svh] w-full overflow-hidden sm:min-h-[78svh]">
         <div className="absolute inset-0">
           <ParallaxLayer className="relative h-[115%] w-full" yRange={[-32, 32]}>
             <Image
@@ -59,7 +59,7 @@ export default async function CaseStudyPage({ params }: Props) {
         />
         <div className="grain opacity-[0.07]" aria-hidden />
 
-        <div className="relative z-10 flex min-h-[72svh] flex-col justify-end sm:min-h-[78svh]">
+        <div className="relative z-10 flex min-h-[55svh] flex-col justify-end sm:min-h-[78svh]">
           <div className="mx-auto w-full max-w-[1440px] px-6 pb-10 pt-20 sm:px-12 sm:pb-16 sm:pt-28">
             <nav aria-label="Breadcrumb" className="mb-5 sm:mb-8">
               <ol className="flex flex-wrap items-center gap-2 text-[13px] text-[var(--muted)]">
@@ -129,7 +129,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
         {project.pullQuote ? (
           <Reveal>
-            <figure className="my-16 border-l-2 border-[var(--cta)] pl-8 sm:my-20">
+            <figure className="my-16 border-l-2 border-[var(--cta)] pl-4 sm:my-20 sm:pl-8">
               <blockquote className="text-balance text-[1.35rem] font-medium leading-snug tracking-tight text-[var(--text)] sm:text-[1.5rem]">
                 "{project.pullQuote.text}"
               </blockquote>
@@ -167,7 +167,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   <div
                     className={
                       block.emphasis
-                        ? "mt-12 -mx-5 sm:-mx-[max(0px,calc((100vw-720px)/2-2rem)))]"
+                        ? "mt-12 sm:-mx-[max(0px,calc((100vw-720px)/2-2rem)))]"
                         : "mt-12"
                     }
                   >
@@ -199,7 +199,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
 
         {project.reflection?.length ? (
-          <aside className="mt-24 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-8 sm:mt-28 sm:p-10">
+          <aside className="mt-24 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 sm:mt-28 sm:p-10">
             <h2 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[var(--faint)]">
               Reflection
             </h2>

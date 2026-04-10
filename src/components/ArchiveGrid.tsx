@@ -130,7 +130,7 @@ function Lightbox({
         type="button"
         onClick={(e) => { e.stopPropagation(); onPrev(); }}
         aria-label="Previous"
-        className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/50 transition hover:border-white/40 hover:text-white"
+        className="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/50 transition hover:border-white/40 hover:text-white"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -142,7 +142,7 @@ function Lightbox({
         type="button"
         onClick={(e) => { e.stopPropagation(); onNext(); }}
         aria-label="Next"
-        className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/50 transition hover:border-white/40 hover:text-white"
+        className="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/50 transition hover:border-white/40 hover:text-white"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M5 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -276,7 +276,7 @@ export function ArchiveGrid({ photos }: { photos: Photo[] }) {
                 key={id}
                 type="button"
                 onClick={() => setActive(id)}
-                className={`flex shrink-0 items-center gap-1.5 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] transition-all ${
+                className={`flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] transition-all sm:py-1.5 ${
                   isActive
                     ? "bg-[var(--text)] text-[var(--bg)]"
                     : "text-[var(--faint)] hover:text-[var(--text)]"
