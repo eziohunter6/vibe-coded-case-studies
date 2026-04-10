@@ -506,8 +506,8 @@ export function VoiceAgent() {
       {/* ── Floating trigger ─────────────────────────────────────────────── */}
       {!open && (
         <div className="fixed bottom-6 right-6 z-50" style={{ width: 48, height: 48 }}>
-          {/* Sonar ping rings — fire once at t=1.2s */}
-          {fabState === "ping" && !prefersReducedMotion && (
+          {/* Sonar ping rings — periodic while discovery sequence is active */}
+          {fabState !== "dismissed" && !prefersReducedMotion && (
             <>
               <span className="aurora-ping" style={{ animationDelay: "0s" }} aria-hidden />
               <span className="aurora-ping" style={{ animationDelay: "0.45s" }} aria-hidden />

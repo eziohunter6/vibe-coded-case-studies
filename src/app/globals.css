@@ -389,15 +389,16 @@ html:not(.dark) .aurora-input-wrap {
 
 /* ─── Aurora ping (sonar ripple, fires once on FAB discovery) ── */
 @keyframes aurora-ping {
-  0%   { transform: scale(1);   opacity: 0.55; }
-  100% { transform: scale(2.4); opacity: 0; }
+  0%   { transform: scale(1);   opacity: 0.5; }
+  38%  { transform: scale(2.3); opacity: 0;   }
+  100% { transform: scale(2.3); opacity: 0;   }
 }
 .aurora-ping {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   background: linear-gradient(135deg, #C686FF, #8D9FFF, #F5B9EA);
-  animation: aurora-ping 1.4s ease-out forwards;
+  animation: aurora-ping 2.4s cubic-bezier(0.2, 0, 0.4, 1) infinite;
   pointer-events: none;
   z-index: -1;
 }
