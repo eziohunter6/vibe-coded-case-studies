@@ -387,6 +387,33 @@ html:not(.dark) .aurora-input-wrap {
   }
 }
 
+/* ─── Aurora ping (sonar ripple, fires once on FAB discovery) ── */
+@keyframes aurora-ping {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.aurora-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C686FF, #8D9FFF, #F5B9EA);
+  animation: aurora-ping 1.4s ease-out forwards;
+  pointer-events: none;
+  z-index: -1;
+}
+html:not(.dark) .aurora-ping {
+  background: linear-gradient(135deg, #7C3AED, #4338CA, #BE185D);
+  opacity: 0.35;
+}
+
+/* ─── Aurora FAB static glow ─────────────────────────────────── */
+.aurora-fab-glow {
+  box-shadow: 0 4px 20px rgba(141,159,255,0.22);
+}
+html:not(.dark) .aurora-fab-glow {
+  box-shadow: 0 4px 16px rgba(124,58,237,0.15);
+}
+
 /* ─── No-script fallback: respect system dark pref ───────── */
 @media (prefers-color-scheme: dark) {
   html:not(.light):not(.dark) {

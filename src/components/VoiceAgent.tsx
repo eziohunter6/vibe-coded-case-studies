@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 type AgentState = "idle" | "listening" | "thinking" | "speaking" | "error";
 type Message = { role: "user" | "bot"; text: string };
@@ -135,6 +135,8 @@ export function VoiceAgent() {
   const [errorMsg, setErrorMsg] = useState("");
   const [introPlayed, setIntroPlayed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [fabState, setFabState] = useState<"idle" | "ping" | "expanded" | "dismissed">("idle");
+  const prefersReducedMotion = useReducedMotion();
 
   const recognitionRef = useRef<ISpeechRecognition | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -190,6 +192,18 @@ export function VoiceAgent() {
       if (introTimerRef.current) clearTimeout(introTimerRef.current);
     };
   }, []);
+
+  // FAB discovery sequence — ping → expand → dismiss
+  useEffect(() => {
+    const pingTimer    = setTimeout(() => setFabState("ping"),      1200);
+    const expandTimer  = setTimeout(() => setFabState("expanded"),  3500);
+    const dismissTimer = setTimeout(() => setFabState("dismissed"), 10000);
+    return () => {
+      clearTimeout(pingTimer);
+      clearTimeout(expandTimer);
+      clearTimeout(dismissTimer);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Scroll + highlight section ──────────────────────────────────────────────
   const scrollToSection = useCallback((section: string | null) => {
@@ -491,20 +505,57 @@ export function VoiceAgent() {
     <>
       {/* ── Floating trigger ─────────────────────────────────────────────── */}
       {!open && (
-        <button
-          type="button"
-          aria-label="Talk to Utkarsh AI"
-          onClick={handleOpen}
-          data-cursor-label="ask me anything"
-          className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--cta)] text-[var(--cta-label)] shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cta)] focus-visible:ring-offset-2"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor" />
-            <path d="M5 10a7 7 0 0014 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-            <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </button>
+        <div className="fixed bottom-6 right-6 z-50" style={{ width: 48, height: 48 }}>
+          {/* Sonar ping rings — fire once at t=1.2s */}
+          {fabState === "ping" && !prefersReducedMotion && (
+            <>
+              <span className="aurora-ping" style={{ animationDelay: "0s" }} aria-hidden />
+              <span className="aurora-ping" style={{ animationDelay: "0.45s" }} aria-hidden />
+            </>
+          )}
+
+          {/* Morphing aurora FAB */}
+          <motion.button
+            type="button"
+            aria-label="Talk to Utkarsh AI"
+            data-cursor-label="ask me anything"
+            onClick={() => {
+              setFabState("dismissed");
+              handleOpen();
+            }}
+            className="aurora-mic-btn aurora-fab-glow absolute right-0 bottom-0 flex h-12 items-center justify-center rounded-full overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
+            animate={{ width: fabState === "expanded" ? 220 : 48 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={fabState !== "dismissed" ? { scale: 1.04 } : {}}
+          >
+            {/* Text — fades in when expanded */}
+            <AnimatePresence>
+              {fabState === "expanded" && (
+                <motion.span
+                  key="fab-text"
+                  initial={{ opacity: 0, maxWidth: 0 }}
+                  animate={{ opacity: 1, maxWidth: 160 }}
+                  exit={{ opacity: 0, maxWidth: 0 }}
+                  transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.28, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  className="pl-4 pr-1 text-[13px] font-medium text-white whitespace-nowrap overflow-hidden"
+                  style={{ display: "block" }}
+                >
+                  Ask me anything
+                </motion.span>
+              )}
+            </AnimatePresence>
+
+            {/* Mic icon — always visible */}
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor" />
+                <path d="M5 10a7 7 0 0014 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </span>
+          </motion.button>
+        </div>
       )}
 
       {/* ── Aurora corner glows — 4 radial blobs, one per corner ───────── */}
