@@ -25,7 +25,7 @@ export function ExtendedWorkSection({
           text="Case studies"
           delay={0.05}
           className="mt-3 text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
-          style={{ fontFamily: '"Inter", system-ui, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}
+          style={{ fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}
         />
         <p className="mt-4 max-w-[40rem] text-pretty text-base leading-relaxed text-[var(--muted)]">
           {site.workIntro}

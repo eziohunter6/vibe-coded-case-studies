@@ -22,7 +22,7 @@
 
 /* ─── Light mode (default) ────────────────────────────────── */
 :root {
-  --bg:              #F5F5F0;
+  --bg:              #FFFFFF;
   --bg-elevated:     #EBEBEB;
   --surface:         #E2E2DD;
   --surface-elevated:#D8D8D3;
@@ -59,9 +59,9 @@
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-sans:    "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+  --font-display: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+  --font-body:    "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
 }
 
 /* ─── Voice bot active: page floats as a rounded card ────── */
@@ -99,7 +99,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body), "Inter", system-ui, sans-serif;
+  font-family: var(--font-body), "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

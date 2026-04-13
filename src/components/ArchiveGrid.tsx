@@ -220,7 +220,7 @@ function SectionHeader({ index, category, count }: {
         <h2
           className="mt-2 font-bold leading-[1.0] tracking-[-0.03em] text-[var(--text)]"
           style={{
-            fontFamily: '"Inter", system-ui, sans-serif',
+            fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
             fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
           }}
         >

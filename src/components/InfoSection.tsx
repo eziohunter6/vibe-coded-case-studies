@@ -29,7 +29,7 @@ export function InfoSection() {
               delay={0.05}
               className="mt-3 text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
               style={{
-                fontFamily: '"Inter", system-ui, sans-serif',
+                fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
                 fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
               }}
             />
