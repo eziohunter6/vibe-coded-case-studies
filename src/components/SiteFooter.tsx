@@ -6,6 +6,25 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-[var(--line)] bg-[var(--bg)]" data-cursor-label="you made it.">
       <div className="mx-auto max-w-[1440px] px-6 py-12 sm:px-12">
+        {/* WoP badges */}
+        <div className="mb-6 flex items-center gap-[8px]">
+          <img
+            src="/brand/wop-badge-silver.svg"
+            alt="Wall of Portfolios Silver 2026"
+            className="h-[72px] w-auto"
+          />
+          <img
+            src="/brand/wop-badge-black.svg"
+            alt="Featured on Wall of Portfolios 2026"
+            className="h-8 w-auto [.dark_&]:hidden"
+          />
+          <img
+            src="/brand/wop-badge-white.svg"
+            alt="Featured on Wall of Portfolios 2026"
+            className="hidden h-8 w-auto [.dark_&]:block"
+          />
+        </div>
+
         {/* Top row, name + social links */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div>
