@@ -30,7 +30,7 @@ export function SiteFooter() {
           <div>
             <p
               className="text-[13px] font-bold tracking-[-0.02em] text-[var(--text)]"
-              style={{ fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif' }}
+              style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
             >
               {site.name}
             </p>

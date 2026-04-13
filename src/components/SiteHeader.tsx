@@ -82,7 +82,7 @@ export function SiteHeader() {
         <Link
           href="/"
           className="text-2xl font-bold tracking-tight transition-opacity hover:opacity-60 sm:text-3xl"
-          style={{ fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif', color: 'var(--text)', textDecoration: 'none' }}
+          style={{ fontFamily: '"Inter", system-ui, sans-serif', color: 'var(--text)', textDecoration: 'none' }}
           suppressHydrationWarning
         >
           utk<sup>®</sup>

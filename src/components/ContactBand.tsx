@@ -23,7 +23,7 @@ export function ContactBand() {
             stagger={0.08}
             className="mt-5 max-w-[14ch] text-balance font-bold leading-[1.0] tracking-[-0.04em] text-[var(--text)]"
             style={{
-              fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif',
+              fontFamily: '"Inter", system-ui, sans-serif',
               fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
             }}
           />

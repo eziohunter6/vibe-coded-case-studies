@@ -23,7 +23,7 @@ export function BrandStrip() {
               <li key={name}>
                 <span
                   className="text-[1.5rem] font-black uppercase tracking-[-0.03em] text-[var(--text)] opacity-15 transition-opacity duration-300 hover:opacity-60"
-                  style={{ fontFamily: '"Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif' }}
+                  style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
                 >
                   {name}
                 </span>
