@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { Reveal } from "@/components/Reveal";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 
 // ─── Design tokens ───────────────────────────────────────────────────────────
 const DARK = {
@@ -126,31 +127,41 @@ function StatesSection() {
         <div style={{ flex: 1, height: 1, background: T.rule }} />
       </div>
 
-      {/* Tab row */}
-      <div style={{ display: "flex", gap: 8, marginBottom: 28 }}>
-        {(["td", "bk"] as const).map((t) => {
-          const active = tab === t;
-          return (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              style={{
-                padding: "9px 22px",
-                borderRadius: 100,
-                border: active ? `1px solid ${T.w}33` : `1px solid ${T.rule}`,
-                background: active ? T.lite : "transparent",
-                color: active ? T.w : T.mut,
-                cursor: "pointer",
-                fontSize: 13,
-                fontWeight: active ? 600 : 400,
-                transition: "all 0.18s ease",
-                letterSpacing: "0.01em",
-              }}
-            >
-              {t === "td" ? "Test Drive" : "Booking"}
-            </button>
-          );
-        })}
+      {/* Tab row — pill toggle */}
+      <div style={{ marginBottom: 28 }}>
+        <div style={{
+          display: "inline-flex",
+          alignItems: "center",
+          background: T.lite,
+          borderRadius: 100,
+          padding: 4,
+        }}>
+          {(["td", "bk"] as const).map((t) => {
+            const active = tab === t;
+            return (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                style={{
+                  background: active ? "#ffffff" : "transparent",
+                  color: active ? "#000000" : T.w,
+                  borderRadius: 100,
+                  padding: "7px 18px",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "background 0.2s ease, color 0.2s ease",
+                  fontFamily: '"Inter", system-ui, sans-serif',
+                  letterSpacing: "-0.01em",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {t === "td" ? "Test Drive" : "Booking"}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* 4-up horizontal grid */}
@@ -175,6 +186,8 @@ function StatesSection() {
 export default function BuyHomepagePage() {
   const isDark = useIsDark();
   const T = isDark ? DARK : LIGHT;
+  const [slideTarget, setSlideTarget] = useState<{ pos: number; id: number } | null>(null);
+  const [activeLabel, setActiveLabel] = useState<"before" | "after">("before");
   const tbl = {
     labelBg:      isDark ? "#111111" : "#ececea",
     buyerBg:      isDark ? "#1e0a12" : "#fff0f2",
@@ -224,6 +237,102 @@ export default function BuyHomepagePage() {
               ))}
             </div>
           </Reveal>
+        </Sec>
+
+        {/* ── BEFORE / AFTER ──────────────────────────────────────────────── */}
+        <Sec id="before-after" cursorLabel="spot the difference.">
+          <div style={{
+            maxWidth: 740,
+            margin: "0 auto",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "clamp(32px, 5vw, 56px)",
+            alignItems: "flex-start",
+          }}>
+            {/* Left: toggle + contextual copy */}
+            <div style={{ flex: "1 1 200px", minWidth: 0 }}>
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                background: isDark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.07)",
+                borderRadius: 100,
+                padding: 4,
+                marginBottom: 28,
+              }}>
+                <button
+                  onClick={() => { setActiveLabel("before"); setSlideTarget({ pos: 88, id: Date.now() }); }}
+                  style={{
+                    background: activeLabel === "before" ? "#ffffff" : "transparent",
+                    color: activeLabel === "before" ? "#000000" : T.w,
+                    borderRadius: 100,
+                    padding: "7px 18px",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "background 0.2s ease, color 0.2s ease",
+                    fontFamily: '"Inter", system-ui, sans-serif',
+                    letterSpacing: "-0.01em",
+                    whiteSpace: "nowrap",
+                  }}
+                >Before</button>
+                <button
+                  onClick={() => { setActiveLabel("after"); setSlideTarget({ pos: 12, id: Date.now() }); }}
+                  style={{
+                    background: activeLabel === "after" ? "#ffffff" : "transparent",
+                    color: activeLabel === "after" ? "#000000" : T.w,
+                    borderRadius: 100,
+                    padding: "7px 18px",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "background 0.2s ease, color 0.2s ease",
+                    fontFamily: '"Inter", system-ui, sans-serif',
+                    letterSpacing: "-0.01em",
+                    whiteSpace: "nowrap",
+                  }}
+                >After</button>
+              </div>
+              <p style={{
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: T.mut,
+                marginBottom: 12,
+                fontFamily: '"Inter", system-ui, sans-serif',
+              }}>
+                {activeLabel === "before" ? "The problem" : "The fix"}
+              </p>
+              <p style={{
+                fontSize: 16,
+                lineHeight: 1.65,
+                color: T.w,
+                fontFamily: '"Inter", system-ui, sans-serif',
+                transition: "opacity 0.25s ease",
+              }}>
+                {activeLabel === "before"
+                  ? "A returning buyer with a test drive booked landed on the same homepage as a first-time visitor. The product had the data. The page never looked at it."
+                  : "State-aware from the first scroll. Committed buyers see their stage, RM details, and one clear next action. The homepage becomes a co-pilot."}
+              </p>
+            </div>
+            {/* Right: slider */}
+            <div style={{ flex: "1 1 280px", maxWidth: 380 }}>
+              <Reveal delay={0.05}>
+                <BeforeAfterSlider
+                  beforeSrc="/images/buy-homepage/slider-before.png"
+                  afterSrc="/images/buy-homepage/slider-after.png"
+                  beforeAlt="Spinny Buy Homepage — before redesign"
+                  afterAlt="Spinny Buy Homepage — after redesign"
+                  imgW={770}
+                  imgH={1552}
+                  targetPos={slideTarget}
+                  onPositionChange={(p) => setActiveLabel(p > 50 ? "before" : "after")}
+                />
+              </Reveal>
+            </div>
+          </div>
         </Sec>
 
         {/* ── 02 PROBLEM ─────────────────────────────────────────────────── */}

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { WordSnap } from "@/components/WordSnap";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -141,6 +142,15 @@ export default async function CaseStudyPage({ params }: Props) {
             </figure>
           </Reveal>
         ) : null}
+
+        {project.slug === "spinny-buy-homepage" && (
+          <BeforeAfterSlider
+            beforeSrc="/images/buy-homepage/slider-before.png"
+            afterSrc="/images/buy-homepage/slider-after.png"
+            beforeAlt="Spinny Buy Homepage — before redesign"
+            afterAlt="Spinny Buy Homepage — after redesign"
+          />
+        )}
 
         <div className="mt-10 space-y-16 sm:mt-16 sm:space-y-28">
           {project.sections.map((block, i) => (
