@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -63,6 +64,7 @@ export default function RootLayout({
         <SmoothCursor />
         <CommandPalette />
         <VoiceAgent />
+        <Analytics />
       </body>
     </html>
   );

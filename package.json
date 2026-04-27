@@ -12,6 +12,7 @@
     "@11labs/client": "^0.2.0",
     "@google/generative-ai": "^0.24.1",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@vercel/analytics": "^2.0.1",
     "animejs": "^4.3.6",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
